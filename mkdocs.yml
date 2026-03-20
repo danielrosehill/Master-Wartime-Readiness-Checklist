@@ -27,7 +27,6 @@ theme:
     - search.suggest
     - search.highlight
     - content.tabs.link
-    - toc.integrate
   icon:
     repo: fontawesome/brands/github
   language: en
@@ -88,21 +87,25 @@ nav:
   - Home: index.md
   - Downloads: downloads.md
   - Quick Reference: quick-reference.md
-  - Chapter 1 - How To Use: chapter-1-how-to-use.md
-  - Chapter 2 - PAWS BED: chapter-2-paws-bed.md
-  - Chapter 3 - Master Checklist: chapter-3-master-checklist.md
-  - Chapter 4 - Situational Checklists: chapter-4-situational.md
-  - Chapter 5 - Guidance Notes: chapter-5-guidance.md
-  - Chapter 6 - Shabbat / Hag: chapter-6-shabbat.md
-  - Appendices:
-    - A - HFC App: appendix-a-hfc-app.md
-    - B - Emergency Numbers: appendix-b-emergency-numbers.md
-    - C - Mamad Inspection: appendix-c-mamad.md
-    - D - Decision Tree: appendix-d-decision-tree.md
-    - E - Hebrew Glossary: appendix-e-glossary.md
-    - F - Radio Frequencies: appendix-f-radio.md
-    - G - Home Safety: appendix-g-home-safety.md
-    - H - Go Bag: appendix-h-go-bag.md
-    - I - Pantry Staples: appendix-i-pantry.md
-  - References: references.md
-  - Disclaimer: disclaimer.md
+  - Field Guide:
+    - Table of Contents: toc.md
+    - Chapters:
+      - 1 - How To Use: chapter-1-how-to-use.md
+      - 2 - PAWS BED: chapter-2-paws-bed.md
+      - 3 - Master Checklist: chapter-3-master-checklist.md
+      - 4 - Situational Checklists: chapter-4-situational.md
+      - 5 - Guidance Notes: chapter-5-guidance.md
+      - 6 - Shabbat / Hag: chapter-6-shabbat.md
+    - Appendices:
+      - A - HFC App: appendix-a-hfc-app.md
+      - B - Emergency Numbers: appendix-b-emergency-numbers.md
+      - C - Mamad Inspection: appendix-c-mamad.md
+      - D - Decision Tree: appendix-d-decision-tree.md
+      - E - Hebrew Glossary: appendix-e-glossary.md
+      - F - Radio Frequencies: appendix-f-radio.md
+      - G - Home Safety: appendix-g-home-safety.md
+      - H - Go Bag: appendix-h-go-bag.md
+      - I - Pantry Staples: appendix-i-pantry.md
+    - Reference:
+      - References: references.md
+      - Disclaimer: disclaimer.md
