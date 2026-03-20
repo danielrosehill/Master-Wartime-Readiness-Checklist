@@ -37,26 +37,26 @@ plugins:
   - i18n:
       docs_structure: folder
       languages:
-        - locale: en
+        en:
           name: English
           default: true
           build: true
-        - locale: he
+        he:
           name: עברית
           build: true
-        - locale: ru
+        ru:
           name: Русский
           build: true
-        - locale: fr
+        fr:
           name: Français
           build: true
-        - locale: ar
+        ar:
           name: العربية
           build: true
-        - locale: es
+        es:
           name: Español
           build: true
-        - locale: pt
+        pt:
           name: Português
           build: true
 
