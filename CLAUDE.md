@@ -24,7 +24,6 @@ images/avatars/         — Herman and Corn mascot images
 images/other/           — beyahad.png banner
 assets/generated/       — AI-generated graphics
 planning/               — Design briefs and toolchain notes
-sources/hfc-official/   — Archived HFC guidance (HTML)
 original/               — V1 original draft
 ```
 
@@ -62,9 +61,12 @@ xdg-open output/Israel-Wartime-Readiness-Field-Guide-v3.pdf
 
 All guide content lives in `iterations/edits/v2/Israel Wartime Readiness Checklist.md`. Content edits go there first, then the Typst source is updated to match.
 
-## HFC Source Pages
+## HFC Guidelines (Ground Truth)
 
-The `sources/hfc-official/` HTML files were saved using the [SingleFile](https://github.com/nicjac/SingleFile) browser extension, which embeds all images as base64 data URIs inline in the HTML. To extract embedded images, use a base64 extraction script (not [SingleFileExtractor](https://github.com/Droppers/SingleFileExtractor) — that tool is for .NET single-file executables, not SingleFile HTML). Extracted and deduplicated images are in `sources/hfc-official/200326/extracted-images/`.
+Official HFC (Pikud HaOref) guidelines are maintained in a separate repository:
+https://github.com/danielrosehill/Pikud-Haoref-Guidelines-0326
+
+The `/qc` slash command cross-references the field guide against these guidelines automatically.
 
 ## Repo Visibility
 
