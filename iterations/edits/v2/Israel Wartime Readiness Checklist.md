@@ -49,7 +49,8 @@
 | **B** | [Appendix B: Emergency Numbers](#appendix-b-emergency-numbers) | Print and post visibly |
 | **C** | [Appendix C: Mamad Inspection](#appendix-c-mamad-protected-space-inspection) | Periodic inspection |
 | **D** | [Appendix D: Protected Space Decision Tree](#appendix-d-protected-space-decision-tree-siren-response) | Memorise |
-| **E** | [Appendix E: Emergency Radio Frequencies](#appendix-e-emergency-radio-frequencies) | Reference (no connectivity) |
+| **E** | [Appendix E: Hebrew Glossary](#appendix-e-hebrew-glossary) | Reference |
+| **F** | [Appendix F: Emergency Radio Frequencies](#appendix-f-emergency-radio-frequencies) | Reference (no connectivity) |
 
 ---
 
@@ -674,7 +675,43 @@ RED ALERT SOUNDS → Go to protected space
 
 **Stairwell positioning:** 3\+ floors: at least 2 floors above you. 3-storey building: middle floor only. Stay on the staircase, not in the hallway.
 
-## Appendix E: Emergency Radio Frequencies
+## Appendix E: Hebrew Glossary
+
+*Key terms you will hear on the news, in alerts, and from neighbours. Knowing these words can save critical seconds.*
+
+| HEBREW | TRANSLITERATION | MEANING |
+| :---- | :---- | :---- |
+| אזעקה | **Azaka** | Alert / siren |
+| צבע אדום | **Tzeva Adom** | "Red Color" — the Red Alert warning |
+| ממ״ד | **Mamad** | Apartment-level protected space (merkhav mugan dirati) |
+| ממ״ק | **Mamak** | Floor-level protected space (merkhav mugan komati) |
+| ממ״מ | **Mamam** | Institutional / public building protected space (merkhav mugan musdee) |
+| מקלט | **Miklat** | Public bomb shelter |
+| חדר מדרגות | **Khadar Madregot** | Stairwell |
+| פיקוד העורף | **Pikud HaOref** | Home Front Command (HFC) |
+| התרעה מקדימה | **Hatra'a Makdima** | Preliminary guideline (advance warning) |
+| הנחיה מיוחדת | **Hankhaya Meyukhedet** | Special instruction |
+| ירי רקטות | **Yeri Raketot** | Rocket fire |
+| חדירת כלי טיס עוין | **Khadirat Kli Tis Oyein** | Hostile aerial vehicle infiltration |
+| חדירת מחבלים | **Khadirat Mekhabblim** | Terrorist infiltration |
+| רעידת אדמה | **Re'idat Adama** | Earthquake |
+| חומרים מסוכנים | **Khomarim Mesukanim** | Hazardous materials |
+| ניתן לצאת | **Nitan Latzeit** | "You may exit" — all-clear |
+| היכנסו למרחב המוגן | **Hikansu LaMerkhav HaMugan** | "Enter the protected space" |
+| שהו במרחב המוגן | **Shehu BaMerkhav HaMugan** | "Remain in the protected space" |
+| דלת פלדה | **Delet Plada** | Steel/blast door |
+| חלון פלדה | **Khalon Plada** | Steel window |
+| תריס | **Tris** | Shutter |
+| פנס | **Panas** | Torch / flashlight |
+| תיק חירום | **Tik Kherum** | Emergency bag (go bag) |
+| מד״א | **Mada** | Magen David Adom (ambulance/first aid) |
+| צה״ל | **Tzahal** | IDF (Israel Defense Forces) |
+| משטרה | **Mishtara** | Police |
+| כבאות | **Kaba'ut** | Fire service |
+| ועד בית | **Va'ad Bayit** | Building committee |
+| עורף | **Oref** | Home front (civilian rear) |
+
+## Appendix F: Emergency Radio Frequencies
 
 *If phone and internet are down, a battery-powered or hand-crank AM/FM radio is your lifeline. Pre-set these frequencies.*
 
