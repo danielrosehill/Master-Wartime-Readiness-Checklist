@@ -1,0 +1,52 @@
+/* Custom styles for the field guide */
+
+/* Task list checkboxes */
+.task-list-item {
+  list-style: none;
+  margin-left: -1.5em;
+}
+.task-list-item input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* Admonition tweaks */
+.admonition.warning, .admonition.danger {
+  border-left-color: #c0392b !important;
+}
+.admonition.tip, .admonition.hint {
+  border-left-color: #2563a0 !important;
+}
+.admonition.note.wellness {
+  border-left-color: #27774e !important;
+}
+
+/* Tables */
+.md-typeset table:not([class]) th {
+  background-color: #1a3a5c;
+  color: white;
+}
+
+/* Download buttons */
+.download-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 4px;
+  border-radius: 6px;
+  color: white !important;
+  text-decoration: none !important;
+  font-weight: bold;
+  font-size: 14px;
+}
+.download-btn:hover { opacity: 0.9; }
+.download-btn.pdf { background: #2563a0; }
+.download-btn.epub { background: #27774e; }
+.download-btn.print { background: #d35400; }
+.download-btn.all { background: #444444; }
+
+/* Critical marker */
+.critical { color: #c0392b; font-weight: bold; }
+
+/* Print: hide progress bar */
+@media print {
+  #checklist-progress { display: none !important; }
+}

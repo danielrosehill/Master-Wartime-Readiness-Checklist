@@ -1,0 +1,108 @@
+site_name: Israel Wartime Readiness Field Guide
+site_description: Civilian preparedness field guide for wartime in Israel, based on Home Front Command (Pikud HaOref) guidance
+site_url: https://danielrosehill.github.io/Israel-Civilian-Readiness-Guide/
+repo_url: https://github.com/danielrosehill/Israel-Civilian-Readiness-Guide
+repo_name: GitHub
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - toc.integrate
+  icon:
+    repo: fontawesome/brands/github
+  language: en
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: folder
+      languages:
+        - locale: en
+          name: English
+          default: true
+          build: true
+        - locale: he
+          name: עברית
+          build: true
+        - locale: ru
+          name: Русский
+          build: true
+        - locale: fr
+          name: Français
+          build: true
+        - locale: ar
+          name: العربية
+          build: true
+        - locale: es
+          name: Español
+          build: true
+        - locale: pt
+          name: Português
+          build: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+  - tables
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - js/interactive-checklists.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/danielrosehill/Israel-Civilian-Readiness-Guide
+  generator: false
+
+nav:
+  - Home: index.md
+  - Downloads: downloads.md
+  - Quick Reference: quick-reference.md
+  - Chapter 1 - How To Use: chapter-1-how-to-use.md
+  - Chapter 2 - PAWS BED: chapter-2-paws-bed.md
+  - Chapter 3 - Master Checklist: chapter-3-master-checklist.md
+  - Chapter 4 - Situational Checklists: chapter-4-situational.md
+  - Chapter 5 - Guidance Notes: chapter-5-guidance.md
+  - Chapter 6 - Shabbat / Hag: chapter-6-shabbat.md
+  - Appendices:
+    - A - HFC App: appendix-a-hfc-app.md
+    - B - Emergency Numbers: appendix-b-emergency-numbers.md
+    - C - Mamad Inspection: appendix-c-mamad.md
+    - D - Decision Tree: appendix-d-decision-tree.md
+    - E - Hebrew Glossary: appendix-e-glossary.md
+    - F - Radio Frequencies: appendix-f-radio.md
+    - G - Home Safety: appendix-g-home-safety.md
+    - H - Go Bag: appendix-h-go-bag.md
+    - I - Pantry Staples: appendix-i-pantry.md
+  - References: references.md
+  - Disclaimer: disclaimer.md
