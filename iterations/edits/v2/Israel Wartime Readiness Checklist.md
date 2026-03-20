@@ -43,8 +43,9 @@
 | | 5.9 Using Communal / Public Shelters | |
 | | 5.10 OPSEC & Information Discipline | |
 | | 5.11 Preliminary Guidelines (Advance Warning) | |
-| | 5.12 Terrorist Infiltration / Hostile Aerial Vehicle | |
-| | 5.13 Shabbat / Hag | |
+| | 5.12 Terrorist Infiltration | |
+| | 5.13 Hostile Aerial Vehicle (UAV/Drone) Infiltration | |
+| | 5.14 Shabbat / Hag | |
 | **A** | [Appendix A: HFC App Configuration](#appendix-a-home-front-command-app-android) | Setup reference |
 | **B** | [Appendix B: Emergency Numbers](#appendix-b-emergency-numbers) | Print and post visibly |
 | **C** | [Appendix C: Mamad Inspection](#appendix-c-mamad-protected-space-inspection) | Periodic inspection |
@@ -527,30 +528,82 @@ The HFC operates a **preliminary guideline** system for attacks originating from
 
 **When the actual alert sounds:** follow standard shelter procedure (Appendix D). The preliminary guideline bought you preparation time — use it.
 
-### 5.12 Terrorist Infiltration / Hostile Aerial Vehicle
+### 5.12 Terrorist Infiltration
 
-This is a **different protocol** from rocket/missile response. Do NOT follow the standard shelter procedure.
+This is a **different protocol** from rocket/missile response. Do NOT follow the standard shelter procedure for rockets — stay **hidden**, not just sheltered.
 
-**When you hear an infiltration alert or suspect a terror event:**
+#### If Indoors
 
-1. **Enter the nearest building** immediately
-2. **Lock the door.** Use a heavy object to barricade if needed
-3. **Turn lights off.** Stay in darkness
-4. **Stay silent.** Turn off TV, radio, and anything that makes noise
-5. **Sit below window line.** Stay away from windows and exterior walls
-6. **Do NOT share your location on social media.** Attackers monitor social media in real time
-7. **Do NOT open the door** for anyone except identified security forces
-8. **If a rocket alert sounds during an infiltration: stay where you are.** Do NOT leave to go to a stairwell or shelter — remaining locked and hidden takes priority over the standard shelter protocol
-9. **Wait for security forces** to announce the all-clear. This may take hours. Do not assume it is safe because it has been quiet
+1. **Lock the house door**
+2. **Leave lights on outside** the house (helps security forces navigate)
+3. **Enter the Mamad** (protected room), close the door properly, sit **below the window line**
+4. If no Mamad — enter a **hideaway** (internal room with lockable door, no windows)
+5. **Do NOT exit** the protected space until official authorities announce the event has ended
 
-**Mamad door during infiltration:**
-- Do NOT remove the mamad door handle to prevent entry — this damages the mechanism
-- Instead, use a heavy object to block the door from inside
+#### If Outdoors
 
-**Licensed weapon holders:**
-- Aim at the front door. Fire only on positive identification of a threat. Do not fire blindly through doors or walls
+1. **Immediately enter** the nearest protected place (building, shop, public structure)
+2. Stay there until official authorities announce the event has ended
 
-### 5.13 Shabbat / Hag (Observant Jews)
+#### If In a Vehicle
+
+1. If you can keep driving — **get to a safe location nearby** as fast as possible
+2. If you cannot drive — **stop on the side of the road**, seek nearby shelter offering maximum protection
+3. Stay in shelter until official authorities announce the event has ended
+
+#### Critical Reminders
+
+- **Traffic in the area is prohibited** — entry banned until further notice
+- If a **rocket/missile alert sounds during a terrorist infiltration** — do NOT go to a protected space outside the house, including the stairwell. Stay where you are
+- **Do NOT dismantle the Mamad door handle.** Removing it damages the mechanism. To block entry from outside, barricade the handle with a heavy object
+- **Do NOT share your location** on social networks or media channels
+- **Stay updated** via Home Front Command messages on official platforms
+
+**Licensed weapon holders:** Aim at the front door. Fire only on positive identification of a threat. Do not fire blindly through doors or walls.
+
+---
+
+### 5.13 Hostile Aerial Vehicle (UAV/Drone) Infiltration
+
+UAV infiltration uses the **same siren** as rocket/missile attacks but has **different behavioural guidelines**. Shelter time is **10 minutes** unless updated.
+
+#### Means of Alert
+
+The alert is received through:
+- **Home Front Command App** — personal alert based on location (location services must be active) plus up to 10 areas of interest. The caption "Infiltration of a Hostile Aerial Vehicle" appears with guidelines
+- **National Emergency Portal** (oref.org.il) — targeted alert on your computer if you have defined alert areas
+- **Home Front Command Sirens** — rising and falling alarm (same sound as rocket/missile attack)
+- **Media** — radio stations, TV channels, and news websites broadcast the alert with area name and guidelines
+
+#### If Indoors
+
+1. Go immediately to the **most protected space**: Mamad, Mamak, Mamam, shelter, inner stairwell, or inner room
+2. **Stay in the protected space for 10 minutes**, unless another alert or additional guideline is received
+
+#### If Outdoors
+
+1. **In a built-up area:** enter the optimal protected space in a nearby building. **Do not stay in the entrance hall**
+2. **In an open area:** lie on the ground and protect your head with your hands. If you cannot lie down — crouch as much as possible and protect your head
+3. **Wait** until an explicit guideline allows you to leave
+
+#### If In a Vehicle
+
+1. **Stop at the side of the road**, exit the vehicle, and enter the optimal protected space in a nearby building
+2. If no building is reachable — exit and move **away from the vehicle** beyond the shoulder or safety railing, lie down, and protect your head
+3. Only if you **cannot exit** the vehicle — pull over, open the windows, and crouch below the window line
+4. **Wait** until an explicit guideline allows you to leave
+
+#### If On Public Transport
+
+- **Inter-city / school buses:** driver stops at roadside and opens doors; passengers crouch below the window line and protect their heads
+- **Urban buses:** driver stops and opens doors for passengers to reach optimal protected space; if not reachable, crouch below window line
+- **Trains:** driver slows to 30 km/h; passengers crouch below window line in carriages and protect their heads
+
+> **Key difference from rockets:** UAV alerts require a **10-minute shelter time** and you must wait for an explicit "all clear" — do not self-release based on quiet.
+
+---
+
+### 5.14 Shabbat / Hag (Observant Jews)
 
 | ITEM | CHECK |
 | :---- | :---- |
