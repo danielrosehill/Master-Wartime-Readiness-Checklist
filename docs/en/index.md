@@ -13,6 +13,7 @@ A comprehensive civilian preparedness field guide for wartime in Israel, based o
 <a href="../downloads/" class="download-btn pdf">📄 Full PDF</a>
 <a href="../downloads/" class="download-btn epub">📱 EPUB</a>
 <a href="../downloads/" class="download-btn print">🖨️ Printables</a>
+<a href="https://cf-cdn.danielrosehill.com/audio/audiobooks/Israel-Wartime-Readiness-Field-Guide-Audiobook.m4a" class="download-btn epub">🎧 Audiobook</a>
 </div>
 
 ## Chapters

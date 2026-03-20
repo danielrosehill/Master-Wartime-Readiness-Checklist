@@ -49,6 +49,7 @@ The guide is available in three formats:
 - **Website** — [Read online](https://israel-civilian-readiness-guide.vercel.app/) with interactive checklists (7 languages)
 - **PDF** — Professionally typeset A4 document designed for printing and binding (`output/`)
 - **Printable checklists** — Individual one-page checklists for posting around the home (`output/printables/`)
+- **Audiobook** — [Listen to the audiobook (M4A)](https://cf-cdn.danielrosehill.com/audio/audiobooks/Israel-Wartime-Readiness-Field-Guide-Audiobook.m4a)
 
 ## Building
 

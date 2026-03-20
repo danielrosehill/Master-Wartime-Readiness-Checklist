@@ -8,6 +8,7 @@ All files are available from the [GitHub Releases page](https://github.com/danie
 |--------|------|
 | **Full PDF** | [Israel-Wartime-Readiness-Field-Guide-v4.pdf](https://github.com/danielrosehill/Israel-Civilian-Readiness-Guide/releases/download/v4.1/Israel-Wartime-Readiness-Field-Guide-v4.pdf) |
 | **EPUB** | [Israel-Wartime-Readiness-Field-Guide-v4.epub](https://github.com/danielrosehill/Israel-Civilian-Readiness-Guide/releases/download/v4.1/Israel-Wartime-Readiness-Field-Guide-v4.epub) |
+| **Audiobook (M4A)** | [Israel-Wartime-Readiness-Field-Guide-Audiobook.m4a](https://cf-cdn.danielrosehill.com/audio/audiobooks/Israel-Wartime-Readiness-Field-Guide-Audiobook.m4a) |
 
 ## Printable Checklists
 
