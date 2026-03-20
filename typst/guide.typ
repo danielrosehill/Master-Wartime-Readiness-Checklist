@@ -1,5 +1,5 @@
 // Israel Wartime Readiness Field Guide — Typst Source
-// V3: Designed edition with avatars, flowcharts, icons, and proper layout
+// V4: Expanded edition — Ch6 Shabbat, quick ref cards, new appendices (G/H/I)
 
 #import "@preview/fletcher:0.5.7" as fletcher: diagram, node, edge
 #import "@preview/fontawesome:0.5.0": *
@@ -47,7 +47,8 @@
 #let sec-col-ch3 = rgb("#c0392b")  // Red — Master Checklist
 #let sec-col-ch4 = rgb("#d35400")  // Orange — Situational
 #let sec-col-ch5 = rgb("#2980b9")  // Light Blue — Guidance
-#let sec-col-app = rgb("#7b4ea3")  // Purple — Appendices
+#let sec-col-ch6 = rgb("#8e44ad")  // Purple — Shabbat/Hag
+#let sec-col-app = rgb("#7b4ea3")  // Plum — Appendices
 
 // ──────────────────────────────────────────────
 // PAGE SETUP
@@ -92,7 +93,7 @@
         columns: (1fr, auto, 1fr),
         column-gutter: 8pt,
         align(left, text(size: 7pt, fill: grey-text)[
-          Israel Wartime Readiness Field Guide · V3 · 20 March 2026 \
+          Israel Wartime Readiness Field Guide · V4 · 20 March 2026 \
           Daniel Rosehill + Claude Opus
         ]),
         align(center + horizon, image(beyahad, height: 0.8cm)),
@@ -330,7 +331,7 @@
         columns: (auto, 1fr),
         column-gutter: 12pt,
         row-gutter: 5pt,
-        [*Version*], [3],
+        [*Version*], [4],
         [*Date*], [20 March 2026],
         [*Author*], [Daniel Rosehill + Claude Opus],
         [*Warranty*], [None — use/modify as desired],
@@ -366,6 +367,109 @@
     #text(size: 9pt)[
       *Print this guide and keep it accessible.* Affix reflective tape to the cover so it's visible by torchlight. Prepare at least 3 copies: by the front door, in the go bag, and in the mamad.
     ]
+  ]
+]
+
+// ══════════════════════════════════════════════
+// QUICK REFERENCE CARDS
+// ══════════════════════════════════════════════
+#page(header: none, footer: none)[
+  #v(0.3cm)
+  #align(center, text(size: 18pt, weight: "bold", fill: blue-dark)[QUICK REFERENCE])
+  #align(center, text(size: 10pt, fill: grey-text, style: "italic")[Tear out or photocopy this page. Post on fridge, in mamad, and in go bag.])
+  #v(0.4cm)
+
+  // Daytime card
+  #block(
+    width: 100%,
+    inset: 12pt,
+    fill: rgb("#fff8e1"),
+    radius: 8pt,
+    stroke: 2pt + orange-warm,
+  )[
+    #text(size: 13pt, weight: "bold", fill: blue-dark)[#icon-sun DAYTIME AT-HOME POSTURE]
+    #v(4pt)
+    #set text(size: 9pt)
+    #grid(
+      columns: (1fr, 1fr),
+      column-gutter: 12pt,
+      [
+        #ci[PHONE — ON PERSON, CHARGED, HFC APP]
+        #linebreak()
+        #ci[DRESSED — FULL CLOTHES, CLOSED-TOE SHOES]
+        #linebreak()
+        #ci[KEYS — ON PERSON OR IN/BY DOOR]
+      ],
+      [
+        #ci[GO BAG — BY DOOR, ZIPPED]
+        #linebreak()
+        #ci[EXIT — HALLWAY CLEAR, DOOR OPENS QUICKLY]
+        #linebreak()
+        #ci[BROWSER ALERT — ACTIVE (if at desk)]
+      ],
+    )
+  ]
+
+  #v(0.4cm)
+
+  // Nighttime card
+  #block(
+    width: 100%,
+    inset: 12pt,
+    fill: rgb("#e8eaf6"),
+    radius: 8pt,
+    stroke: 2pt + blue-dark,
+  )[
+    #text(size: 13pt, weight: "bold", fill: blue-dark)[#icon-moon BEFORE BED POSTURE]
+    #v(4pt)
+    #set text(size: 9pt)
+    #grid(
+      columns: (1fr, 1fr),
+      column-gutter: 12pt,
+      [
+        #ci[PHONE — CHARGING, NOT AIRPLANE MODE]
+        #linebreak()
+        #ci[CLOTHES — LAID OUT BY BED]
+        #linebreak()
+        #ci[SHOES — CLOSED-TOE BY BED]
+        #linebreak()
+        #ci[TORCH — NIGHTSTAND, ARM'S REACH]
+        #linebreak()
+        #ci[GLASSES — BY BED]
+      ],
+      [
+        #ci[KEYS — BY BED OR BY DOOR]
+        #linebreak()
+        #ci[GO BAG — BY DOOR, POWER BANK CHARGING]
+        #linebreak()
+        #ci[EXIT — HALLWAY CLEAR, NOT DOUBLE-LOCKED]
+        #linebreak()
+        #ci[HEARING — NO EARPLUGS]
+        #linebreak()
+        #ci[DEPENDENTS — ALL ACCOUNTED FOR]
+      ],
+    )
+  ]
+
+  #v(0.4cm)
+
+  // Night alarm sequence
+  #block(
+    width: 100%,
+    inset: 12pt,
+    fill: red-light,
+    radius: 8pt,
+    stroke: 2pt + red-alert,
+  )[
+    #text(size: 13pt, weight: "bold", fill: red-alert)[⚠ NIGHT ALARM — FIRST 30 SECONDS]
+    #v(4pt)
+    #set text(size: 9.5pt)
+    + *Feet on floor → into shoes* (same spot every night)
+    + *Grab glasses + phone* from nightstand
+    + *Pull on clothes* laid out by bed
+    + *Torch* if power is out
+    + *Move to protected space* or front door
+    + *Parents:* one → children, other → go bag (pre-assigned)
   ]
 ]
 
@@ -611,18 +715,6 @@ _Periodic rapid readiness check. Can be completed in under 2 minutes._
    #linebreak()
    #ci[SMOKE DETECTOR — INSTALLED AND TESTED]],
 
-  icon-house, [*Heavy Furniture*],
-  [#ci[BOOKCASES / SHELVES SECURED TO WALLS]
-   #linebreak()
-   #ci[APPLIANCE WHEELS LOCKED]
-   #linebreak()
-   #ci(d: "Not above head height")[HEAVY OBJECTS STORED LOW]],
-
-  icon-bolt, [*Gas / Electricity* #critical],
-  [#ci(d: "By all household members")[SHUTOFF LOCATIONS KNOWN]
-   #linebreak()
-   #ci[ALL MEMBERS KNOW HOW AND WHEN TO SHUT OFF]],
-
   icon-door, [*Escape Routes*],
   [#ci[PRIMARY EXIT IDENTIFIED]
    #linebreak()
@@ -636,6 +728,18 @@ _Periodic rapid readiness check. Can be completed in under 2 minutes._
   icon-shield, [*Mamad*],
   [#ci(d: "See Appendix C — Mamad Inspection")[PREPARED]],
 )
+
+#v(0.2cm)
+#block(
+  width: 100%,
+  inset: 8pt,
+  fill: grey-light,
+  radius: 4pt,
+)[
+  #text(size: 8pt, fill: grey-text, style: "italic")[
+    Heavy furniture securing, gas/electricity shutoffs, and fire safety — see *Appendix G: Pre-Emergency Home Safety*. These are preparation tasks, not wartime-active checks.
+  ]
+]
 
 #pagebreak()
 == 3.3 Go Bag #h(6pt) #icon-bag
@@ -979,8 +1083,15 @@ You need both hands free. You may be carrying a child, holding a torch, opening 
 #grid(
   columns: (1fr, 1fr),
   column-gutter: 12pt,
-  [
-    === What to look for
+  block(
+    width: 100%,
+    inset: 10pt,
+    fill: green-light,
+    radius: 6pt,
+    stroke: 1pt + green-calm,
+  )[
+    #text(weight: "bold", fill: green-calm)[✓ What to look for]
+    #v(4pt)
     - *Two shoulder straps* with padding
     - *Chest strap and/or waist strap*
     - *Water-resistant material*
@@ -989,19 +1100,37 @@ You need both hands free. You may be carrying a child, holding a torch, opening 
     - *Durable zips*
     - *Dark or neutral colour*
   ],
-  [
-    === What to avoid
+  block(
+    width: 100%,
+    inset: 10pt,
+    fill: red-light,
+    radius: 6pt,
+    stroke: 1pt + red-alert,
+  )[
+    #text(weight: "bold", fill: red-alert)[✗ What to avoid]
+    #v(4pt)
     - Tote bags, drawstring bags, single-strap slings
     - Wheeled luggage — useless on stairs or rubble
     - Very large bags (60L+) — too heavy
     - Fashion bags with no structure
-
-    === Once selected
-    - Affix *reflective tape* to straps
-    - Assign each item a *fixed pocket*
-    - Keep it *by the front door*
   ],
 )
+
+#v(0.3cm)
+
+#block(
+  width: 100%,
+  inset: 10pt,
+  fill: blue-light,
+  radius: 6pt,
+  stroke: 1pt + blue-accent,
+)[
+  #text(weight: "bold", fill: blue-dark)[Once selected]
+  #v(4pt)
+  - Affix *reflective tape* to straps
+  - Assign each item a *fixed pocket*
+  - Keep it *by the front door*
+]
 
 #pagebreak()
 == 5.2 In Shelter — When To Leave
@@ -1022,21 +1151,23 @@ Many casualties occur because people leave shelter prematurely.
 
 == 5.3 In Shelter — Behaviour
 
-=== Children
-- Use a calm, steady voice. Children take their cues from adults
-- Explain simply: _"We're in our safe room. We wait here until we're told it's safe"_
-- Have a comfort item ready (one in the mamad, one in the go bag)
-- Hold young children close — physical contact is reassuring
-- Do not lie — children hear sirens. Acknowledge and redirect to the plan
+=== #icon-baby Children
 
-=== General
-- Sit against an inner wall, below window line
-- Do NOT use elevators during or after an alert
-- Do NOT go outside to photograph interceptions — falling debris causes injuries
-- Keep the mamad/shelter door closed until the all-clear
-- If you smell gas or see structural damage, move to alternative shelter and call *102*
-- After the all-clear, send a brief safety confirmation to family
-- Do not spread unverified information
+- #text(weight: "bold")[Use a calm, steady voice.] Children take their cues from adults
+- #text(weight: "bold")[Explain simply:] _"We're in our safe room. We wait here until we're told it's safe"_
+- #text(weight: "bold")[Have a comfort item ready] — one in the mamad, one in the go bag
+- #text(weight: "bold")[Hold young children close] — physical contact is reassuring
+- #text(weight: "bold")[Do not lie] — children hear sirens. Acknowledge and redirect to the plan
+
+=== #icon-shield General
+
+- #icon-shield *Sit against an inner wall,* below window line
+- #text(fill: red-alert, weight: "bold")[Do NOT use elevators] during or after an alert
+- #text(fill: red-alert, weight: "bold")[Do NOT go outside to photograph interceptions] — falling debris causes injuries
+- #icon-door *Keep the mamad/shelter door closed* until the all-clear
+- #icon-bolt If you smell gas or see structural damage, *move to alternative shelter* and call *102*
+- #icon-phone After the all-clear, *send a brief safety confirmation* to family
+- #text(fill: red-alert, weight: "bold")[Do not spread unverified information]
 
 == 5.4 Moving Safely to a Public Shelter
 
@@ -1282,9 +1413,20 @@ HFC provides *3–5 minute advance warning* for attacks from distant sources (e.
 
 *Mamad door:* Do NOT remove the handle. Block from inside with heavy object.
 
-*Licensed weapon holders:* Aim at front door. Fire only on positive ID.
+*Licensed weapon holders:* Aim at front door. Fire only on positive ID.#footnote[Based on Home Front Command protocol as of 20 March 2026. Always verify with current HFC guidance at oref.org.il.]
 
-== 5.13 Shabbat / Hag (Observant Jews)
+// ══════════════════════════════════════════════
+// CHAPTER 6: SHABBAT / HAG
+// ══════════════════════════════════════════════
+#set-section("Ch. 6: Shabbat / Hag", colour: sec-col-ch6)
+
+= Chapter 6: Shabbat / Hag (Observant Jews)
+
+_When phones are off and sirens are the only alert. Prepare before candle-lighting._
+
+#v(0.3cm)
+
+== 6.1 Before Shabbat / Hag
 
 #table(
   columns: (auto, 1fr, 2fr),
@@ -1296,10 +1438,35 @@ HFC provides *3–5 minute advance warning* for attacks from distant sources (e.
   text(fill: white, weight: "bold", size: 9pt)[ITEM],
   text(fill: white, weight: "bold", size: 9pt)[CHECK],
 
-  icon-alert, [*Channel 14 / Gal Shaket*], [#ci[PLAYING] #linebreak() #ci(d: "Verify TV not muted")[VOLUME TESTED]],
-  icon-radio, [*Emergency Radio*], [#ci[FREQUENCY AND OPERATION VERIFIED] #linebreak() #ci[VOLUME AT MAXIMUM] #linebreak() #ci[POWER SUPPLY — AC OR BATTERIES]],
-  icon-bag, [*Shabbat Supplies*], [#ci(d: "If bringing to shelter")[PACKED]],
+  icon-alert, [*Channel 14 / Gal Shaket* #critical], [#ci[PLAYING ON TV BEFORE SHABBAT] #linebreak() #ci(d: "Verify TV not muted")[VOLUME TESTED — AUDIBLE FROM BEDROOMS]],
+  icon-radio, [*Emergency Radio* #critical], [#ci[FREQUENCY AND OPERATION VERIFIED] #linebreak() #ci[VOLUME AT MAXIMUM] #linebreak() #ci[POWER SUPPLY — AC OR BATTERIES]],
+  icon-bag, [*Go Bag*], [#ci[BY DOOR] #h(4pt) #ci[CONTENTS VERIFIED]],
+  icon-bag, [*Shabbat Supplies*], [#ci(d: "Siddur, kiddush cup, snacks for shelter")[PACKED]],
+  icon-shoe, [*Shoes* #critical], [#ci(d: "Do not rely on slippers")[CLOSED-TOE BY BED AND BY DOOR]],
+  icon-shirt, [*Clothes*], [#ci(d: "Full outfit, not just pyjamas")[LAID OUT BY BED]],
+  icon-key, [*Keys*], [#ci[BY FRONT DOOR]],
+  [], [*Torch*], [#ci(d: "Pre-set on nightstand")[WITHIN ARM'S REACH]],
 )
+
+#v(0.3cm)
+
+#tip-box()[
+  #set text(size: 9pt)
+  *Pikuach nefesh* (preservation of life) overrides all Shabbat prohibitions. If a siren sounds, you may — and *must* — use your phone, carry items, and do whatever is needed to reach shelter safely. This is not a leniency; it is *halacha*.
+]
+
+== 6.2 During Shabbat / Hag
+
+- *Sirens are your primary alert.* Keep windows slightly open so you can hear outdoor sirens
+- *TV or radio must stay on and audible* throughout Shabbat — this is your only real-time information source
+- *Know your shelter route in the dark* — no phone torch available (unless siren sounds)
+- After an alert, *stay in shelter for 10 minutes or until all-clear on TV/radio*
+
+#v(0.2cm)
+
+#warning-box[
+  *If you hear a siren on Shabbat:* Move to shelter immediately. Carry children, phone, go bag — whatever you need. There is no halachic question here. #footnote[Based on Home Front Command protocol as of 20 March 2026. Consult your rabbi for specific halachic guidance.]
+]
 
 // ══════════════════════════════════════════════
 // APPENDICES
@@ -1390,7 +1557,7 @@ HFC provides *3–5 minute advance warning* for attacks from distant sources (e.
 
 = Appendix C: Mamad (Protected Space) Inspection
 
-_Based on Home Front Command guidelines for residential protected spaces._
+_Based on Home Front Command guidelines for residential protected spaces._ #footnote[HFC mamad inspection protocol as of 20 March 2026.]
 
 === Structural Inspection
 
@@ -1435,7 +1602,7 @@ _Based on Home Front Command guidelines for residential protected spaces._
 
 = Appendix D: Protected Space Decision Tree
 
-_When a Red Alert sounds, choose the highest-priority option you can reach._
+_When a Red Alert sounds, choose the highest-priority option you can reach._ #footnote[Based on Home Front Command protocol as of 20 March 2026.]
 
 #warning-box[
   *WHEN TO LEAVE:* Stay for *10 minutes OR until all-clear* — whichever comes later. \
@@ -1574,6 +1741,255 @@ _If phone and internet are down, a battery-powered or hand-crank AM/FM radio is 
   - *AM is more reliable* during emergencies — longer range, works better inside buildings
   - During emergencies, all stations simulcast HFC announcements
   - *Write your local frequencies on the radio itself* with a permanent marker
+]
+
+// ══════════════════════════════════════════════
+// APPENDIX G: PRE-EMERGENCY HOME SAFETY
+// ══════════════════════════════════════════════
+#set-section("Appendix G: Home Safety", colour: sec-col-app)
+
+= Appendix G: Pre-Emergency Home Safety
+
+_These tasks should be completed before an emergency — during routine periods. They are not wartime-active checks._
+
+#v(0.3cm)
+
+#table(
+  columns: (auto, 1fr, 2fr),
+  inset: 9pt,
+  stroke: 0.5pt + grey-border,
+  fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
+  align: (center, left, left),
+  text(fill: white, weight: "bold", size: 9pt)[],
+  text(fill: white, weight: "bold", size: 9pt)[ITEM],
+  text(fill: white, weight: "bold", size: 9pt)[CHECK],
+
+  icon-house, [*Bookcases & Shelves*],
+  [#ci[SECURED TO WALLS WITH L-BRACKETS OR STRAPS]
+   #linebreak()
+   #ci(d: "Not above head height")[HEAVY OBJECTS STORED LOW]],
+
+  icon-house, [*Appliances*],
+  [#ci[WHEELED APPLIANCES — WHEELS LOCKED]
+   #linebreak()
+   #ci[HEAVY APPLIANCES — STABLE AND SECURED]],
+
+  icon-bolt, [*Gas Shutoff* #critical],
+  [#ci(d: "By all household members")[LOCATION KNOWN]
+   #linebreak()
+   #ci[ALL MEMBERS KNOW HOW TO SHUT OFF]
+   #linebreak()
+   #ci(d: "Turn clockwise 90° to close")[OPERATION TESTED]],
+
+  icon-bolt, [*Electricity Shutoff* #critical],
+  [#ci(d: "Main breaker box")[LOCATION KNOWN]
+   #linebreak()
+   #ci[ALL MEMBERS KNOW HOW TO SHUT OFF]],
+
+  icon-fire, [*Fire Extinguisher*],
+  [#ci[ACCESSIBLE AND NOT EXPIRED]
+   #linebreak()
+   #ci[ALL MEMBERS KNOW HOW TO USE]],
+
+  icon-fire, [*Smoke Detector*],
+  [#ci[INSTALLED — ONE PER FLOOR MINIMUM]
+   #linebreak()
+   #ci(d: "Test monthly")[TESTED AND WORKING]
+   #linebreak()
+   #ci[BATTERIES REPLACED ANNUALLY]],
+
+  icon-water, [*Water Heater*],
+  [#ci(d: "To prevent toppling")[STRAPPED TO WALL]],
+
+  icon-house, [*Windows*],
+  [#ci(d: "Can shatter into projectiles")[NO GLASS OBJECTS ON WINDOWSILLS]
+   #linebreak()
+   #ci[BLINDS / SHUTTERS — FUNCTIONAL]],
+)
+
+#v(0.3cm)
+#tip-box()[
+  #set text(size: 9pt)
+  *Schedule a home safety walk-through* every 6 months, or immediately after moving. These items take 1–2 hours to set up but dramatically reduce injury risk during shaking from nearby impacts.
+]
+
+// ══════════════════════════════════════════════
+// APPENDIX H: GO BAG RECOMMENDATIONS
+// ══════════════════════════════════════════════
+#set-section("Appendix H: Go Bag", colour: sec-col-app)
+
+= Appendix H: Go Bag Recommendations #h(6pt) #icon-bag
+
+_A detailed packing list. Adapt to your household size and needs._
+
+#v(0.3cm)
+
+=== Tier 1 — Always Packed (Critical)
+
+#table(
+  columns: (auto, 1fr, 1.5fr),
+  inset: 8pt,
+  stroke: 0.5pt + grey-border,
+  fill: (_, y) => if y == 0 { red-alert } else if calc.odd(y) { red-light } else { white },
+  align: (center, left, left),
+  text(fill: white, weight: "bold", size: 9pt)[],
+  text(fill: white, weight: "bold", size: 9pt)[ITEM],
+  text(fill: white, weight: "bold", size: 9pt)[NOTES],
+
+  icon-phone, [Phone charger + cable], [One per device type],
+  icon-phone, [Power bank], [10,000+ mAh; check charge weekly],
+  icon-medkit, [Essential medications], [7-day supply; rotate monthly],
+  [], [Torch + spare batteries], [Or hand-crank torch],
+  [], [N95 masks], [One per person; sealed in bag],
+  icon-water, [Water bottle], [1L minimum per person],
+  [], [Emergency whistle], [Audible from under debris],
+  icon-medkit, [First aid kit], [Bandages, antiseptic, pain relief, scissors],
+  [], [Copies of this guide], [Laminated or in waterproof sleeve],
+)
+
+=== Tier 2 — Recommended Additions
+
+#table(
+  columns: (auto, 1fr, 1.5fr),
+  inset: 8pt,
+  stroke: 0.5pt + grey-border,
+  fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { blue-light } else { white },
+  align: (center, left, left),
+  text(fill: white, weight: "bold", size: 9pt)[],
+  text(fill: white, weight: "bold", size: 9pt)[ITEM],
+  text(fill: white, weight: "bold", size: 9pt)[NOTES],
+
+  icon-radio, [AM/FM radio], [Battery or crank; write frequencies on it],
+  [], [Travel router + ethernet], [For shelter with wired internet],
+  [], [Plug adapters / splitters], [Shelter outlets are shared],
+  [], [Cash (NIS)], [Small bills; ATMs may be down],
+  [], [Passports + national IDs], [Copies in waterproof pouch],
+  [], [Emergency contact list], [Printed; phones die],
+  [], [Multi-tool or Swiss Army knife], [Blade, opener, screwdriver],
+  [], [Duct tape + zip ties], [Universal repair],
+  [], [Permanent marker + paper], [For notes if no phone],
+)
+
+=== Tier 3 — Extended Stay (4+ Hours / Overnight)
+
+#table(
+  columns: (auto, 1fr, 1.5fr),
+  inset: 8pt,
+  stroke: 0.5pt + grey-border,
+  fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
+  align: (center, left, left),
+  text(fill: white, weight: "bold", size: 9pt)[],
+  text(fill: white, weight: "bold", size: 9pt)[ITEM],
+  text(fill: white, weight: "bold", size: 9pt)[NOTES],
+
+  icon-food, [Non-perishable snacks], [Energy bars, nuts, dried fruit, crackers],
+  icon-water, [Extra water], [3L per person per day],
+  [], [Eye mask + earplugs], [Sleep in shared shelter],
+  [], [Blanket or emergency bivvy], [Aluminium emergency blankets are compact],
+  [], [Change of clothes], [Including socks and underwear],
+  [], [Toiletries bag], [Toothbrush, wet wipes, hand sanitiser],
+  [], [Entertainment], [Book, cards, colouring for children],
+  icon-bag, [Religious items], [Siddur, tefillin (if applicable)],
+  [], [Umbrella], [For walking to shelter in rain],
+)
+
+#v(0.3cm)
+#tip-box()[
+  #set text(size: 9pt)
+  *Rotation schedule:* Check medications and power bank monthly. Rotate food and water every 3 months. Replace batteries every 6 months. Update documents annually.
+]
+
+// ══════════════════════════════════════════════
+// APPENDIX I: EMERGENCY PANTRY STAPLES
+// ══════════════════════════════════════════════
+#set-section("Appendix I: Pantry Staples", colour: sec-col-app)
+
+= Appendix I: Emergency Pantry Staples (Israel)
+
+_Items commonly available in Israeli supermarkets. Focus on shelf-stable, calorie-dense, minimal-preparation foods. All items below are available kosher._
+
+#v(0.3cm)
+
+=== Water
+
+- *3 litres per person per day* (drinking + basic hygiene)
+- *Minimum 72-hour supply* → 9L per person
+- Store in sealed containers away from sunlight
+- Rotate every 6 months
+- *Tip:* freeze extra bottles — they keep food cold if power fails and become drinking water as they melt
+
+=== Staple Foods
+
+#table(
+  columns: (1fr, 1.5fr, auto),
+  inset: 8pt,
+  stroke: 0.5pt + grey-border,
+  fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
+  align: left,
+  text(fill: white, weight: "bold", size: 9pt)[CATEGORY],
+  text(fill: white, weight: "bold", size: 9pt)[ITEMS],
+  text(fill: white, weight: "bold", size: 9pt)[SHELF LIFE],
+
+  [*Canned Goods*],
+  [Tuna (שימורי טונה) · Chickpeas (חומוס) · Corn · Beans · Tomatoes · Sardines],
+  [2–5 years],
+
+  [*Grains & Starches*],
+  [Rice · Pasta · Couscous · Matza / crackers · Instant oatmeal],
+  [1–2 years],
+
+  [*Proteins*],
+  [Canned tuna/sardines · Tahini (טחינה) · Halva (חלווה) · Peanut butter · Canned hummus],
+  [6–24 months],
+
+  [*Dried Goods*],
+  [Lentils (עדשים) · Dried fruits · Nuts · Sunflower seeds · Bamba],
+  [6–12 months],
+
+  [*Quick Energy*],
+  [Energy bars · Chocolate · Honey · Jam · Sugar · Dates (תמרים)],
+  [6–24 months],
+
+  [*Beverages*],
+  [Instant coffee · Tea bags · Powdered milk · Juice boxes (UHT)],
+  [6–12 months],
+
+  [*Cooking Aids*],
+  [Salt · Cooking oil · Instant soup mix (קנורר) · Spices],
+  [1–2 years],
+
+  [*Baby / Special*],
+  [Formula · Baby food jars · Gluten-free alternatives · Ensure/Ensure-type drinks],
+  [Check labels],
+)
+
+#v(0.3cm)
+
+=== Practical Tips
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 12pt,
+  [
+    - *Buy items you actually eat* — rotate through normal cooking
+    - *FIFO:* First In, First Out — new stock to the back
+    - *Label everything* with purchase date
+    - *No power = no fridge:* plan for shelf-stable only
+    - *Can opener:* keep one with the pantry supplies (not in a drawer you won't find in the dark)
+  ],
+  [
+    - *Kashrut:* all items above are available with hechsher at major Israeli chains (Shufersal, Rami Levy, Yochananof)
+    - *Pesach:* maintain a separate small stock of kitniyot-free / Pesach-suitable items if needed
+    - *Babies:* maintain *at least 2 weeks* of formula at all times
+    - *Special diets:* stock according to medical needs first
+  ],
+)
+
+#v(0.3cm)
+
+#calm-box[
+  #set text(size: 9pt)
+  *Don't panic-buy.* Build your stock gradually over 2–3 weeks. Add a few extra items to each regular shop. This is sustainable and doesn't empty shelves for others.
 ]
 
 // ══════════════════════════════════════════════
