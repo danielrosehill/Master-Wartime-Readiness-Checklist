@@ -55,18 +55,19 @@
 // Critical marker
 #let critical = text(fill: red-alert, weight: "bold", size: 12pt)[ ⚠]
 
-// Call-respond line: checkbox left, call name next, response RIGHT-ALIGNED
+// Call-respond line: checkbox left, BOLD call name, response RIGHT-ALIGNED
+// Description goes on new line in italics
 // Usage: cr-line("Charge Status?", [*CHARGING* or *CHARGED*])
 #let cr-line(name, response, d: none) = {
   checkbox
   h(3pt)
-  text(size: 9pt, fill: blue-dark)[#name]
+  text(size: 9pt, fill: blue-dark, weight: "bold")[#name]
   h(1fr)
   response
   if d != none {
     linebreak()
     h(18pt)
-    text(style: "italic", size: 9pt)[#d]
+    text(style: "italic", size: 8.5pt, fill: grey-text)[#d]
   }
 }
 
@@ -130,11 +131,11 @@
   margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm),
 )
 
-// Respond column table header
-#let respond-table-headers() = (
+// Table column headers: icon | ITEM | CHECK (col 3 hidden)
+#let checklist-table-headers() = (
   [],
-  text(fill: white, weight: "bold", size: 9pt)[CALL],
-  text(fill: white, weight: "bold", size: 9pt)[RESPOND],
+  text(fill: white, weight: "bold", size: 9pt)[ITEM],
+  text(fill: white, weight: "bold", size: 9pt)[CHECK],
 )
 
 // Standard checklist table setup

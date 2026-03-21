@@ -15,7 +15,7 @@
     stroke: 0.5pt + grey-border,
     fill: checklist-table-fill,
     align: (center, left, left),
-    ..respond-table-headers(),
+    ..checklist-table-headers(),
     icon-bag, [*Go Bag* #critical],
     [#cr-line("Bag Position?", [*BACK BY DOOR*])
      #linebreak() #cr-line("Bag Sealed?", [*RE-ZIPPED*], d: "did anything fall out?")],

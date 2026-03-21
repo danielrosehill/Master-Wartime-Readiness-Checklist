@@ -15,7 +15,7 @@
     stroke: 0.5pt + grey-border,
     fill: checklist-table-fill,
     align: (center, left, left),
-    ..respond-table-headers(),
+    ..checklist-table-headers(),
     icon-phone, [*Phone* #critical],
     [#cr-line("Phone Location?", [*ON PERSON*], d: "or within arm's reach")
      #linebreak() #cr-line("Charge Status?", [*CHARGED* or *CHARGING*])

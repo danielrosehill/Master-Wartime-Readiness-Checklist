@@ -28,39 +28,44 @@
 #let section-colour = state("section-colour", blue-dark)
 
 // ═══════════════════════════════════════
-// PAGE SETUP with header (page number) and footer (checklist tab bar)
+// PAGE SETUP — SOP name in header, page number in both header & footer
+// Bright coloured bars, large text for quick visual identification
 // ═══════════════════════════════════════
 
 #set page(
   paper: "a4",
-  margin: (top: 1.8cm, bottom: 2cm, left: 1.5cm, right: 1.5cm),
+  margin: (top: 2.2cm, bottom: 2.2cm, left: 1.5cm, right: 1.5cm),
   header: context {
     let pg = counter(page).get().first()
-    if pg > 1 {
-      align(right)[
-        #text(size: 8pt, fill: grey-text)[#pg]
+    let name = section-name.get()
+    let colour = section-colour.get()
+    if pg > 1 and name != "" {
+      block(
+        width: 100%,
+        inset: (x: 12pt, y: 8pt),
+        fill: colour,
+        radius: 3pt,
+      )[
+        #text(size: 10pt, fill: white, weight: "bold")[#name]
+        #h(1fr)
+        #text(size: 14pt, fill: white, weight: "bold")[#pg]
       ]
     }
   },
   footer: context {
+    let pg = counter(page).get().first()
     let name = section-name.get()
     let colour = section-colour.get()
-    if name != "" {
+    if pg > 1 and name != "" {
       block(
         width: 100%,
-        inset: (x: 12pt, y: 6pt),
+        inset: (x: 12pt, y: 8pt),
         fill: colour,
         radius: 3pt,
       )[
-        #align(center)[
-          #text(size: 9pt, fill: white, weight: "bold")[#name]
-        ]
-      ]
-      v(2pt)
-      text(size: 6.5pt, fill: grey-text)[
-        Israel Wartime Readiness Field Guide · V4
+        #text(size: 14pt, fill: white, weight: "bold")[#pg]
         #h(1fr)
-        danielrosehill.com
+        #text(size: 10pt, fill: white, weight: "bold")[#name]
       ]
     }
   },

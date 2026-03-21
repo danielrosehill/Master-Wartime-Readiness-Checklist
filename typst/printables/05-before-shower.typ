@@ -15,7 +15,7 @@
     stroke: 0.5pt + grey-border,
     fill: checklist-table-fill,
     align: (center, left, left),
-    ..respond-table-headers(),
+    ..checklist-table-headers(),
     icon-eye, [*News Check* #critical],
     [#cr-line("Active Alerts?", [*NONE*], d: "no active alerts in your area")],
     icon-phone, [*Phone* #critical],

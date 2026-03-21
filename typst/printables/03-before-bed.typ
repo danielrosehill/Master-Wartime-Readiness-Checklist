@@ -15,7 +15,7 @@
     stroke: 0.5pt + grey-border,
     fill: checklist-table-fill,
     align: (center, left, left),
-    ..respond-table-headers(),
+    ..checklist-table-headers(),
     icon-eye, [*News Check*],
     [#cr-line("Situation?", [*SCANNED*], d: "assess if safe to sleep at home")],
     icon-phone, [*Phone* #critical],

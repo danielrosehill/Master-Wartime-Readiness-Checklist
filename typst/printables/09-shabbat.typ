@@ -15,7 +15,7 @@
     stroke: 0.5pt + grey-border,
     fill: checklist-table-fill,
     align: (center, left, left),
-    ..respond-table-headers(),
+    ..checklist-table-headers(),
     icon-alert, [*TV / Channel 14* #critical],
     [#cr-line("TV On?", [*PLAYING* before Shabbat])
      #linebreak() #cr-line("TV Volume?", [*AUDIBLE* from bedrooms], d: "verify not muted")],

@@ -15,7 +15,7 @@
     stroke: 0.5pt + grey-border,
     fill: checklist-table-fill,
     align: (center, left, left),
-    ..respond-table-headers(),
+    ..checklist-table-headers(),
     icon-bag, [*Go Bag* #critical],
     [#cr-line("Bag?", [*TAKING* with me])],
     icon-eye, [*News Check* #critical],

@@ -22,7 +22,7 @@
     stroke: 0.5pt + grey-border,
     fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { green-light } else { white },
     align: (center, left, left),
-    ..respond-table-headers(),
+    ..checklist-table-headers(),
     icon-water, [*Water* #critical],
     [#cr-line("Water Supply?", [*TOPPED UP*], d: "9L per person for 72 hours")],
     icon-medkit, [*Medications* #critical],
@@ -51,7 +51,7 @@
     stroke: 0.5pt + grey-border,
     fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
     align: (center, left, left),
-    ..respond-table-headers(),
+    ..checklist-table-headers(),
     icon-shield, [*Mamad / Shelter*],
     [#cr-line("Shelter Condition?", [*CHECKED*], d: "anything displaced by shaking?")
      #linebreak() #cr-line("Door Seal?", [*INTACT*])],
