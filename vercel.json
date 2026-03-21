@@ -1,5 +1,18 @@
 {
-  "buildCommand": "pip install --break-system-packages -r requirements.txt && mkdocs build",
-  "outputDirectory": "site",
-  "framework": null
+  "buildCommand": "cd pwa && npm install --legacy-peer-deps && npm run build",
+  "outputDirectory": "pwa/dist",
+  "framework": null,
+  "headers": [
+    {
+      "source": "/sw.js",
+      "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    }
+  ],
+  "rewrites": [
+    { "source": "/((?!assets|sw\\.js|workbox|manifest|icon|registerSW|favicon).*)", "destination": "/index.html" }
+  ]
 }
