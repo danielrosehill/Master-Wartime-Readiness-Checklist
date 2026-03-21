@@ -31,7 +31,9 @@
     [#cr-line("Hallway?", [*CLEAR*])
      #linebreak() #cr-line("Front Door?", [*OPENS QUICKLY*])],
     icon-laptop, [*Browser Alert*],
-    [#cr-line("Desktop Alert?", [Red Alert extension *ACTIVE*], d: "if working at desk")],
+    [#cr-line("Desktop Alert?", [Red Alert extension *ACTIVE*], d: "If working at desk")],
+    icon-eye, [*Situational Awareness*],
+    [#cr-line("News Scan?", [*DONE* within last 1–3 hours], d: "HFC app + one gov source. Do not doom-scroll")],
   )
 
   #v(0.3cm)

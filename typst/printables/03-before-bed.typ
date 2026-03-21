@@ -16,8 +16,9 @@
     fill: checklist-table-fill,
     align: (center, left, left),
     ..checklist-table-headers(),
-    icon-eye, [*News Check*],
-    [#cr-line("Situation?", [*SCANNED*], d: "assess if safe to sleep at home")],
+    icon-eye, [*Situation Check*],
+    [#cr-line("News?", [*SCANNED*], d: "HFC app + gov sources. Assess if safe to sleep at home")
+     #linebreak() #cr-line("Threat Level?", [*NOTED*], d: "Standard or extra-vigilant tonight?")],
     icon-phone, [*Phone* #critical],
     [#cr-line("Charge Status?", [*CHARGING* or *CHARGED*])
      #linebreak() #cr-line("Phone Mode?", [*ACTIVE*, not airplane mode], d: "DND/silent OK")

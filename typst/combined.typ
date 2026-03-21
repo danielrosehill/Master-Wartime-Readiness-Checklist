@@ -4,6 +4,7 @@
 
 #import "printables/preamble.typ": *
 #import "printables/title-page.typ": title-page-content
+#import "printables/how-to-use.typ": how-to-use-content
 #import "printables/index-page.typ": index-page-content
 #import "printables/01-paws-bed.typ": quick-readiness-content
 #import "printables/02-daytime-posture.typ": daytime-posture-content
@@ -102,9 +103,10 @@
 }
 
 // ═══════════════════════════════════════
-// INDEX
+// HOW TO USE + INDEX
 // ═══════════════════════════════════════
 
+#section("How to Use", blue-dark, how-to-use-content())
 #section("Index", blue-dark, index-page-content())
 
 // ═══════════════════════════════════════
