@@ -34,24 +34,38 @@
     [#cr-line("Headcount?", [all *ACCOUNTED* for and *SAFE*])],
   )
 
-  #v(0.25cm)
-  #block(width: 100%, inset: 12pt, fill: green-light, radius: 6pt, stroke: 1pt + green-calm)[
+  #v(0.2cm)
+  #block(width: 100%, inset: 10pt, fill: green-light, radius: 6pt, stroke: 1pt + green-calm)[
     #text(size: 10pt, weight: "bold", fill: green-calm)[Self-Care — Do these NOW, not later.]
-    #text(size: 9pt)[ You don't know when the next alert comes.]
-    #v(6pt)
-    #set text(size: 9.5pt)
-    #cr-line("Eaten?", [*YES*], d: "stress suppresses appetite — eat anyway")
-    #linebreak() #cr-line("Hydrated?", [*YES*])
-    #linebreak() #cr-line("Toilet?", [*DONE*])
-    #linebreak() #cr-line("Showered?", [*YES*], d: "if time and situation allow")
-    #linebreak() #cr-line("Groomed?", [*YES*], d: "morale and normalcy matter")
-    #linebreak() #cr-line("Rested?", [*YES*], d: "when possible")
-    #v(8pt)
-    *Children:*
-    #linebreak()
-    #cr-line("Fed?", [*YES*]) #h(6pt) #cr-line("Hydrated?", [*YES*]) #h(6pt) #cr-line("Changed?", [*YES*])
-    #linebreak()
-    #cr-line("Cleaned?", [*YES*], d: "if possible") #h(6pt) #cr-line("Rested?", [*YES*], d: "nap if timing allows")
+    #text(size: 8.5pt)[ You don't know when the next alert comes.]
+    #v(4pt)
+    #set text(size: 9pt)
+    #grid(
+      columns: (1fr, 1fr),
+      column-gutter: 10pt,
+      row-gutter: 2pt,
+      [#cr-line("Eaten?", [*YES*], d: "Stress suppresses appetite — eat anyway")],
+      [#cr-line("Showered?", [*YES*], d: "If time and situation allow")],
+      [#cr-line("Hydrated?", [*YES*])],
+      [#cr-line("Groomed?", [*YES*], d: "Morale and normalcy matter")],
+      [#cr-line("Toilet?", [*DONE*])],
+      [#cr-line("Rested?", [*YES*], d: "When possible")],
+    )
+    #v(4pt)
+    #line(length: 100%, stroke: 0.5pt + green-calm)
+    #v(2pt)
+    #text(weight: "bold")[Children:]
+    #v(2pt)
+    #grid(
+      columns: (1fr, 1fr, 1fr),
+      column-gutter: 8pt,
+      [#cr-line("Fed?", [*YES*])],
+      [#cr-line("Hydrated?", [*YES*])],
+      [#cr-line("Changed?", [*YES*])],
+      [#cr-line("Cleaned?", [*YES*])],
+      [#cr-line("Rested?", [*YES*])],
+      [],
+    )
   ]
 ]
 

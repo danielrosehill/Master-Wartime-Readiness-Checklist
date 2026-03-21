@@ -52,11 +52,11 @@
   inset: 0pt,
 )
 
-// Critical marker
-#let critical = text(fill: red-alert, weight: "bold", size: 12pt)[ ⚠]
+// Critical marker — right-aligned in ITEM column
+#let critical = h(1fr) + text(fill: red-alert, weight: "bold", size: 12pt)[⚠]
 
 // Call-respond line: checkbox left, BOLD call name, response RIGHT-ALIGNED
-// Description goes on new line in italics
+// Description on new line, left-aligned, italics, capitalised
 // Usage: cr-line("Charge Status?", [*CHARGING* or *CHARGED*])
 #let cr-line(name, response, d: none) = {
   checkbox
@@ -66,7 +66,7 @@
   response
   if d != none {
     linebreak()
-    h(18pt)
+    h(15pt)
     text(style: "italic", size: 8.5pt, fill: grey-text)[#d]
   }
 }
