@@ -42,6 +42,8 @@
 #let icon-food = icon("utensils")
 #let icon-car = icon("car")
 #let icon-clock = icon("clock")
+#let icon-mask = icon("head-side-mask", colour: orange-warm)
+#let icon-news = icon("newspaper", colour: blue-dark)
 
 // Checkbox
 #let checkbox = box(
@@ -54,7 +56,23 @@
 // Critical marker
 #let critical = text(fill: red-alert, weight: "bold", size: 12pt)[ ⚠]
 
-// Checklist item
+// Call-respond item: response body is pre-formatted (caps bold, connectors regular)
+// Use as: cr[*CHARGING* or *CHARGED*]
+#let cr(body, d: none) = {
+  checkbox
+  h(4pt)
+  body
+  if d != none {
+    linebreak()
+    h(18pt)
+    text(style: "italic", size: 9pt)[#d]
+  }
+}
+
+// Call name label (the sub-item name the caller reads out)
+#let call(name) = text(size: 9pt, fill: blue-dark)[#name]
+
+// Legacy checklist item (bold response) — kept for non-call-respond contexts
 #let ci(d: none, response) = {
   checkbox
   h(4pt)
@@ -64,6 +82,21 @@
     h(18pt)
     text(style: "italic", size: 9pt)[#d]
   }
+}
+
+// Call-respond instructions block
+#let cr-instructions() = {
+  block(
+    width: 100%,
+    inset: 8pt,
+    fill: grey-light,
+    radius: 4pt,
+  )[
+    #text(size: 8.5pt, style: "italic")[
+      *Two-person drill:* one person reads the CALL column aloud, the other responds. Alternate roles each time. \
+      *Solo:* read each call aloud, then answer it yourself.
+    ]
+  ]
 }
 
 // Printable page setup (standalone)

@@ -9,28 +9,46 @@
 
 #v(0.2cm)
 #text(size: 9pt, style: "italic")[You are at your most vulnerable in the shower. Minimise time and maximise readiness.]
-#v(0.3cm)
+#v(0.15cm)
+
+#cr-instructions()
+
+#v(0.2cm)
 
 #table(
-  columns: (auto, 1fr, 2fr),
+  columns: (auto, 1fr, 2.5fr),
   inset: 10pt,
   stroke: 0.5pt + grey-border,
   fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
   align: (center, left, left),
   [],
-  text(fill: white, weight: "bold", size: 9pt)[ITEM],
-  text(fill: white, weight: "bold", size: 9pt)[CHECK],
+  text(fill: white, weight: "bold", size: 9pt)[CALL],
+  text(fill: white, weight: "bold", size: 9pt)[RESPOND],
 
-  icon-eye, [*News Check* #critical], [#ci(d: "No active alerts in your area")[SITUATION SCANNED]],
-  icon-phone, [*Phone* #critical], [#ci(d: "Must be audible over water")[VOLUME AT MAXIMUM] #linebreak() #ci[IN BATHROOM OR JUST OUTSIDE DOOR]],
-  icon-shirt, [*Clothes* #critical], [#ci(d: "Not in another room")[FULL OUTFIT IN BATHROOM]],
-  icon-shoe, [*Footwear* #critical], [#ci[CLOSED-TOE SHOES BY BATHROOM DOOR]],
-  [], [*Towel*], [#ci(d: "For rapid dry-off")[WITHIN REACH]],
-  icon-door, [*Door*], [#ci[BATHROOM DOOR UNLOCKED]],
-  icon-clock, [*Keep It Short* #critical], [#ci(d: "Be quick — get in, get out")[TIME MINIMISED]],
+  icon-eye, [*News Check* #critical],
+  [#call[Active Alerts?] #h(3pt) #cr(d: "no active alerts in your area")[*NONE*]],
+
+  icon-phone, [*Phone* #critical],
+  [#call[Volume?] #h(3pt) #cr(d: "must be audible over water")[at *MAXIMUM*]
+   #linebreak() #call[Phone Location?] #h(3pt) #cr[*IN BATHROOM* or just outside door]],
+
+  icon-shirt, [*Clothes* #critical],
+  [#call[Outfit?] #h(3pt) #cr(d: "not in another room")[*FULL OUTFIT* in bathroom]],
+
+  icon-shoe, [*Footwear* #critical],
+  [#call[Shoes?] #h(3pt) #cr[*CLOSED-TOE* by bathroom door]],
+
+  [], [*Towel*],
+  [#call[Towel?] #h(3pt) #cr(d: "for rapid dry-off")[*WITHIN REACH*]],
+
+  icon-door, [*Door*],
+  [#call[Bathroom Door?] #h(3pt) #cr[*UNLOCKED*]],
+
+  icon-clock, [*Keep It Short* #critical],
+  [#call[Time?] #h(3pt) #cr(d: "be quick — get in, get out")[*MINIMISED*]],
 )
 
-#v(0.5cm)
+#v(0.4cm)
 
 #block(
   width: 100%,
@@ -48,7 +66,7 @@
   + *Move to protected space* — clothes can wait, shelter cannot
 ]
 
-#v(0.3cm)
+#v(0.2cm)
 
 #block(
   width: 100%,

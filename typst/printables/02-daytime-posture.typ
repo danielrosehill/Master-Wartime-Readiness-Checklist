@@ -9,27 +9,46 @@
 
 #v(0.2cm)
 #text(size: 9pt, style: "italic")[Run after waking and repeat after any disruption. Maintain this posture throughout the day.]
-#v(0.3cm)
+#v(0.15cm)
+
+#cr-instructions()
+
+#v(0.2cm)
 
 #table(
-  columns: (auto, 1fr, 2fr),
-  inset: 10pt,
+  columns: (auto, 1fr, 2.5fr),
+  inset: 9pt,
   stroke: 0.5pt + grey-border,
   fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
   align: (center, left, left),
   [],
-  text(fill: white, weight: "bold", size: 9pt)[ITEM],
-  text(fill: white, weight: "bold", size: 9pt)[CHECK],
+  text(fill: white, weight: "bold", size: 9pt)[CALL],
+  text(fill: white, weight: "bold", size: 9pt)[RESPOND],
 
-  icon-phone, [*Phone* #critical], [#ci(d: "Or within arm's reach")[ON PERSON] #linebreak() #ci[CHARGED OR CHARGING] #linebreak() #ci[HFC APP RUNNING]],
-  icon-shirt, [*Dressed* #critical], [#ci[FULLY CLOTHED] #linebreak() #ci(d: "Not slippers, not barefoot")[CLOSED-TOE SHOES ON]],
-  icon-key, [*Keys* #critical], [#ci[ON PERSON OR IN/BY DOOR]],
-  icon-bag, [*Go Bag* #critical], [#ci[BY DOOR] #h(6pt) #ci[ZIPPED]],
-  icon-door, [*Exit Route* #critical], [#ci[HALLWAY CLEAR] #linebreak() #ci[FRONT DOOR CAN BE OPENED QUICKLY]],
-  icon-laptop, [*Browser Alert*], [#ci(d: "If working at desk")[RED ALERT EXTENSION ACTIVE]],
+  icon-phone, [*Phone* #critical],
+  [#call[Phone Location?] #h(3pt) #cr(d: "or within arm's reach")[*ON PERSON*]
+   #linebreak() #call[Charge Status?] #h(3pt) #cr[*CHARGED* or *CHARGING*]
+   #linebreak() #call[HFC App?] #h(3pt) #cr[*RUNNING*]],
+
+  icon-shirt, [*Dressed* #critical],
+  [#call[Clothing?] #h(3pt) #cr[*FULLY CLOTHED*]
+   #linebreak() #call[Footwear?] #h(3pt) #cr(d: "not slippers, not barefoot")[*CLOSED-TOE* shoes *ON*]],
+
+  icon-key, [*Keys* #critical],
+  [#call[Keys?] #h(3pt) #cr[*ON PERSON* or *BY DOOR*]],
+
+  icon-bag, [*Go Bag* #critical],
+  [#call[Bag Position?] #h(3pt) #cr[*BY DOOR*, *ZIPPED*]],
+
+  icon-door, [*Exit Route* #critical],
+  [#call[Hallway?] #h(3pt) #cr[*CLEAR*]
+   #linebreak() #call[Front Door?] #h(3pt) #cr[*OPENS QUICKLY*]],
+
+  icon-laptop, [*Browser Alert*],
+  [#call[Desktop Alert?] #h(3pt) #cr(d: "if working at desk")[Red Alert extension *ACTIVE*]],
 )
 
-#v(0.4cm)
+#v(0.3cm)
 
 #block(
   width: 100%,
@@ -45,20 +64,6 @@
   - Headphones: use one ear only, or keep volume low enough to hear a siren
   - Save work frequently — you may need to abandon your desk mid-sentence
   - At the start of any call: _"I'm in an active alert zone. I may need to leave abruptly."_
-]
-
-#v(0.3cm)
-
-#block(
-  width: 100%,
-  inset: 10pt,
-  fill: grey-light,
-  radius: 4pt,
-)[
-  #text(size: 9pt)[
-    *Date:* #h(3cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[] #h(1cm)
-    *Completed by:* #h(0.5cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[]
-  ]
 ]
 
 #printable-footer()

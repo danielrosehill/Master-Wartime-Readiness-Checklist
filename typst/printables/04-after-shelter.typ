@@ -9,28 +9,47 @@
 
 #v(0.2cm)
 #text(size: 9pt, style: "italic")[Run immediately after the all-clear. Restore full readiness before the next alert.]
-#v(0.3cm)
+#v(0.15cm)
+
+#cr-instructions()
+
+#v(0.2cm)
 
 #table(
-  columns: (auto, 1fr, 2fr),
+  columns: (auto, 1fr, 2.5fr),
   inset: 9pt,
   stroke: 0.5pt + grey-border,
   fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
   align: (center, left, left),
   [],
-  text(fill: white, weight: "bold", size: 9pt)[ITEM],
-  text(fill: white, weight: "bold", size: 9pt)[CHECK],
+  text(fill: white, weight: "bold", size: 9pt)[CALL],
+  text(fill: white, weight: "bold", size: 9pt)[RESPOND],
 
-  icon-bag, [*Go Bag* #critical], [#ci[BACK BY DOOR] #linebreak() #ci(d: "Did anything fall out?")[RE-ZIPPED]],
-  icon-phone, [*Phone* #critical], [#ci(d: "If battery dropped")[ON CHARGE] #linebreak() #ci[HFC APP STILL RUNNING]],
-  [], [*Power Bank*], [#ci(d: "May have been used in shelter")[ON CHARGE]],
-  icon-water, [*Water*], [#ci(d: "If you drank from emergency stock")[RESUPPLIED]],
-  icon-shirt, [*Clothes & Shoes*], [#ci(d: "By bed (night) or on person (day)")[BACK IN POSITION]],
-  [], [*Torch*], [#ci(d: "Nightstand or go bag")[BACK IN POSITION]],
-  icon-people, [*Dependents* #critical], [#ci[ALL ACCOUNTED FOR AND SAFE]],
+  icon-bag, [*Go Bag* #critical],
+  [#call[Bag Position?] #h(3pt) #cr[*BACK BY DOOR*]
+   #linebreak() #call[Bag Sealed?] #h(3pt) #cr(d: "did anything fall out?")[*RE-ZIPPED*]],
+
+  icon-phone, [*Phone* #critical],
+  [#call[Charge Status?] #h(3pt) #cr(d: "if battery dropped")[*ON CHARGE*]
+   #linebreak() #call[HFC App?] #h(3pt) #cr[still *RUNNING*]],
+
+  [], [*Power Bank*],
+  [#call[Power Bank?] #h(3pt) #cr(d: "may have been used in shelter")[*ON CHARGE*]],
+
+  icon-water, [*Water*],
+  [#call[Emergency Supply?] #h(3pt) #cr(d: "if you drank from emergency stock")[*RESUPPLIED*]],
+
+  icon-shirt, [*Clothes & Shoes*],
+  [#call[Position?] #h(3pt) #cr(d: "by bed at night, on person during day")[*BACK IN POSITION*]],
+
+  [], [*Torch*],
+  [#call[Torch?] #h(3pt) #cr(d: "nightstand or go bag")[*BACK IN POSITION*]],
+
+  icon-people, [*Dependents* #critical],
+  [#call[Headcount?] #h(3pt) #cr[all *ACCOUNTED* for and *SAFE*]],
 )
 
-#v(0.3cm)
+#v(0.25cm)
 
 #block(
   width: 100%,
@@ -43,37 +62,23 @@
   #text(size: 9pt)[ You don't know when the next alert comes.]
   #v(6pt)
   #set text(size: 9.5pt)
-  #ci(d: "Stress suppresses appetite — eat anyway. You need the energy.")[EATEN]
+  #call[Eaten?] #h(3pt) #cr(d: "stress suppresses appetite — eat anyway")[*YES*]
   #linebreak()
-  #ci[HYDRATED]
+  #call[Hydrated?] #h(3pt) #cr[*YES*]
   #linebreak()
-  #ci[TOILET — DONE]
+  #call[Toilet?] #h(3pt) #cr[*DONE*]
   #linebreak()
-  #ci(d: "If time and situation allow")[SHOWERED]
+  #call[Showered?] #h(3pt) #cr(d: "if time and situation allow")[*YES*]
   #linebreak()
-  #ci(d: "Morale and normalcy matter")[GROOMED]
+  #call[Groomed?] #h(3pt) #cr(d: "morale and normalcy matter")[*YES*]
   #linebreak()
-  #ci(d: "When possible")[RESTED]
+  #call[Rested?] #h(3pt) #cr(d: "when possible")[*YES*]
   #v(8pt)
   *Children:*
   #linebreak()
-  #ci[FED] #h(6pt) #ci[HYDRATED] #h(6pt) #ci[TOILETED / CHANGED]
+  #call[Fed?] #h(3pt) #cr[*YES*] #h(8pt) #call[Hydrated?] #h(3pt) #cr[*YES*] #h(8pt) #call[Changed?] #h(3pt) #cr[*YES*]
   #linebreak()
-  #ci(d: "If possible")[CLEANED] #h(6pt) #ci(d: "Nap if timing allows")[RESTED]
-]
-
-#v(0.2cm)
-
-#block(
-  width: 100%,
-  inset: 10pt,
-  fill: grey-light,
-  radius: 4pt,
-)[
-  #text(size: 9pt)[
-    *Date:* #h(3cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[] #h(1cm)
-    *Completed by:* #h(0.5cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[]
-  ]
+  #call[Cleaned?] #h(3pt) #cr(d: "if possible")[*YES*] #h(8pt) #call[Rested?] #h(3pt) #cr(d: "nap if timing allows")[*YES*]
 ]
 
 #printable-footer()

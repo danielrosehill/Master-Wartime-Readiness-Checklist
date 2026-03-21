@@ -9,30 +9,55 @@
 
 #v(0.2cm)
 #text(size: 9pt, style: "italic")[Complete before candle-lighting. When phones are off, sirens are your only alert.]
-#v(0.3cm)
+#v(0.15cm)
+
+#cr-instructions()
+
+#v(0.2cm)
 
 #table(
-  columns: (auto, 1fr, 2fr),
+  columns: (auto, 1fr, 2.5fr),
   inset: 9pt,
   stroke: 0.5pt + grey-border,
   fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
   align: (center, left, left),
   [],
-  text(fill: white, weight: "bold", size: 9pt)[ITEM],
-  text(fill: white, weight: "bold", size: 9pt)[CHECK],
+  text(fill: white, weight: "bold", size: 9pt)[CALL],
+  text(fill: white, weight: "bold", size: 9pt)[RESPOND],
 
-  icon-alert, [*TV / Channel 14* #critical], [#ci[PLAYING BEFORE SHABBAT] #linebreak() #ci(d: "Verify not muted")[VOLUME — AUDIBLE FROM BEDROOMS]],
-  icon-radio, [*Emergency Radio* #critical], [#ci[FREQUENCY VERIFIED] #linebreak() #ci[VOLUME AT MAXIMUM] #linebreak() #ci[POWER — AC OR BATTERIES]],
-  icon-bag, [*Go Bag*], [#ci[BY DOOR] #h(4pt) #ci[CONTENTS VERIFIED]],
-  icon-bag, [*Shabbat Supplies*], [#ci(d: "Siddur, kiddush cup, snacks for shelter")[PACKED]],
-  icon-shoe, [*Shoes* #critical], [#ci(d: "Not slippers")[CLOSED-TOE BY BED AND BY DOOR]],
-  icon-shirt, [*Clothes*], [#ci(d: "Full outfit, not just pyjamas")[LAID OUT BY BED]],
-  icon-key, [*Keys*], [#ci[BY FRONT DOOR]],
-  [], [*Torch*], [#ci(d: "Pre-set on nightstand")[WITHIN ARM'S REACH]],
-  [], [*Windows*], [#ci(d: "To hear outdoor sirens")[SLIGHTLY OPEN]],
+  icon-alert, [*TV / Channel 14* #critical],
+  [#call[TV On?] #h(3pt) #cr[*PLAYING* before Shabbat]
+   #linebreak() #call[TV Volume?] #h(3pt) #cr(d: "verify not muted")[*AUDIBLE* from bedrooms]],
+
+  icon-radio, [*Emergency Radio* #critical],
+  [#call[Radio Frequency?] #h(3pt) #cr[*VERIFIED*]
+   #linebreak() #call[Radio Volume?] #h(3pt) #cr[at *MAXIMUM*]
+   #linebreak() #call[Radio Power?] #h(3pt) #cr[*AC* or *BATTERIES* confirmed]],
+
+  icon-bag, [*Go Bag*],
+  [#call[Bag Position?] #h(3pt) #cr[*BY DOOR*]
+   #linebreak() #call[Bag Contents?] #h(3pt) #cr[*VERIFIED*]],
+
+  icon-bag, [*Shabbat Supplies*],
+  [#call[Shabbat Kit?] #h(3pt) #cr(d: "siddur, kiddush cup, snacks for shelter")[*PACKED*]],
+
+  icon-shoe, [*Shoes* #critical],
+  [#call[Footwear?] #h(3pt) #cr(d: "not slippers")[*CLOSED-TOE* by bed and by door]],
+
+  icon-shirt, [*Clothes*],
+  [#call[Outfit?] #h(3pt) #cr(d: "full outfit, not just pyjamas")[*LAID OUT* by bed]],
+
+  icon-key, [*Keys*],
+  [#call[Keys?] #h(3pt) #cr[*BY FRONT DOOR*]],
+
+  [], [*Torch*],
+  [#call[Torch?] #h(3pt) #cr(d: "pre-set on nightstand")[*ARM'S REACH*]],
+
+  [], [*Windows*],
+  [#call[Windows?] #h(3pt) #cr(d: "to hear outdoor sirens")[*SLIGHTLY OPEN*]],
 )
 
-#v(0.3cm)
+#v(0.25cm)
 
 #block(
   width: 100%,
@@ -48,7 +73,7 @@
   ]
 ]
 
-#v(0.3cm)
+#v(0.2cm)
 
 #block(
   width: 100%,

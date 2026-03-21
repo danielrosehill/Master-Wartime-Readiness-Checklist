@@ -9,7 +9,21 @@
 
 #v(0.2cm)
 #text(size: 9pt, style: "italic")[Post this by your bed. Everything here exists so you don't have to think at 3am.]
-#v(0.4cm)
+#v(0.15cm)
+
+#block(
+  width: 100%,
+  inset: 8pt,
+  fill: grey-light,
+  radius: 4pt,
+)[
+  #text(size: 8.5pt, style: "italic")[
+    *Two-person drill:* one person calls each step, the other responds with the status. Alternate roles. \
+    *Solo:* say each step aloud as you rehearse. On the real night, your body follows the pattern.
+  ]
+]
+
+#v(0.3cm)
 
 #block(
   width: 100%,
@@ -21,10 +35,10 @@
   #text(size: 14pt, weight: "bold", fill: red-alert)[The First 5 Seconds]
   #v(6pt)
   #set text(size: 12pt)
-  + *Siren / Alert* — Do not process. Just move. #h(1fr) #ci[AWAKE — MOVING]
-  + *Shoes* — Same spot every night. #h(1fr) #ci[ON FEET]
-  + *Glasses & Phone* — From nightstand. #h(1fr) #ci[IN HAND]
-  + *Caffeine pill _(optional)_* — Sip of water. #h(1fr) #ci[TAKEN]
+  + #call[Siren?] #h(6pt) — Do not process. Just move. #h(1fr) #cr[*AWAKE* — *MOVING*]
+  + #call[Shoes?] #h(6pt) — Same spot every night. #h(1fr) #cr[*ON FEET*]
+  + #call[Glasses & Phone?] #h(6pt) — From nightstand. #h(1fr) #cr[*IN HAND*]
+  + #call[Caffeine pill?] #h(6pt) — _(optional)_ Sip of water. #h(1fr) #cr[*TAKEN*]
 ]
 
 #v(0.3cm)
@@ -39,9 +53,9 @@
   #text(size: 14pt, weight: "bold", fill: orange-warm)[The Next 10–20 Seconds]
   #v(6pt)
   #set text(size: 12pt)
-  5. *Clothes* — Pull on whatever is laid out. Speed over appearance. #h(1fr) #ci[ON]
-  6. *Torch* — From nightstand if power is out. #h(1fr) #ci[IN HAND]
-  7. *Protected space* — Move to shelter or front door. #h(1fr) #ci[IN POSITION]
+  5. #call[Clothes?] #h(6pt) — Pull on whatever is laid out. Speed over appearance. #h(1fr) #cr[*ON*]
+  6. #call[Torch?] #h(6pt) — From nightstand if power is out. #h(1fr) #cr[*IN HAND*]
+  7. #call[Protected Space?] #h(6pt) — Move to shelter or front door. #h(1fr) #cr[*IN POSITION*]
 ]
 
 #v(0.3cm)
@@ -56,8 +70,8 @@
   #text(size: 14pt, weight: "bold", fill: blue-dark)[For Parents]
   #v(6pt)
   #set text(size: 12pt)
-  8. *Children* — One parent → child/children. Other → go bag. #h(1fr) #ci[ROLES EXECUTING]
-  9. *Baby* — In babywear by door. Do not stop to dress them. #h(1fr) #ci[SECURED]
+  8. #call[Children?] #h(6pt) — One parent → child/children. Other → go bag. #h(1fr) #cr[*ROLES EXECUTING*]
+  9. #call[Baby?] #h(6pt) — In babywear by door. Do not stop to dress them. #h(1fr) #cr[*SECURED*]
 ]
 
 #v(0.5cm)

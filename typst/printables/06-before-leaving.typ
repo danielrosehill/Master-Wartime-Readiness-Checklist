@@ -9,28 +9,47 @@
 
 #v(0.2cm)
 #text(size: 9pt, style: "italic")[Run every time you leave the house during wartime or escalation.]
-#v(0.3cm)
+#v(0.15cm)
+
+#cr-instructions()
+
+#v(0.2cm)
 
 #table(
-  columns: (auto, 1fr, 2fr),
+  columns: (auto, 1fr, 2.5fr),
   inset: 10pt,
   stroke: 0.5pt + grey-border,
   fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
   align: (center, left, left),
   [],
-  text(fill: white, weight: "bold", size: 9pt)[ITEM],
-  text(fill: white, weight: "bold", size: 9pt)[CHECK],
+  text(fill: white, weight: "bold", size: 9pt)[CALL],
+  text(fill: white, weight: "bold", size: 9pt)[RESPOND],
 
-  icon-bag, [*Go Bag* #critical], [#ci[TAKING WITH YOU]],
-  icon-eye, [*News Check* #critical], [#ci(d: "Check HFC app and news for active alerts")[SITUATION SCANNED BEFORE DEPARTURE]],
-  icon-shield, [*Shelters* #critical], [#ci(d: "At destination and along route")[NEAREST SHELTERS IDENTIFIED]],
-  icon-clock, [*Time To Shelter*], [#ci[KNOWN FOR DESTINATION AREA]],
-  icon-phone, [*Phone* #critical], [#ci[CHARGED] #h(4pt) #ci[HFC APP RUNNING] #h(4pt) #ci[LOCATION ON]],
-  icon-car, [*Car Fuel*], [#ci[AT LEAST HALF A TANK]],
-  icon-people, [*Household Notified*], [#ci[DESTINATION AND RETURN TIME COMMUNICATED]],
+  icon-bag, [*Go Bag* #critical],
+  [#call[Bag?] #h(3pt) #cr[*TAKING* with me]],
+
+  icon-eye, [*News Check* #critical],
+  [#call[Situation?] #h(3pt) #cr(d: "check HFC app and news for active alerts")[*SCANNED* before departure]],
+
+  icon-shield, [*Shelters* #critical],
+  [#call[Route Shelters?] #h(3pt) #cr(d: "at destination and along route")[*IDENTIFIED*]],
+
+  icon-clock, [*Time To Shelter*],
+  [#call[Shelter Time?] #h(3pt) #cr[*KNOWN* for destination area]],
+
+  icon-phone, [*Phone* #critical],
+  [#call[Charge Status?] #h(3pt) #cr[*CHARGED*]
+   #linebreak() #call[HFC App?] #h(3pt) #cr[*RUNNING*]
+   #linebreak() #call[Location?] #h(3pt) #cr[*ON*]],
+
+  icon-car, [*Car Fuel*],
+  [#call[Fuel Level?] #h(3pt) #cr[at least *HALF* a tank]],
+
+  icon-people, [*Household Notified*],
+  [#call[Household?] #h(3pt) #cr[destination and return time *COMMUNICATED*]],
 )
 
-#v(0.5cm)
+#v(0.4cm)
 
 #block(
   width: 100%,
@@ -47,20 +66,6 @@
   + *Enter the nearest building* or lie flat on the ground
   + *Protect your head* with your hands
   + *Wait 10 minutes* before returning to your vehicle
-]
-
-#v(0.3cm)
-
-#block(
-  width: 100%,
-  inset: 10pt,
-  fill: grey-light,
-  radius: 4pt,
-)[
-  #text(size: 9pt)[
-    *Date:* #h(3cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[] #h(1cm)
-    *Completed by:* #h(0.5cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[]
-  ]
 ]
 
 #printable-footer()

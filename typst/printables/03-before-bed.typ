@@ -9,43 +9,61 @@
 
 #v(0.2cm)
 #text(size: 9pt, style: "italic")[Run every night. Everything here exists so a 3am siren is survivable on autopilot.]
-#v(0.3cm)
+#v(0.15cm)
+
+#cr-instructions()
+
+#v(0.2cm)
 
 #table(
-  columns: (auto, 1fr, 2fr),
-  inset: 9pt,
+  columns: (auto, 1fr, 2.5fr),
+  inset: 8pt,
   stroke: 0.5pt + grey-border,
   fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
   align: (center, left, left),
   [],
-  text(fill: white, weight: "bold", size: 9pt)[ITEM],
-  text(fill: white, weight: "bold", size: 9pt)[CHECK],
+  text(fill: white, weight: "bold", size: 9pt)[CALL],
+  text(fill: white, weight: "bold", size: 9pt)[RESPOND],
 
-  icon-eye, [*News Check*], [#ci(d: "Assess if safe to sleep at home")[SITUATION SCANNED]],
-  icon-phone, [*Phone* #critical], [#ci[CHARGING OR CHARGED] #linebreak() #ci(d: "DND/silent OK")[NOT IN AIRPLANE MODE] #linebreak() #ci[LOCATION SERVICES ON] #linebreak() #ci[HFC APP — OVERRIDE PERMISSIONS]],
-  icon-shirt, [*Clothes* #critical], [#ci(d: "Full outfit ready in seconds")[LAID OUT BY BED]],
-  icon-shoe, [*Footwear* #critical], [#ci(d: "Ready to step into")[CLOSED-TOE SHOES BY BED]],
-  [], [*Torch*], [#ci(d: "On nightstand, not in go bag")[WITHIN ARM'S REACH]],
-  [], [*Glasses*], [#ci(d: "Same spot every night")[BY BED]],
-  icon-key, [*Keys*], [#ci(d: "By bed or on hook by front door")[ACCESSIBLE]],
-  icon-bag, [*Go Bag* #critical], [#ci[BY DOOR] #h(4pt) #ci[CONTENTS VERIFIED] #linebreak() #ci[POWER BANK ON CHARGE]],
-  icon-door, [*Exit Route* #critical], [#ci(d: "Can navigate in the dark")[HALLWAY CLEAR] #linebreak() #ci[FRONT DOOR NOT DOUBLE-LOCKED]],
-  icon-alert, [*Hearing* #critical], [#ci(d: "Must hear siren + phone alert")[NO EARPLUGS]],
-  icon-baby, [*Dependents* #critical], [#ci[ALL ACCOUNTED FOR] #linebreak() #ci[BABY — CLOTHES BY BED, BABYWEAR BY DOOR]],
+  icon-eye, [*News Check*],
+  [#call[Situation?] #h(3pt) #cr(d: "assess if safe to sleep at home")[*SCANNED*]],
+
+  icon-phone, [*Phone* #critical],
+  [#call[Charge Status?] #h(3pt) #cr[*CHARGING* or *CHARGED*]
+   #linebreak() #call[Phone Mode?] #h(3pt) #cr(d: "DND/silent OK")[*ACTIVE*, not in airplane mode]
+   #linebreak() #call[Location Services?] #h(3pt) #cr[*ON*]
+   #linebreak() #call[HFC Override?] #h(3pt) #cr[*PERMISSIONS SET*]],
+
+  icon-shirt, [*Clothes* #critical],
+  [#call[Outfit?] #h(3pt) #cr(d: "full outfit ready in seconds")[*LAID OUT* by bed]],
+
+  icon-shoe, [*Footwear* #critical],
+  [#call[Shoes?] #h(3pt) #cr(d: "ready to step into")[*CLOSED-TOE* by bed]],
+
+  [], [*Torch*],
+  [#call[Torch?] #h(3pt) #cr(d: "on nightstand, not in go bag")[*ARM'S REACH*]],
+
+  [], [*Glasses*],
+  [#call[Glasses?] #h(3pt) #cr(d: "same spot every night")[*BY BED*]],
+
+  icon-key, [*Keys*],
+  [#call[Keys?] #h(3pt) #cr(d: "by bed or on hook by front door")[*ACCESSIBLE*]],
+
+  icon-bag, [*Go Bag* #critical],
+  [#call[Bag Position?] #h(3pt) #cr[*BY DOOR*]
+   #linebreak() #call[Bag Contents?] #h(3pt) #cr[*VERIFIED*]
+   #linebreak() #call[Power Bank?] #h(3pt) #cr[*ON CHARGE*]],
+
+  icon-door, [*Exit Route* #critical],
+  [#call[Hallway?] #h(3pt) #cr(d: "can navigate in the dark")[*CLEAR*]
+   #linebreak() #call[Front Door?] #h(3pt) #cr[*NOT* double-locked]],
+
+  icon-alert, [*Hearing* #critical],
+  [#call[Earplugs?] #h(3pt) #cr(d: "must hear siren + phone alert")[*NONE* — ears clear]],
+
+  icon-baby, [*Dependents* #critical],
+  [#call[Headcount?] #h(3pt) #cr[all *ACCOUNTED* for]
+   #linebreak() #call[Baby?] #h(3pt) #cr[*CLOTHES* by bed, *BABYWEAR* by door]],
 )
-
-#v(0.2cm)
-
-#block(
-  width: 100%,
-  inset: 10pt,
-  fill: grey-light,
-  radius: 4pt,
-)[
-  #text(size: 9pt)[
-    *Date:* #h(3cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[] #h(1cm)
-    *Completed by:* #h(0.5cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[]
-  ]
-]
 
 #printable-footer()
