@@ -55,11 +55,11 @@
 | 👕 | **Clothing** ⚠️ | ☐ **DRESSED** *For weather* | ☐ **BY DOOR / BY BED / SLEEPING IN** |
 | 👟 | **Footwear** ⚠️ | ☐ **WEARING — CLOSED TOE** | ☐ **BY DOOR / BY BED — CLOSED TOE** |
 | 🔑 | **Keys** ⚠️ | ☐ **ON PERSON OR BY DOOR** | |
-| | **Wallet** | | |
+| | **Wallet** | ☐ **ON PERSON** | |
 | ⛑ | **Meds** | ☐ **TAKEN ON SCHEDULE** | |
-| | **Rest** | ☐ **TAKEN WHEN POSSIBLE** | |
-| | **Hygiene** | ☐ **SHOWER** *As soon as possible* · ☐ **BRUSH TEETH** · ☐ **TENDED TO GENERALLY** | |
-| | **Toilet** | ☐ **TAKEN AS SOON AS POSSIBLE** | |
+| | **Rest** | ☐ **RESTED** *When possible* | |
+| | **Hygiene** | ☐ **SHOWERED** *As soon as possible* · ☐ **TEETH BRUSHED** · ☐ **TENDED TO** | |
+| | **Toilet** | ☐ **DONE** *As soon as possible* | |
 
 ## 3.7 Situational Awareness
 

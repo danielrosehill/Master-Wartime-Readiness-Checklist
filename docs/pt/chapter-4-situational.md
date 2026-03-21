@@ -26,9 +26,9 @@
 | | ITEM | VERIFICACAO |
 |---|------|-------------|
 | 🎒 | **Mochila de Emergencia** ⚠️ | ☐ **DE VOLTA JUNTO A PORTA** · ☐ **REFECHADA** *Caiu alguma coisa? Guarde agora* |
-| 📱 | **Telefone** ⚠️ | ☐ **COLOCADO PARA CARREGAR** *Se a bateria caiu* · ☐ **APP HFC AINDA EM EXECUCAO** |
-| | **Power Bank** | ☐ **COLOCADO PARA CARREGAR** *Pode ter sido usado no abrigo* |
-| 💧 | **Agua** | ☐ **REABASTECER** *Se bebeu do estoque de emergencia* |
+| 📱 | **Telefone** ⚠️ | ☐ **EM CARGA** *Se a bateria caiu* · ☐ **APP HFC AINDA EM EXECUCAO** |
+| | **Power Bank** | ☐ **EM CARGA** *Pode ter sido usado no abrigo* |
+| 💧 | **Agua** | ☐ **REABASTECIDO** *Se bebeu do estoque de emergencia* |
 | 👕 | **Roupas & Sapatos** | ☐ **DE VOLTA NA POSICAO** *Junto a cama (noite) ou consigo (dia)* |
 | | **Lanterna** | ☐ **DE VOLTA NA POSICAO** *Criado-mudo ou mochila de emergencia* |
 | 👥 | **Dependentes** ⚠️ | ☐ **TODOS LOCALIZADOS E EM SEGURANCA** |
@@ -36,12 +36,12 @@
 !!! note "Bem-estar"
     **Autocuidado — Faca isso AGORA, nao depois.** Voce nao sabe quando o proximo alerta vira.
 
-    - [ ] **COMER** — *O estresse suprime o apetite — coma mesmo assim. Voce precisa da energia.*
-    - [ ] **BEBER AGUA**
-    - [ ] **USAR O BANHEIRO**
-    - [ ] **TOMAR BANHO** — *Se o tempo e a situacao permitirem*
-    - [ ] **BARBEAR / CUIDADOS PESSOAIS** — *Moral e normalidade importam*
-    - [ ] **DESCANSAR** — *Quando possivel*
+    - [ ] **COMIDO** — *O estresse suprime o apetite — coma mesmo assim. Voce precisa da energia.*
+    - [ ] **HIDRATADO**
+    - [ ] **BANHEIRO — FEITO**
+    - [ ] **BANHO TOMADO** — *Se o tempo e a situacao permitirem*
+    - [ ] **CUIDADO** — *Moral e normalidade importam*
+    - [ ] **DESCANSADO** — *Quando possivel*
 
     **Criancas:**
 
@@ -58,7 +58,7 @@
 | 👟 | **Calcado** ⚠️ | ☐ **SAPATOS DE PONTA FECHADA JUNTO A PORTA DO BANHEIRO** |
 | | **Toalha** | ☐ **AO ALCANCE** *Para secar rapidamente* |
 | 🚪 | **Porta** | ☐ **PORTA DO BANHEIRO DESTRANCADA** |
-| ⏰ | **Seja Breve** ⚠️ | ☐ **MINIMIZE O TEMPO** *Voce esta no seu momento mais vulneravel; seja rapido* |
+| ⏰ | **Seja Breve** ⚠️ | ☐ **TEMPO MINIMIZADO** *Voce esta no seu momento mais vulneravel; seja rapido* |
 
 ## 4.4 Antes de Dormir
 

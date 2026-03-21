@@ -21,10 +21,10 @@
   #text(size: 14pt, weight: "bold", fill: red-alert)[The First 5 Seconds]
   #v(6pt)
   #set text(size: 12pt)
-  + *Siren or phone alert wakes you.* Do not process. Just move.
-  + *Feet on floor → into shoes.* Same spot every night.
-  + *Grab glasses* and *phone* from nightstand.
-  + *Caffeine pill _(optional)_* — sip of water if bedside.
+  + *Siren / Alert* — Do not process. Just move. #h(1fr) #ci[AWAKE — MOVING]
+  + *Shoes* — Same spot every night. #h(1fr) #ci[ON FEET]
+  + *Glasses & Phone* — From nightstand. #h(1fr) #ci[IN HAND]
+  + *Caffeine pill _(optional)_* — Sip of water. #h(1fr) #ci[TAKEN]
 ]
 
 #v(0.3cm)
@@ -39,9 +39,9 @@
   #text(size: 14pt, weight: "bold", fill: orange-warm)[The Next 10–20 Seconds]
   #v(6pt)
   #set text(size: 12pt)
-  5. *Clothes:* Pull on whatever is laid out. Speed over appearance.
-  6. *Grab torch* from nightstand if power is out.
-  7. *Move to protected space* or front door.
+  5. *Clothes* — Pull on whatever is laid out. Speed over appearance. #h(1fr) #ci[ON]
+  6. *Torch* — From nightstand if power is out. #h(1fr) #ci[IN HAND]
+  7. *Protected space* — Move to shelter or front door. #h(1fr) #ci[IN POSITION]
 ]
 
 #v(0.3cm)
@@ -56,8 +56,8 @@
   #text(size: 14pt, weight: "bold", fill: blue-dark)[For Parents]
   #v(6pt)
   #set text(size: 12pt)
-  8. *One parent → child/children.* Other → go bag. _(Pre-assigned roles.)_
-  9. *Carry baby in babywear* that's by the door. Do not stop to dress them.
+  8. *Children* — One parent → child/children. Other → go bag. #h(1fr) #ci[ROLES EXECUTING]
+  9. *Baby* — In babywear by door. Do not stop to dress them. #h(1fr) #ci[SECURED]
 ]
 
 #v(0.5cm)

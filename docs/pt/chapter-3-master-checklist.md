@@ -55,11 +55,11 @@
 | 👕 | **Roupa** ⚠️ | ☐ **VESTIDO** *Para o clima* | ☐ **JUNTO A PORTA / JUNTO A CAMA / DORMINDO VESTIDO** |
 | 👟 | **Calcado** ⚠️ | ☐ **USANDO — PONTA FECHADA** | ☐ **JUNTO A PORTA / JUNTO A CAMA — PONTA FECHADA** |
 | 🔑 | **Chaves** ⚠️ | ☐ **CONSIGO OU JUNTO A PORTA** | |
-| | **Carteira** | | |
+| | **Carteira** | ☐ **CONSIGO** | |
 | ⛑ | **Medicamentos** | ☐ **TOMADOS NO HORARIO** | |
-| | **Descanso** | ☐ **FEITO QUANDO POSSIVEL** | |
-| | **Higiene** | ☐ **BANHO** *O mais rapido possivel* · ☐ **ESCOVAR DENTES** · ☐ **CUIDADOS GERAIS** | |
-| | **Banheiro** | ☐ **USADO O MAIS RAPIDO POSSIVEL** | |
+| | **Descanso** | ☐ **DESCANSADO** *Quando possivel* | |
+| | **Higiene** | ☐ **TOMADO** *O mais rapido possivel* · ☐ **DENTES ESCOVADOS** · ☐ **CUIDADO** | |
+| | **Banheiro** | ☐ **FEITO** *O mais rapido possivel* | |
 
 ## 3.7 Consciencia Situacional
 

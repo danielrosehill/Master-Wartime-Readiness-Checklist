@@ -27,7 +27,7 @@
   icon-shoe, [*Footwear* #critical], [#ci[CLOSED-TOE SHOES BY BATHROOM DOOR]],
   [], [*Towel*], [#ci(d: "For rapid dry-off")[WITHIN REACH]],
   icon-door, [*Door*], [#ci[BATHROOM DOOR UNLOCKED]],
-  icon-clock, [*Keep It Short* #critical], [#ci(d: "Be quick — get in, get out")[MINIMISE TIME]],
+  icon-clock, [*Keep It Short* #critical], [#ci(d: "Be quick — get in, get out")[TIME MINIMISED]],
 )
 
 #v(0.5cm)

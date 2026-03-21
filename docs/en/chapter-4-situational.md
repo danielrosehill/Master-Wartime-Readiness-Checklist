@@ -26,9 +26,9 @@
 | | ITEM | CHECK |
 |---|------|-------|
 | 🎒 | **Go Bag** ⚠️ | ☐ **BACK BY DOOR** · ☐ **RE-ZIPPED** *Did anything fall out? Put it back now* |
-| 📱 | **Phone** ⚠️ | ☐ **PUT ON CHARGE** *If battery dropped* · ☐ **HFC APP STILL RUNNING** |
-| | **Power Bank** | ☐ **PUT ON CHARGE** *May have been used in shelter* |
-| 💧 | **Water** | ☐ **RESUPPLY** *If you drank from emergency stock* |
+| 📱 | **Phone** ⚠️ | ☐ **ON CHARGE** *If battery dropped* · ☐ **HFC APP STILL RUNNING** |
+| | **Power Bank** | ☐ **ON CHARGE** *May have been used in shelter* |
+| 💧 | **Water** | ☐ **RESUPPLIED** *If you drank from emergency stock* |
 | 👕 | **Clothes & Shoes** | ☐ **BACK IN POSITION** *By bed (night) or on person (day)* |
 | | **Torch** | ☐ **BACK IN POSITION** *Nightstand or go bag* |
 | 👥 | **Dependents** ⚠️ | ☐ **ALL ACCOUNTED FOR AND SAFE** |
@@ -36,16 +36,16 @@
 !!! note "Wellness"
     **Self-Care — Do these NOW, not later.** You don't know when the next alert comes.
 
-    - [ ] **EAT FOOD** — *Stress suppresses appetite — eat anyway. You need the energy.*
-    - [ ] **DRINK WATER**
-    - [ ] **USE THE TOILET**
-    - [ ] **SHOWER** — *If time and situation allow*
-    - [ ] **SHAVE / GROOMING** — *Morale and normalcy matter*
-    - [ ] **REST** — *When possible*
+    - [ ] **EATEN** — *Stress suppresses appetite — eat anyway. You need the energy.*
+    - [ ] **HYDRATED**
+    - [ ] **TOILET — DONE**
+    - [ ] **SHOWERED** — *If time and situation allow*
+    - [ ] **GROOMED** — *Morale and normalcy matter*
+    - [ ] **RESTED** — *When possible*
 
     **Children:**
 
-    - [ ] **FED** · **WATERED** · **TOILETED / CHANGED**
+    - [ ] **FED** · **HYDRATED** · **TOILETED / CHANGED**
     - [ ] **CLEANED** *If possible* · **RESTED** *Put down for nap if timing allows*
 
 ## 4.3 Before Showering
@@ -58,7 +58,7 @@
 | 👟 | **Footwear** ⚠️ | ☐ **CLOSED-TOE SHOES BY BATHROOM DOOR** |
 | | **Towel** | ☐ **WITHIN REACH** *For rapid dry-off* |
 | 🚪 | **Door** | ☐ **BATHROOM DOOR UNLOCKED** |
-| ⏰ | **Keep It Short** ⚠️ | ☐ **MINIMISE TIME** *You are at your most vulnerable; be quick* |
+| ⏰ | **Keep It Short** ⚠️ | ☐ **TIME MINIMISED** *You are at your most vulnerable; be quick* |
 
 ## 4.4 Before Bed
 

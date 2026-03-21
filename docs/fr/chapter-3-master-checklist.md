@@ -55,11 +55,11 @@
 | 👕 | **Vetements** ⚠️ | ☐ **HABILLE** *Adapte a la meteo* | ☐ **PRES DE LA PORTE / DU LIT / PORTE POUR DORMIR** |
 | 👟 | **Chaussures** ⚠️ | ☐ **AUX PIEDS — BOUT FERME** | ☐ **PRES DE LA PORTE / DU LIT — BOUT FERME** |
 | 🔑 | **Cles** ⚠️ | ☐ **SUR SOI OU PRES DE LA PORTE** | |
-| | **Portefeuille** | | |
+| | **Portefeuille** | ☐ **SUR SOI** | |
 | ⛑ | **Medicaments** | ☐ **PRIS SELON LE CALENDRIER** | |
-| | **Repos** | ☐ **PRIS DES QUE POSSIBLE** | |
-| | **Hygiene** | ☐ **DOUCHE** *Des que possible* · ☐ **BROSSAGE DES DENTS** · ☐ **SOINS GENERAUX** | |
-| | **Toilettes** | ☐ **DES QUE POSSIBLE** | |
+| | **Repos** | ☐ **REPOSÉ** *Quand possible* | |
+| | **Hygiene** | ☐ **DOUCHÉ** *Dès que possible* · ☐ **DENTS BROSSÉES** · ☐ **SOIGNÉ** | |
+| | **Toilettes** | ☐ **FAIT** *Dès que possible* | |
 
 ## 3.7 Conscience situationnelle
 

@@ -26,9 +26,9 @@
 | | ELEMENTO | VERIFICACIÓN |
 |---|---------|-------------|
 | 🎒 | **Mochila de Emergencia** ⚠️ | ☐ **DE VUELTA JUNTO A LA PUERTA** · ☐ **CERRADA DE NUEVO** *¿Se cayó algo? Vuelva a meterlo ahora* |
-| 📱 | **Teléfono** ⚠️ | ☐ **PUESTO A CARGAR** *Si la batería bajó* · ☐ **APP HFC AÚN ACTIVA** |
-| | **Batería externa** | ☐ **PUESTA A CARGAR** *Puede haberse usado en el refugio* |
-| 💧 | **Agua** | ☐ **REABASTECER** *Si bebió de las reservas de emergencia* |
+| 📱 | **Teléfono** ⚠️ | ☐ **EN CARGA** *Si la batería bajó* · ☐ **APP HFC AÚN ACTIVA** |
+| | **Batería externa** | ☐ **EN CARGA** *Puede haberse usado en el refugio* |
+| 💧 | **Agua** | ☐ **REABASTECIDO** *Si bebió de las reservas de emergencia* |
 | 👕 | **Ropa y Zapatos** | ☐ **DE VUELTA EN POSICIÓN** *Junto a la cama (noche) o puestos (día)* |
 | | **Linterna** | ☐ **DE VUELTA EN POSICIÓN** *Mesita de noche o mochila de emergencia* |
 | 👥 | **Dependientes** ⚠️ | ☐ **TODOS LOCALIZADOS Y A SALVO** |
@@ -36,12 +36,12 @@
 !!! note "Bienestar"
     **Autocuidado — Haga esto AHORA, no después.** No sabe cuándo vendrá la próxima alerta.
 
-    - [ ] **COMER** — *El estrés suprime el apetito — coma de todos modos. Necesita la energía.*
-    - [ ] **BEBER AGUA**
-    - [ ] **IR AL BAÑO**
-    - [ ] **DUCHARSE** — *Si el tiempo y la situación lo permiten*
-    - [ ] **AFEITARSE / ARREGLARSE** — *La moral y la normalidad importan*
-    - [ ] **DESCANSAR** — *Cuando sea posible*
+    - [ ] **COMIDO** — *El estrés suprime el apetito — coma de todos modos. Necesita la energía.*
+    - [ ] **HIDRATADO**
+    - [ ] **BAÑO — HECHO**
+    - [ ] **DUCHADO** — *Si el tiempo y la situación lo permiten*
+    - [ ] **ASEADO** — *La moral y la normalidad importan*
+    - [ ] **DESCANSADO** — *Cuando sea posible*
 
     **Niños:**
 
@@ -58,7 +58,7 @@
 | 👟 | **Calzado** ⚠️ | ☐ **ZAPATOS DE PUNTA CERRADA JUNTO A LA PUERTA DEL BAÑO** |
 | | **Toalla** | ☐ **AL ALCANCE** *Para secado rápido* |
 | 🚪 | **Puerta** | ☐ **PUERTA DEL BAÑO DESBLOQUEADA** |
-| ⏰ | **Sea Breve** ⚠️ | ☐ **MINIMIZAR EL TIEMPO** *Está en su momento más vulnerable; sea rápido* |
+| ⏰ | **Sea Breve** ⚠️ | ☐ **TIEMPO MINIMIZADO** *Está en su momento más vulnerable; sea rápido* |
 
 ## 4.4 Antes de Dormir
 

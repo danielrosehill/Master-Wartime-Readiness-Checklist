@@ -22,9 +22,9 @@
   text(fill: white, weight: "bold", size: 9pt)[CHECK],
 
   icon-bag, [*Go Bag* #critical], [#ci[BACK BY DOOR] #linebreak() #ci(d: "Did anything fall out?")[RE-ZIPPED]],
-  icon-phone, [*Phone* #critical], [#ci(d: "If battery dropped")[PUT ON CHARGE] #linebreak() #ci[HFC APP STILL RUNNING]],
-  [], [*Power Bank*], [#ci(d: "May have been used in shelter")[PUT ON CHARGE]],
-  icon-water, [*Water*], [#ci(d: "If you drank from emergency stock")[RESUPPLY]],
+  icon-phone, [*Phone* #critical], [#ci(d: "If battery dropped")[ON CHARGE] #linebreak() #ci[HFC APP STILL RUNNING]],
+  [], [*Power Bank*], [#ci(d: "May have been used in shelter")[ON CHARGE]],
+  icon-water, [*Water*], [#ci(d: "If you drank from emergency stock")[RESUPPLIED]],
   icon-shirt, [*Clothes & Shoes*], [#ci(d: "By bed (night) or on person (day)")[BACK IN POSITION]],
   [], [*Torch*], [#ci(d: "Nightstand or go bag")[BACK IN POSITION]],
   icon-people, [*Dependents* #critical], [#ci[ALL ACCOUNTED FOR AND SAFE]],
@@ -43,21 +43,21 @@
   #text(size: 9pt)[ You don't know when the next alert comes.]
   #v(6pt)
   #set text(size: 9.5pt)
-  #ci(d: "Stress suppresses appetite — eat anyway. You need the energy.")[EAT FOOD]
+  #ci(d: "Stress suppresses appetite — eat anyway. You need the energy.")[EATEN]
   #linebreak()
-  #ci[DRINK WATER]
+  #ci[HYDRATED]
   #linebreak()
-  #ci[USE THE TOILET]
+  #ci[TOILET — DONE]
   #linebreak()
-  #ci(d: "If time and situation allow")[SHOWER]
+  #ci(d: "If time and situation allow")[SHOWERED]
   #linebreak()
-  #ci(d: "Morale and normalcy matter")[SHAVE / GROOMING]
+  #ci(d: "Morale and normalcy matter")[GROOMED]
   #linebreak()
-  #ci(d: "When possible")[REST]
+  #ci(d: "When possible")[RESTED]
   #v(8pt)
   *Children:*
   #linebreak()
-  #ci[FED] #h(6pt) #ci[WATERED] #h(6pt) #ci[TOILETED / CHANGED]
+  #ci[FED] #h(6pt) #ci[HYDRATED] #h(6pt) #ci[TOILETED / CHANGED]
   #linebreak()
   #ci(d: "If possible")[CLEANED] #h(6pt) #ci(d: "Nap if timing allows")[RESTED]
 ]

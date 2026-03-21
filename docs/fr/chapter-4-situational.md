@@ -26,9 +26,9 @@
 | | ELEMENT | VERIFICATION |
 |---|------|-------|
 | 🎒 | **Sac d'urgence** ⚠️ | ☐ **REMIS PRES DE LA PORTE** · ☐ **REFERME** *Quelque chose est-il tombe ? Remettez-le maintenant* |
-| 📱 | **Telephone** ⚠️ | ☐ **MIS EN CHARGE** *Si la batterie a baisse* · ☐ **APPLI HFC TOUJOURS EN COURS** |
-| | **Batterie externe** | ☐ **MISE EN CHARGE** *Peut avoir ete utilisee dans l'abri* |
-| 💧 | **Eau** | ☐ **REAPPROVISIONNEMENT** *Si vous avez puise dans le stock d'urgence* |
+| 📱 | **Telephone** ⚠️ | ☐ **EN CHARGE** *Si la batterie a baisse* · ☐ **APPLI HFC TOUJOURS EN COURS** |
+| | **Batterie externe** | ☐ **EN CHARGE** *Peut avoir ete utilisee dans l'abri* |
+| 💧 | **Eau** | ☐ **RÉAPPROVISIONNÉ** *Si vous avez puise dans le stock d'urgence* |
 | 👕 | **Vetements et chaussures** | ☐ **REMIS EN POSITION** *Pres du lit (nuit) ou sur soi (jour)* |
 | | **Lampe torche** | ☐ **REMISE EN POSITION** *Table de nuit ou sac d'urgence* |
 | 👥 | **Personnes a charge** ⚠️ | ☐ **TOUTES LOCALISEES ET EN SECURITE** |
@@ -36,12 +36,12 @@
 !!! note "Bien-etre"
     **Prenez soin de vous — faites-le MAINTENANT, pas plus tard.** Vous ne savez pas quand viendra la prochaine alerte.
 
-    - [ ] **MANGEZ** — *Le stress coupe l'appetit — mangez quand meme. Vous avez besoin d'energie.*
-    - [ ] **BUVEZ DE L'EAU**
-    - [ ] **ALLEZ AUX TOILETTES**
-    - [ ] **DOUCHEZ-VOUS** — *Si le temps et la situation le permettent*
-    - [ ] **RASAGE / SOINS** — *Le moral et la normalite comptent*
-    - [ ] **REPOSEZ-VOUS** — *Quand c'est possible*
+    - [ ] **MANGÉ** — *Le stress coupe l'appetit — mangez quand meme. Vous avez besoin d'energie.*
+    - [ ] **HYDRATÉ**
+    - [ ] **TOILETTES — FAIT**
+    - [ ] **DOUCHÉ** — *Si le temps et la situation le permettent*
+    - [ ] **SOIGNÉ** — *Le moral et la normalite comptent*
+    - [ ] **REPOSÉ** — *Quand c'est possible*
 
     **Enfants :**
 
@@ -58,7 +58,7 @@
 | 👟 | **Chaussures** ⚠️ | ☐ **CHAUSSURES A BOUT FERME PRES DE LA PORTE DE LA SALLE DE BAIN** |
 | | **Serviette** | ☐ **A PORTEE DE MAIN** *Pour un sechage rapide* |
 | 🚪 | **Porte** | ☐ **PORTE DE LA SALLE DE BAIN DEVERROUILLEE** |
-| ⏰ | **Faites vite** ⚠️ | ☐ **REDUISEZ LE TEMPS AU MINIMUM** *Vous etes a votre moment le plus vulnerable ; soyez rapide* |
+| ⏰ | **Faites vite** ⚠️ | ☐ **TEMPS MINIMISÉ** *Vous etes a votre moment le plus vulnerable ; soyez rapide* |
 
 ## 4.4 Avant le coucher
 

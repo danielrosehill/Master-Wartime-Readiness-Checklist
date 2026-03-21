@@ -874,11 +874,11 @@ _See Chapter 5 §5.1 and Appendix G for detailed go bag guidance._
   icon-shirt, [*Clothing* #critical], [#ci(d: "For weather")[DRESSED]], [#ci[BY DOOR / BY BED / SLEEPING IN]],
   icon-shoe, [*Footwear* #critical], [#ci[WEARING — CLOSED TOE]], [#ci[BY DOOR / BY BED — CLOSED TOE]],
   icon-key, [*Keys* #critical], [#ci[ON PERSON OR BY DOOR]], [],
-  [], [*Wallet*], [], [],
+  [], [*Wallet*], [#ci[ON PERSON]], [],
   icon-medkit, [*Meds*], [#ci[TAKEN ON SCHEDULE]], [],
-  [], [*Rest*], [#ci[TAKEN WHEN POSSIBLE]], [],
-  [], [*Hygiene*], [#ci(d: "As soon as possible")[SHOWER] #linebreak() #ci[BRUSH TEETH] #linebreak() #ci[TENDED TO GENERALLY]], [],
-  [], [*Toilet*], [#ci[TAKEN AS SOON AS POSSIBLE]], [],
+  [], [*Rest*], [#ci(d: "When possible")[RESTED]], [],
+  [], [*Hygiene*], [#ci(d: "As soon as possible")[SHOWERED] #linebreak() #ci[TEETH BRUSHED] #linebreak() #ci[TENDED TO]], [],
+  [], [*Toilet*], [#ci(d: "As soon as possible")[DONE]], [],
 )
 
 #pagebreak()
@@ -966,9 +966,9 @@ _Run immediately after the all-clear. Restore full readiness before the next ale
   text(fill: white, weight: "bold", size: 9pt)[CHECK],
 
   icon-bag, [*Go Bag* #critical], [#ci[BACK BY DOOR] #linebreak() #ci(d: "Did anything fall out? Put it back now")[RE-ZIPPED]],
-  icon-phone, [*Phone* #critical], [#ci(d: "If battery dropped")[PUT ON CHARGE] #linebreak() #ci[HFC APP STILL RUNNING]],
-  [], [*Power Bank*], [#ci(d: "May have been used in shelter")[PUT ON CHARGE]],
-  icon-water, [*Water*], [#ci(d: "If you drank from emergency stock")[RESUPPLY]],
+  icon-phone, [*Phone* #critical], [#ci(d: "If battery dropped")[ON CHARGE] #linebreak() #ci[HFC APP STILL RUNNING]],
+  [], [*Power Bank*], [#ci(d: "May have been used in shelter")[ON CHARGE]],
+  icon-water, [*Water*], [#ci(d: "If you drank from emergency stock")[RESUPPLIED]],
   icon-shirt, [*Clothes & Shoes*], [#ci(d: "By bed (night) or on person (day)")[BACK IN POSITION]],
   [], [*Torch*], [#ci(d: "Nightstand or go bag")[BACK IN POSITION]],
   icon-people, [*Dependents* #critical], [#ci[ALL ACCOUNTED FOR AND SAFE]],
@@ -980,21 +980,21 @@ _Run immediately after the all-clear. Restore full readiness before the next ale
   *Self-Care — Do these NOW, not later.* You don't know when the next alert comes.
   #set text(size: 9.5pt)
   #v(6pt)
-  #ci(d: "Stress suppresses appetite — eat anyway. You need the energy.")[EAT FOOD]
+  #ci(d: "Stress suppresses appetite — eat anyway. You need the energy.")[EATEN]
   #linebreak()
-  #ci[DRINK WATER]
+  #ci[HYDRATED]
   #linebreak()
-  #ci[USE THE TOILET]
+  #ci[TOILET — DONE]
   #linebreak()
-  #ci(d: "If time and situation allow")[SHOWER]
+  #ci(d: "If time and situation allow")[SHOWERED]
   #linebreak()
-  #ci(d: "Morale and normalcy matter")[SHAVE / GROOMING]
+  #ci(d: "Morale and normalcy matter")[GROOMED]
   #linebreak()
-  #ci(d: "When possible")[REST]
+  #ci(d: "When possible")[RESTED]
   #v(8pt)
   *Children:*
   #linebreak()
-  #ci[FED] #h(6pt) #ci[WATERED] #h(6pt) #ci[TOILETED / CHANGED]
+  #ci[FED] #h(6pt) #ci[HYDRATED] #h(6pt) #ci[TOILETED / CHANGED]
   #linebreak()
   #ci(d: "If possible")[CLEANED] #h(6pt) #ci(d: "Put down for nap if timing allows")[RESTED]
 ]
@@ -1018,7 +1018,7 @@ _Run immediately after the all-clear. Restore full readiness before the next ale
   icon-shoe, [*Footwear* #critical], [#ci[CLOSED-TOE SHOES BY BATHROOM DOOR]],
   [], [*Towel*], [#ci(d: "For rapid dry-off")[WITHIN REACH]],
   icon-door, [*Door*], [#ci[BATHROOM DOOR UNLOCKED]],
-  icon-clock, [*Keep It Short* #critical], [#ci(d: "You are at your most vulnerable; be quick")[MINIMISE TIME]],
+  icon-clock, [*Keep It Short* #critical], [#ci(d: "You are at your most vulnerable; be quick")[TIME MINIMISED]],
 )
 
 == 4.4 Before Bed #h(6pt) #icon-moon
@@ -1224,19 +1224,19 @@ This is one of the hardest scenarios. Everything in §4.4 exists to make this mo
   stroke: 1pt + blue-accent,
 )[
   === The first 5 seconds
-  + *Siren or phone alert wakes you.* Do not process. Just move
-  + *Feet on floor → into shoes.* Same spot every night
-  + *Grab glasses* and *phone*
-  + *Caffeine pill _(optional)_* — you may wish to take one with a sip of water to speed alertness. Not for everyone — skip if caffeine-sensitive or medically contraindicated
+  + *Siren / Alert* — Do not process. Just move. #h(1fr) #ci[AWAKE — MOVING]
+  + *Shoes* — Same spot every night. #h(1fr) #ci[ON FEET]
+  + *Glasses & Phone* — From nightstand. #h(1fr) #ci[IN HAND]
+  + *Caffeine pill _(optional)_* — Sip of water. #h(1fr) #ci[TAKEN]
 
   === The next 10–20 seconds
-  4. *Clothes:* Pull on whatever is laid out. Speed over appearance
-  5. *Grab torch* from nightstand if power is out
-  6. *Move to protected space* or front door
+  5. *Clothes* — Pull on whatever is laid out. Speed over appearance. #h(1fr) #ci[ON]
+  6. *Torch* — From nightstand if power is out. #h(1fr) #ci[IN HAND]
+  7. *Protected space* — Move to shelter or front door. #h(1fr) #ci[IN POSITION]
 
   === For parents
-  7. One parent → child/children. Other → go bag (pre-assigned roles)
-  8. Carry baby in babywear that's by the door. Do not stop to dress them
+  8. *Children* — One parent → child/children. Other → go bag. #h(1fr) #ci[ROLES EXECUTING]
+  9. *Baby* — In babywear by door. Do not stop to dress them. #h(1fr) #ci[SECURED]
 ]
 
 #v(0.3cm)
@@ -2369,9 +2369,9 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
     align: (center, left, left),
     [], text(fill: white, weight: "bold", size: 9pt)[ITEM], text(fill: white, weight: "bold", size: 9pt)[CHECK],
     icon-bag, [*Go Bag* #critical], [#ci[BACK BY DOOR] #linebreak() #ci(d: "Anything fall out?")[RE-ZIPPED]],
-    icon-phone, [*Phone* #critical], [#ci(d: "If battery dropped")[PUT ON CHARGE] #linebreak() #ci[HFC APP STILL RUNNING]],
-    [], [*Power Bank*], [#ci(d: "May have been used")[PUT ON CHARGE]],
-    icon-water, [*Water*], [#ci(d: "If you drank emergency stock")[RESUPPLY]],
+    icon-phone, [*Phone* #critical], [#ci(d: "If battery dropped")[ON CHARGE] #linebreak() #ci[HFC APP STILL RUNNING]],
+    [], [*Power Bank*], [#ci(d: "May have been used")[ON CHARGE]],
+    icon-water, [*Water*], [#ci(d: "If you drank emergency stock")[RESUPPLIED]],
     icon-shirt, [*Clothes & Shoes*], [#ci[BACK IN POSITION]],
     [], [*Torch*], [#ci[BACK IN POSITION]],
     icon-people, [*Dependents* #critical], [#ci[ALL ACCOUNTED FOR AND SAFE]],
@@ -2381,13 +2381,13 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
     #text(size: 10pt, weight: "bold", fill: green-calm)[Self-Care — Do these NOW, not later.]
     #set text(size: 9.5pt)
     #v(4pt)
-    #ci(d: "Stress suppresses appetite — eat anyway")[EAT FOOD] #linebreak()
-    #ci[DRINK WATER] #linebreak()
-    #ci[USE THE TOILET] #linebreak()
-    #ci(d: "If time allows")[SHOWER] #h(6pt) #ci(d: "Morale matters")[SHAVE / GROOM] #linebreak()
-    #ci(d: "When possible")[REST]
+    #ci(d: "Stress suppresses appetite — eat anyway")[EATEN] #linebreak()
+    #ci[HYDRATED] #linebreak()
+    #ci[TOILET — DONE] #linebreak()
+    #ci(d: "If time allows")[SHOWERED] #h(6pt) #ci(d: "Morale matters")[GROOMED] #linebreak()
+    #ci(d: "When possible")[RESTED]
     #v(4pt)
-    *Children:* #ci[FED] #h(4pt) #ci[WATERED] #h(4pt) #ci[TOILETED / CHANGED] #h(4pt) #ci[RESTED]
+    *Children:* #ci[FED] #h(4pt) #ci[HYDRATED] #h(4pt) #ci[TOILETED / CHANGED] #h(4pt) #ci[RESTED]
   ]
   #v(0.1cm)
   #block(width: 100%, inset: 10pt, fill: grey-light, radius: 4pt)[
@@ -2416,7 +2416,7 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
     icon-shoe, [*Shoes* #critical], [#ci[CLOSED-TOE BY BATHROOM DOOR]],
     [], [*Towel*], [#ci[WITHIN REACH]],
     icon-door, [*Door*], [#ci[UNLOCKED]],
-    icon-clock, [*Time* #critical], [#ci[KEEP IT SHORT]],
+    icon-clock, [*Time* #critical], [#ci[TIME MINIMISED]],
   )
   #v(0.4cm)
   #block(width: 100%, inset: 12pt, fill: red-light, radius: 6pt, stroke: 1.5pt + red-alert)[
@@ -2485,27 +2485,27 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
     #text(size: 14pt, weight: "bold", fill: red-alert)[The First 5 Seconds]
     #v(6pt)
     #set text(size: 12pt)
-    + *Siren or phone alert wakes you.* Do not process. Just move.
-    + *Feet on floor → into shoes.* Same spot every night.
-    + *Grab glasses* and *phone.*
-    + *Caffeine pill _(optional)_* — sip of water if bedside.
+    + *Siren / Alert* — Do not process. Just move. #h(1fr) #ci[AWAKE — MOVING]
+    + *Shoes* — Same spot every night. #h(1fr) #ci[ON FEET]
+    + *Glasses & Phone* — From nightstand. #h(1fr) #ci[IN HAND]
+    + *Caffeine pill _(optional)_* — Sip of water. #h(1fr) #ci[TAKEN]
   ]
   #v(0.3cm)
   #block(width: 100%, inset: 14pt, fill: rgb("#fff8e1"), radius: 8pt, stroke: 2pt + orange-warm)[
     #text(size: 14pt, weight: "bold", fill: orange-warm)[The Next 10–20 Seconds]
     #v(6pt)
     #set text(size: 12pt)
-    5. *Clothes:* Pull on whatever is laid out. Speed over appearance.
-    6. *Grab torch* if power is out.
-    7. *Move to protected space* or front door.
+    5. *Clothes* — Pull on whatever is laid out. Speed over appearance. #h(1fr) #ci[ON]
+    6. *Torch* — If power is out. #h(1fr) #ci[IN HAND]
+    7. *Protected space* — Move to shelter or front door. #h(1fr) #ci[IN POSITION]
   ]
   #v(0.3cm)
   #block(width: 100%, inset: 14pt, fill: blue-light, radius: 8pt, stroke: 2pt + blue-accent)[
     #text(size: 14pt, weight: "bold", fill: blue-dark)[For Parents]
     #v(6pt)
     #set text(size: 12pt)
-    8. *One parent → children.* Other → go bag. _(Pre-assigned.)_
-    9. *Carry baby in babywear* by the door. Do not stop to dress them.
+    8. *Children* — One parent → children. Other → go bag. #h(1fr) #ci[ROLES EXECUTING]
+    9. *Baby* — In babywear by door. Do not stop to dress them. #h(1fr) #ci[SECURED]
   ]
   #v(0.4cm)
   #block(width: 100%, inset: 12pt, fill: grey-light, radius: 6pt, stroke: 1pt + grey-border)[
