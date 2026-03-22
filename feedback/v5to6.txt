@@ -1,0 +1,46 @@
+ V6 Feedback Round — Israel Wartime Preparedness Guide
+
+  Rename:
+  - Title → "Daniel, Herman and Corn's Israel Wartime Preparedness Guide"
+  - Update cover page, footer, all references
+
+  Structural Changes:
+
+  1. Page numbers on outer margins (book-style) — Odd pages: page number right, section pill left. Even pages: page number left, section pill right. Makes flicking through easier.
+  2. Simplify TOC — Chapters only (depth: 1), no subsections listed.
+  3. Move Decision Tree before checklists — Move Appendix D (Protected Space Decision Tree with Fletcher flowchart) into guide body, before Part II. Readers should know shelter priorities
+  before running checklists.
+  4. Move Shabbat into situational checklists — Current Ch.3 checklist tables → Ch.6 situational checklists. Keep a short narrative guide in Ch.2 covering key principles (pikuach nefesh,
+  TV/radio on, hear sirens).
+  5. Add "How to Use These Checklists" page — At start of Part II, before BRACED. Cover call-and-respond method, critical markers (⚠), frequency table. Consolidate from existing Ch.1
+  sections 1.1/1.2.
+
+  Content Changes:
+
+  6. Fix Advance Warning section (§2.12) — Different warning types exist (הנחיה מקדימה vs red alert). Preliminary warnings can come minutes before but sometimes as little as 30 seconds
+  before the red alert. NOT safe to rely on time. If you don't have shelter at home, get to shelter immediately. Recommend entering shelter on preliminary warning and staying until
+  all-clear is received.
+  7. Add Situational Awareness guide — New section in Ch.2 corresponding to §5.7 checklist. Cover: importance of official sources (HFC app, oref.org.il), safely disconnecting from
+  doom-scrolling, practicing alert protocols, noise-blocking hazards (headphones, vacuuming, power tools, loud appliances — anything that degrades siren audibility).
+  8. Add caffeine pills caution — Warning note at both mentions (Go Bag §5.3, Before Bed §6.4). Not suitable for heart conditions, anxiety disorders, caffeine sensitivity. Consult doctor.
+  Optional only.
+  9. Background shading for guidance grids — Add grey-light background + rounded corners to plain grid sections like "Moving Safely to a Public Shelter" (§2.4). Apply consistently to
+  similar sections in Ch.2.
+  10. Add Fletcher flowcharts — Terrorist infiltration response (§2.13): Indoors vs Outdoors vs Vehicle → actions. Siren response by location: At home / Driving / Public transport /
+  Outdoors → what to do. Any other decision-tree-shaped procedures.
+
+  Verification:
+  - Compile, check all pages render, TOC correct, page numbers alternate, decision tree before checklists, Shabbat in situational, advance warning fixed.
+
+  12 tasks (0 done, 1 in progress, 11 open)
+  ◼ Rename guide title and update cover/footer
+  ◻ Page numbers on outer margins (book-style)
+  ◻ Simplify TOC to chapters only
+  ◻ Fix Advance Warning section (§2.12)
+  ◻ Add Situational Awareness guide section
+  ◻ Add caffeine pills caution notes
+  ◻ Move Decision Tree before checklists
+  ◻ Move Shabbat checklist to situational checklists
+  ◻ Add "How to Use These Checklists" page
+  ◻ Add background shading to guidance grids
+   … +2 pending
