@@ -104,11 +104,13 @@
     width: 100%,
     inset: (x: 14pt, y: 10pt),
     fill: colour,
-    radius: 4pt,
+    radius: 6pt,
   )[
-    #text(size: 14pt, weight: "bold", fill: white)[
-      #if icon-content != none { icon-content; h(6pt) }
-      #title
+    #align(center)[
+      #text(size: 14pt, weight: "bold", fill: white)[
+        #if icon-content != none { icon-content; h(6pt) }
+        #title
+      ]
     ]
   ]
 }

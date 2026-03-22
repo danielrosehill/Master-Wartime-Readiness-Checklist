@@ -12,32 +12,55 @@
 
 #set page(
   paper: "a4",
-  margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm),
+  margin: (top: 1.2cm, bottom: 1.2cm, left: 1.2cm, right: 1.2cm),
   header: none,
   footer: none,
+  fill: rgb("#e8ecf0"),
 )
 
 #set text(font: "Atkinson Hyperlegible", size: 10pt, fill: grey-text)
 #set par(leading: 0.7em)
 
-// Each checklist on its own page, no headers/footers/page numbers
+// Wrapper: white card with subtle border and shadow effect
+#let door-card(body) = {
+  block(
+    width: 100%,
+    height: 100%,
+    inset: (x: 18pt, y: 16pt),
+    fill: white,
+    radius: 8pt,
+    stroke: 0.75pt + rgb("#c0c8d0"),
+  )[
+    #body
+    #v(1fr)
+    #line(length: 100%, stroke: 0.4pt + grey-border)
+    #v(3pt)
+    #align(center)[
+      #text(size: 7pt, fill: rgb("#999999"))[
+        Israel Wartime Readiness Field Guide · danielrosehill.com · Print and post visibly
+      ]
+    ]
+  ]
+}
 
-#quick-readiness-content()
+// Each checklist on its own page, wrapped in a card
+
+#door-card[#quick-readiness-content()]
 
 #pagebreak()
-#daytime-posture-content()
+#door-card[#daytime-posture-content()]
 
 #pagebreak()
-#before-bed-content()
+#door-card[#before-bed-content()]
 
 #pagebreak()
-#before-shower-content()
+#door-card[#before-shower-content()]
 
 #pagebreak()
-#before-leaving-content()
+#door-card[#before-leaving-content()]
 
 #pagebreak()
-#after-shelter-content()
+#door-card[#after-shelter-content()]
 
 #pagebreak()
-#bathing-baby-content()
+#door-card[#bathing-baby-content()]

@@ -3,15 +3,15 @@
 
 #let bathing-baby-content() = [
   #printable-header("Bathing a Baby — Vulnerability Checklist", colour: green-calm, icon-content: icon-baby)
-  #v(0.2cm)
-  #text(size: 9pt, style: "italic")[A wet baby is harder to carry and slower to dress. Minimise bath time and maximise readiness.]
   #v(0.15cm)
+  #text(size: 9pt, style: "italic")[A wet baby is harder to carry and slower to dress. Minimise bath time and maximise readiness.]
+  #v(0.1cm)
   #cr-instructions()
-  #v(0.2cm)
+  #v(0.15cm)
 
   #table(
     columns: (auto, 1fr, 2.5fr),
-    inset: 10pt,
+    inset: 8pt,
     stroke: 0.5pt + grey-border,
     fill: checklist-table-fill,
     align: (center, left, left),
@@ -35,11 +35,11 @@
     icon-clock, [*Keep It Short* #critical],
     [#cr-line("Time?", [*MINIMISED*], d: "quick wash, not a play session")],
   )
-  #v(0.4cm)
-  #block(width: 100%, inset: 12pt, fill: red-light, radius: 6pt, stroke: 1.5pt + red-alert)[
-    #text(size: 10pt, weight: "bold", fill: red-alert)[⚠ If a siren sounds while bathing baby:]
-    #v(4pt)
-    #set text(size: 10pt)
+  #v(0.15cm)
+  #block(width: 100%, inset: 8pt, fill: red-light, radius: 6pt, stroke: 1.5pt + red-alert)[
+    #text(size: 9pt, weight: "bold", fill: red-alert)[⚠ If a siren sounds while bathing baby:]
+    #v(2pt)
+    #set text(size: 8.5pt)
     + *Lift baby out of water* — one motion
     + *Wrap in towel* — do NOT dry off, just wrap
     + *Do NOT dress the baby* — a towel-wrapped baby is fine for shelter
@@ -47,20 +47,18 @@
     + *Move to shelter* — you are already dressed and shoed
     + Dress the baby *in the shelter*, not before
   ]
-  #v(0.3cm)
-  #block(width: 100%, inset: 12pt, fill: green-light, radius: 6pt, stroke: 1pt + green-calm)[
-    #text(size: 10pt, weight: "bold", fill: green-calm)[Two-parent protocol]
-    #v(4pt)
-    #set text(size: 9.5pt)
+  #v(0.12cm)
+  #block(width: 100%, inset: 8pt, fill: green-light, radius: 6pt, stroke: 1pt + green-calm)[
+    #text(size: 9pt, weight: "bold", fill: green-calm)[Two-parent protocol]
+    #v(2pt)
+    #set text(size: 8.5pt)
     - *Parent A* — lifts and carries baby
     - *Parent B* — grabs go bag and opens doors
     - Assign roles *before* bath time, not during the siren
     - If solo: baby first, bag only if it's on your route
   ]
-  #v(0.2cm)
-  #block(width: 100%, inset: 10pt, fill: grey-light, radius: 4pt)[
-    #text(size: 8pt, style: "italic")[Post near the baby bath. Consider bath time the highest-vulnerability window with an infant in the house.]
-  ]
+  #v(0.1cm)
+  #text(size: 7pt, style: "italic", fill: rgb("#888888"))[Post near the baby bath. Consider bath time the highest-vulnerability window with an infant in the house.]
 ]
 
 #set page(..standalone-page)
