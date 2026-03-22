@@ -83,8 +83,10 @@
 #let sec-col-app = rgb("#8e44ad")  // Plum — Appendices
 
 // ──────────────────────────────────────────────
-// ILLUSTRATION HELPER — places an illustration in a rounded frame
+// ILLUSTRATION HELPERS
 // ──────────────────────────────────────────────
+
+// Inline illustration — rounded frame (for small placements like quick-ref)
 #let illustration(path, width: 100%, caption: none) = {
   block(
     width: width,
@@ -97,6 +99,51 @@
     v(4pt)
     align(center, text(size: 8pt, fill: grey-text, style: "italic")[#caption])
   }
+}
+
+// Full-page illustration — one image fills the page with caption below
+#let full-page-ill(path, caption) = {
+  page(margin: (top: 1cm, bottom: 1.5cm, left: 1cm, right: 1cm), header: none, footer: none)[
+    #block(
+      width: 100%,
+      height: 85%,
+      radius: 14pt,
+      clip: true,
+      image(path, width: 100%, height: 100%, fit: "cover"),
+    )
+    #v(0.4cm)
+    #align(center, text(size: 10pt, fill: grey-text, style: "italic")[#caption])
+  ]
+}
+
+// Two illustrations on one page — side by side, properly constrained
+#let two-ill-page(path1, caption1, path2, caption2) = {
+  page(margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm), header: none, footer: none)[
+    #grid(
+      columns: (1fr, 1fr),
+      column-gutter: 14pt,
+      align(top)[
+        #block(
+          width: 100%,
+          radius: 14pt,
+          clip: true,
+          image(path1, width: 100%, fit: "contain"),
+        )
+        #v(0.3cm)
+        #align(center, text(size: 9pt, fill: grey-text, style: "italic")[#caption1])
+      ],
+      align(top)[
+        #block(
+          width: 100%,
+          radius: 14pt,
+          clip: true,
+          image(path2, width: 100%, fit: "contain"),
+        )
+        #v(0.3cm)
+        #align(center, text(size: 9pt, fill: grey-text, style: "italic")[#caption2])
+      ],
+    )
+  ]
 }
 
 // ──────────────────────────────────────────────
@@ -171,30 +218,43 @@
 
 #set heading(numbering: none)
 
+// Track whether we just had a full-page illustration (to suppress extra pagebreak)
+#let skip-next-pagebreak = state("skip-pagebreak", false)
+
 #show heading.where(level: 1): it => {
-  pagebreak(weak: true)
+  context {
+    if skip-next-pagebreak.get() == false {
+      pagebreak(weak: true)
+    }
+  }
+  skip-next-pagebreak.update(false)
   v(0.3cm)
-  block(
-    width: 100%,
-    inset: (x: 16pt, y: 14pt),
-    fill: blue-dark,
-    radius: 10pt,
-    text(size: 20pt, weight: "bold", fill: white)[#it.body]
+  align(center,
+    block(
+      width: 85%,
+      inset: (x: 20pt, y: 16pt),
+      fill: blue-dark,
+      radius: 12pt,
+      align(center, text(size: 22pt, weight: "bold", fill: white)[#it.body])
+    )
   )
   v(0.4cm)
 }
 
 #show heading.where(level: 2): it => {
-  v(0.5cm)
-  block(
-    width: 100%,
-    below: 10pt,
-    {
-      text(size: 14pt, weight: "bold", fill: blue-dark)[#it.body]
-      v(-2pt)
-      line(length: 100%, stroke: 2.5pt + teal-accent)
-    }
-  )
+  v(0.6cm)
+  align(center)[
+    #block(
+      width: 80%,
+      below: 14pt,
+      {
+        text(size: 18pt, weight: "bold", fill: blue-dark, tracking: 0.5pt)[#it.body]
+        v(2pt)
+        align(center, block(width: 40%, height: 3pt, fill: teal-accent, radius: 2pt))
+      }
+    )
+  ]
+  v(0.3cm)
 }
 
 #show heading.where(level: 3): it => {
@@ -410,11 +470,16 @@
 
   #align(center)[
     #image(beyahad, width: 6cm)
-    #v(0.3cm)
-    #text(size: 8pt, fill: grey-text, style: "italic")[
-      Not an official government resource. Always defer to official instructions from HFC, the IDF, Israel Police, and local authorities. Official source: oref.org.il
-    ]
   ]
+
+  #v(0.3cm)
+  #line(length: 100%, stroke: 0.5pt + grey-border)
+  #v(0.3cm)
+
+  #set text(size: 8pt)
+  This document is *not an official government resource*. It is a community-authored field guide compiled by Daniel Rosehill with AI assistance, based on publicly available guidance from the Israel Home Front Command (Pikud HaOref). Cross-referenced against official HFC guidance from oref.org.il, archived 20 March 2026. *Always defer to official instructions* from HFC, the IDF, Israel Police, and local authorities. Provided as-is, with no warranty.
+
+  #align(center, text(size: 8pt, weight: "bold")[Official source: oref.org.il  ·  HFC Hotline: 104])
 
   #v(1fr)
 ]
@@ -439,22 +504,12 @@
   #v(0.3cm)
 
   #align(center, text(size: 22pt, weight: "bold", fill: blue-dark)[CONTENTS])
-  #v(0.3cm)
+  #v(0.4cm)
 
-  #set text(size: 10pt)
-  #set par(leading: 0.5em)
+  #set text(size: 11pt)
+  #set par(leading: 0.6em)
 
-  #columns(2)[
-    #outline(title: none, depth: 2)
-  ]
-
-  #v(0.3cm)
-
-  #tip-box(avatar: herman-cartoon)[
-    #text(size: 9pt)[
-      *Print this guide and keep it accessible.* Affix reflective tape to the cover so it's visible by torchlight. Prepare at least 3 copies: by the front door, in the go bag, and in the mamad.
-    ]
-  ]
+  #outline(title: none, depth: 1)
 ]
 
 // ══════════════════════════════════════════════
@@ -599,38 +654,6 @@
     icon-baby, [Children / dependents],
   )
 
-  #v(0.5cm)
-
-  === Your Guides
-
-  #grid(
-    columns: (auto, 1fr),
-    column-gutter: 12pt,
-    row-gutter: 12pt,
-    image(herman-cartoon, width: 2cm),
-    align(horizon)[
-      *Herman the Donkey — Health & Safety Expert* \
-      Appears alongside safety checklists, shelter procedures, and critical items.
-    ],
-    image(corn-avatar, width: 2cm),
-    align(horizon)[
-      *Corn the Sloth — Wellness Expert* \
-      Appears alongside self-care, wellness, and mental health guidance.
-    ],
-  )
-
-  #v(0.3cm)
-
-  #block(
-    width: 100%,
-    inset: 10pt,
-    fill: grey-light,
-    radius: 4pt,
-  )[
-    #text(size: 9pt, style: "italic")[
-      Herman and Corn are the duo behind myweirdprompts.com. They live with Daniel and his wife Hannah in Rehavia, Jerusalem. Neither is a government official, military advisor, or emergency services professional — just two friends who want to help you stay safe and sane.
-    ]
-  ]
 ]
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -646,20 +669,16 @@
 // ══════════════════════════════════════════════
 #set-section("Ch. 1: How To Use", colour: sec-col-ch1)
 
+#full-page-ill(ill-using-checklists, "Print and prepare your checklists before you need them — don't wait for a siren to figure out what to do.")
+
+#skip-next-pagebreak.update(true)
 = Chapter 1: How To Use This Document
 
-== 1.1 Preparation (Before Emergencies)
+== Preparation (Before Emergencies)
 
-#grid(
-  columns: (1fr, auto),
-  column-gutter: 16pt,
-  [
-    #tip-box()[
-      *Print and prepare this checklist before you need it.* Do not wait for a siren to figure out what to do.
-    ]
-  ],
-  illustration(ill-using-checklists, width: 6cm, caption: "Herman and Corn reviewing checklists"),
-)
+#tip-box()[
+  *Print and prepare this checklist before you need it.* Do not wait for a siren to figure out what to do.
+]
 
 #v(0.3cm)
 
@@ -674,7 +693,7 @@ During routine periods:
   - In the mamad / protected space
 - *Review and reprint* whenever the checklist is updated
 
-== 1.2 Running The Checklist
+== Running The Checklist
 
 *Two-person method (recommended).* One person reads each item aloud. The other physically verifies it and responds (e.g. "CHECK", "DONE", "NOT YET"). This is the challenge-and-response method used in aviation and military checklists.
 
@@ -693,7 +712,6 @@ During routine periods:
   [*Situational Checklists* (Ch. 6)], [Every time, during wartime or escalation],
 )
 
-#v(0.3cm)
 #warning-box[Items marked with #critical are *critical* — do not skip these under any circumstances.]
 
 // ══════════════════════════════════════════════
@@ -703,7 +721,7 @@ During routine periods:
 
 = Chapter 2: Guidance Notes
 
-== 2.1 Choosing a Go Bag
+== Choosing a Go Bag
 #tip-box()[
   Your go bag is the single most important physical item in your readiness kit. *Use a backpack, not a tote bag.* See Appendix H for a full packing list.
 ]
@@ -765,16 +783,13 @@ You need both hands free. You may be carrying a child, holding a torch, opening 
 ]
 
 #pagebreak()
-== 2.2 In Shelter — When To Leave
+#full-page-ill(ill-leaving-shelter, "Only leave your protected space when you receive an all-clear from the Home Front Command — never assume it's over because it's quiet.")
 
-#grid(
-  columns: (1fr, auto),
-  column-gutter: 16pt,
-  warning-box[
-    *Wait for the all-clear.* Do NOT leave your protected space until you receive an all-clear from HFC (via the app, official media, or the all-clear siren pattern).
-  ],
-  illustration(ill-leaving-shelter, width: 5cm, caption: "Only leave when it's safe"),
-)
+== In Shelter — When To Leave
+
+#warning-box[
+  *Wait for the all-clear.* Do NOT leave your protected space until you receive an all-clear from HFC (via the app, official media, or the all-clear siren pattern).
+]
 
 #v(0.2cm)
 
@@ -786,16 +801,99 @@ You need both hands free. You may be carrying a child, holding a torch, opening 
 
 Many casualties occur because people leave shelter prematurely.
 
-== 2.3 In Shelter — Behaviour
+// Full-page illustration: Which shelter?
+#page(margin: (top: 1cm, bottom: 1.5cm, left: 1cm, right: 1cm), header: none, footer: none)[
+  #block(
+    width: 100%,
+    height: 85%,
+    radius: 14pt,
+    clip: true,
+    image(ill-which-shelter, width: 100%, height: 100%, fit: "cover"),
+  )
+  #v(0.4cm)
+  #align(center, text(size: 10pt, fill: grey-text, style: "italic")[Confused about which shelter to pick? Follow the decision-making flowchart on the next page — it walks you through the priority order so you don't have to think under pressure.])
+]
+
+== Protected Space Decision Tree
+
+_When a Red Alert sounds, choose the highest-priority option you can reach._#footnote[Based on Home Front Command protocol as of 20 March 2026.]
+
+#v(0.3cm)
+
+#align(center)[
+  #diagram(
+    spacing: (18pt, 12pt),
+    node-stroke: 1.2pt + amber,
+    edge-stroke: 1.5pt + amber,
+
+    node((0, 0), align(center)[#text(fill: white, weight: "bold", size: 9pt)[PRELIMINARY WARNING] \ #text(fill: white, size: 8pt)[via HFC app — get to shelter]], fill: amber, corner-radius: 8pt, inset: 10pt, name: <s1>),
+    node((1, 0), align(center)[#text(fill: white, weight: "bold", size: 9pt)[RED ALERT / SIREN] \ #text(fill: white, size: 8pt)[Shelter immediately]], fill: red-alert, corner-radius: 8pt, inset: 10pt, name: <s2>),
+    node((2, 0), align(center)[#text(fill: white, weight: "bold", size: 9pt)[ALL-CLEAR] \ #text(fill: white, size: 8pt)[via app, TV/radio, or siren]], fill: green-calm, corner-radius: 8pt, inset: 10pt, name: <s3>),
+    edge(<s1>, <s2>, "->"),
+    edge(<s2>, <s3>, "->"),
+  )
+  #v(4pt)
+  #text(fill: red-alert, weight: "bold", size: 9pt)[Do NOT leave shelter before the all-clear is given.]
+]
+
+#v(0.3cm)
+
+#block(
+  width: 100%,
+  inset: 10pt,
+  fill: red-light,
+  radius: 4pt,
+  stroke: 1pt + red-alert,
+)[
+  *⛔ NOT valid:* Kitchen · Bathroom · Toilet · Building entrance lobby · Caravans / prefab · Areas with ceramics, porcelain, or glass · Room with only exterior walls · Room directly beneath the roof
+]
+
+*Stairwell positioning:* 3+ floors: at least 2 floors above you. 3-storey building: middle floor only.
+
+#v(0.3cm)
+
+#align(center)[
+  #diagram(
+    spacing: (12pt, 12pt),
+    node-stroke: 1.2pt + blue-mid,
+    edge-stroke: 1.2pt + blue-mid,
+
+    node((0, 0), text(fill: white, weight: "bold", size: 10pt)[RED ALERT SOUNDS], fill: red-alert, stroke: 2pt + red-alert, corner-radius: 8pt, inset: 10pt, name: <start>),
+
+    node((0, 1), align(center)[Do you have a \ *MAMAD / MAMAK / MAMAM*?], fill: blue-light, corner-radius: 6pt, inset: 8pt, shape: fletcher.shapes.diamond, name: <q1>),
+    edge(<start>, <q1>, "->"),
+
+    node((2, 1), align(center)[*PRIORITY 1: MAMAD* \ Close blast door (handle 90°) \ Close steel + glass windows \ Sit against inner wall \ ★ WAIT FOR ALL-CLEAR], fill: green-light, stroke: 1.5pt + green-calm, corner-radius: 6pt, inset: 8pt, name: <a1>),
+    edge(<q1>, <a1>, "->", label: text(fill: green-calm, weight: "bold", size: 11pt)[Y]),
+
+    node((0, 2.1), align(center)[Can you reach a \ *SHELTER* in time?], fill: blue-light, corner-radius: 6pt, inset: 8pt, shape: fletcher.shapes.diamond, name: <q2>),
+    edge(<q1>, <q2>, "->", label: text(fill: red-alert, weight: "bold", size: 11pt)[N]),
+
+    node((2, 2.1), align(center)[*PRIORITY 2: SHELTER* \ Building or public shelter \ Enter and close the door \ ★ WAIT FOR ALL-CLEAR], fill: green-light, stroke: 1.5pt + green-calm, corner-radius: 6pt, inset: 8pt, name: <a2>),
+    edge(<q2>, <a2>, "->", label: text(fill: green-calm, weight: "bold", size: 11pt)[Y]),
+
+    node((0, 3.2), align(center)[*INNER STAIRWELL* \ (no windows)?], fill: blue-light, corner-radius: 6pt, inset: 8pt, shape: fletcher.shapes.diamond, name: <q3>),
+    edge(<q2>, <q3>, "->", label: text(fill: red-alert, weight: "bold", size: 11pt)[N]),
+
+    node((2, 3.2), align(center)[*PRIORITY 3: STAIRWELL* \ Centre floor — not top, not ground \ Stay on staircase, not hallway \ ★ WAIT FOR ALL-CLEAR], fill: green-light, stroke: 1.5pt + green-calm, corner-radius: 6pt, inset: 8pt, name: <a3>),
+    edge(<q3>, <a3>, "->", label: text(fill: green-calm, weight: "bold", size: 11pt)[Y]),
+
+    node((0, 4.3), align(center)[*INNER ROOM* \ (max walls, min windows)?], fill: blue-light, corner-radius: 6pt, inset: 8pt, shape: fletcher.shapes.diamond, name: <q4>),
+    edge(<q3>, <q4>, "->", label: text(fill: red-alert, weight: "bold", size: 11pt)[N]),
+
+    node((2, 4.3), align(center)[*PRIORITY 4: INNER ROOM* \ Inner wall, below window line \ Not facing door. Close all doors. \ ★ WAIT FOR ALL-CLEAR], fill: green-light, stroke: 1.5pt + green-calm, corner-radius: 6pt, inset: 8pt, name: <a4>),
+    edge(<q4>, <a4>, "->", label: text(fill: green-calm, weight: "bold", size: 11pt)[Y]),
+
+    node((0, 5.3), align(center)[*PRIORITY 5: LAST RESORT* \ Lie flat on the ground \ Protect head with hands \ ★ WAIT FOR ALL-CLEAR], fill: rgb("#fff3cd"), stroke: 1.5pt + rgb("#856404"), corner-radius: 6pt, inset: 8pt, name: <a5>),
+    edge(<q4>, <a5>, "->", label: text(fill: red-alert, weight: "bold", size: 11pt)[N]),
+  )
+]
+
+== In Shelter — Behaviour
 
 === #icon-baby Children
 
-#grid(
-  columns: (1fr, auto),
-  column-gutter: 14pt,
-  [],
-  illustration(ill-bathing-children, width: 5cm, caption: "Keeping little ones safe and calm"),
-)
+#align(right, illustration(ill-bathing-children, width: 5cm))
 
 - #text(weight: "bold")[Use a calm, steady voice.] Children take their cues from adults
 - #text(weight: "bold")[Explain simply:] _"We're in our safe room. We wait here until we're told it's safe"_
@@ -813,14 +911,11 @@ Many casualties occur because people leave shelter prematurely.
 - #icon-phone After the all-clear, *send a brief safety confirmation* to family
 - #text(fill: red-alert, weight: "bold")[Do not spread unverified information]
 
-== 2.4 Moving Safely to a Public Shelter
+#full-page-ill(ill-making-way-to-shelter, "The journey to shelter is one of the most dangerous moments — act decisively, hold the handrail, wear closed-toe shoes, and watch your surroundings.")
 
-#grid(
-  columns: (1fr, auto),
-  column-gutter: 16pt,
-  align(horizon)[The journey to shelter is one of the most dangerous moments.],
-  illustration(ill-making-way-to-shelter, width: 6cm, caption: "Herman and Corn heading to shelter"),
-)
+== Moving Safely to a Public Shelter
+
+The journey to shelter is one of the most dangerous moments.
 
 #grid(
   columns: (1fr, 1fr),
@@ -833,7 +928,7 @@ Many casualties occur because people leave shelter prematurely.
 
     === On the stairs
     - *Hold the handrail*
-    - Do NOT run — fast, controlled walk
+    - Move decisively but *watch your footing* — many injuries happen on the way to shelter
     - Stay to one side
   ],
   [
@@ -855,13 +950,11 @@ Many casualties occur because people leave shelter prematurely.
 ]
 
 #pagebreak()
-== 2.5 Waking Up to a Night Alarm
-#grid(
-  columns: (1fr, auto),
-  column-gutter: 16pt,
-  align(horizon)[This is one of the hardest scenarios. Everything in §6.4 exists to make this moment survivable on autopilot.],
-  illustration(ill-waking-up, width: 6cm, caption: "Waking up to an alert — be ready"),
-)
+#full-page-ill(ill-waking-up, "Night alarms are the hardest scenario — shoes by the bed, clothes laid out, torch on the nightstand. Don't think, just move.")
+
+== Waking Up to a Night Alarm
+
+This is one of the hardest scenarios. Everything in §6.4 exists to make this moment survivable on autopilot.
 
 #block(
   width: 100%,
@@ -894,16 +987,13 @@ Many casualties occur because people leave shelter prematurely.
   *It gets easier.* After 2–3 night alarms, the routine becomes automatic.
 ]
 
-== 2.6 Fighting Alert Fatigue
+#full-page-ill(ill-red-alert, "Alert fatigue is real — but the one you skip could be the one that matters. Keep sheltering, even when it feels routine.")
 
-#grid(
-  columns: (1fr, auto),
-  column-gutter: 16pt,
-  calm-box[
-    After days or weeks of alerts, the temptation to stop reacting is enormous. This is *alert fatigue* — a normal neurological process, not a character flaw. But it kills people.
-  ],
-  illustration(ill-red-alert, width: 5.5cm, caption: "Even on the couch — stay alert"),
-)
+== Fighting Alert Fatigue
+
+#calm-box[
+  After days or weeks of alerts, the temptation to stop reacting is enormous. This is *alert fatigue* — a normal neurological process, not a character flaw. But it kills people.
+]
 
 #v(0.2cm)
 
@@ -922,16 +1012,13 @@ Many casualties occur because people leave shelter prematurely.
 - *Remember:* Civilian injuries spike in weeks 2–3, when alert fatigue peaks
 
 #pagebreak()
-== 2.7 Wellness During Protracted Conflict
+#full-page-ill(ill-wellness, "Readiness includes taking care of yourself. Sleep when you can, eat even when you're not hungry, and limit doom-scrolling.")
 
-#grid(
-  columns: (1fr, auto),
-  column-gutter: 16pt,
-  calm-box[
-    Wars lasting weeks create cumulative strain different from acute stress. Readiness includes taking care of yourself.
-  ],
-  illustration(ill-wellness, width: 5.5cm, caption: "Corn demonstrates self-care"),
-)
+== Wellness During Protracted Conflict
+
+#calm-box[
+  Wars lasting weeks create cumulative strain different from acute stress. Readiness includes taking care of yourself.
+]
 
 #v(0.2cm)
 
@@ -964,14 +1051,11 @@ Many casualties occur because people leave shelter prematurely.
 
 *Give yourself permission to function imperfectly.* Safety first, then wellbeing, then everything else.
 
-== 2.8 During Lulls — Resupply & Maintenance
+#full-page-ill(ill-resupplying, "Use lulls wisely — restock water, fill prescriptions, charge everything, and repack the go bag. These windows don't last.")
 
-#grid(
-  columns: (1fr, auto),
-  column-gutter: 16pt,
-  align(horizon)[_When there's a pause in alerts — hours or days — use the window wisely. These lulls don't last._],
-  illustration(ill-resupplying, width: 5.5cm, caption: "Resupply while you can"),
-)
+== During Lulls — Resupply & Maintenance
+
+_When there's a pause in alerts — hours or days — use the window wisely. These lulls don't last._
 
 #v(0.2cm)
 
@@ -1026,8 +1110,7 @@ Many casualties occur because people leave shelter prematurely.
   *Prioritise ruthlessly.* Water and medications first. Then power. Then food. Then everything else. Don't try to do it all — the lull may be short.
 ]
 
-#pagebreak()
-== 2.9 Caring for Elderly Neighbours & Vulnerable People
+== Caring for Elderly Neighbours & Vulnerable People
 
 === Before the escalation
 - *Know your neighbours* — especially those living alone or with limitations
@@ -1046,8 +1129,7 @@ Many casualties occur because people leave shelter prematurely.
 - *Offer to include them* in supply runs
 - If distressed: *118* (Welfare Ministry) or *\*8840* (Senior Citizens)
 
-#pagebreak()
-== 2.10 Using Communal / Public Shelters
+== Using Communal / Public Shelters
 #warning-box[
   HFC maintains official shelter information. Check the HFC app or oref.org.il. This guidance supplements — does not replace — official instructions.
 ]
@@ -1066,14 +1148,11 @@ Many casualties occur because people leave shelter prematurely.
 - *Pets:* many shelters do not allow animals — check in advance
 - Bring something for children to do
 
-== 2.11 OPSEC & Information Discipline
+#full-page-ill(ill-infosec, "During wartime, what you share online can endanger lives — including your own. Don't post locations, impact sites, or military activity.")
 
-#grid(
-  columns: (1fr, auto),
-  column-gutter: 16pt,
-  warning-box[During wartime, what you share online can endanger lives — including your own.],
-  illustration(ill-infosec, width: 5cm, caption: "Think before you share"),
-)
+== Information Security (INFOSEC)
+
+#warning-box[During wartime, what you share online can endanger lives — including your own.]
 
 #v(0.2cm)
 
@@ -1098,7 +1177,7 @@ Many casualties occur because people leave shelter prematurely.
 
 #v(0.2cm)
 
-*Do:* Use *official sources* (HFC app, IDF Spokesperson, Israel Police, established media). Check before sharing. Tell others to delete sensitive location info.
+*Do:* Use *official sources* (HFC app, IDF Spokesperson, Israel Police, Kan 11 — free live stream at kan.org.il/live, established media). Check before sharing. Tell others to delete sensitive location info.
 
 #block(
   width: 100%,
@@ -1106,11 +1185,11 @@ Many casualties occur because people leave shelter prematurely.
   fill: grey-light,
   radius: 4pt,
 )[
-  #align(center, text(style: "italic")[Even well-intentioned sharing can be lethal OPSEC. When in doubt, don't post.])
+  #align(center, text(style: "italic")[Even well-intentioned sharing can be lethal INFOSEC. When in doubt, don't post.])
 ]
 
 #pagebreak()
-== 2.12 Preliminary Guidelines (Advance Warning)
+== Preliminary Guidelines (Advance Warning)
 HFC provides *3–5 minute advance warning* for attacks from distant sources (e.g. Yemen).
 
 - Notification via HFC app *before* the siren
@@ -1125,7 +1204,8 @@ HFC provides *3–5 minute advance warning* for attacks from distant sources (e.
 
 *When the actual alert sounds:* follow standard shelter procedure (Appendix D).
 
-== 2.13 Terrorist Infiltration
+#pagebreak()
+== Terrorist Infiltration
 #warning-box[*Different protocol* from rocket/missile response. Do NOT follow standard shelter procedure for rockets — stay *hidden*, not just sheltered.]
 
 #v(0.2cm)
@@ -1168,9 +1248,43 @@ HFC provides *3–5 minute advance warning* for attacks from distant sources (e.
 
 *Licensed weapon holders:* Aim at front door. Fire only on positive ID.
 
+=== Terrorist Infiltration — Decision Flowchart
+
+#set text(size: 9pt)
+#align(center)[
+  #diagram(
+    spacing: (12pt, 14pt),
+    node-stroke: 1pt + blue-mid,
+    edge-stroke: 1pt + blue-mid,
+
+    node((0, 0), text(fill: white, weight: "bold", size: 10pt)[TERRORIST INFILTRATION ALERT], fill: red-alert, stroke: 2pt + red-alert, corner-radius: 6pt, inset: 10pt, name: <start>),
+
+    node((0, 1), align(center)[Where are you?], fill: blue-light, corner-radius: 5pt, inset: 8pt, shape: fletcher.shapes.diamond, name: <where>),
+    edge(<start>, <where>, "->"),
+
+    node((-2, 2), align(center)[*INDOORS*], fill: blue-light, corner-radius: 5pt, inset: 8pt, name: <indoors>),
+    edge(<where>, <indoors>, "->"),
+    node((-2, 3), align(center)[Lock door · Lights on outside \ Enter *Mamad* or inner room \ ★ WAIT FOR ALL-CLEAR], fill: green-light, stroke: 1pt + green-calm, corner-radius: 5pt, inset: 8pt, name: <a-in>),
+    edge(<indoors>, <a-in>, "->"),
+
+    node((0, 2), align(center)[*OUTDOORS*], fill: blue-light, corner-radius: 5pt, inset: 8pt, name: <outdoors>),
+    edge(<where>, <outdoors>, "->"),
+    node((0, 3), align(center)[Enter nearest building \ or shop immediately \ ★ WAIT FOR ALL-CLEAR], fill: green-light, stroke: 1pt + green-calm, corner-radius: 5pt, inset: 8pt, name: <a-out>),
+    edge(<outdoors>, <a-out>, "->"),
+
+    node((2, 2), align(center)[*IN VEHICLE*], fill: blue-light, corner-radius: 5pt, inset: 8pt, name: <vehicle>),
+    edge(<where>, <vehicle>, "->"),
+    node((2, 3), align(center)[Can drive? → *safe location* \ Can't? → *stop & seek shelter* \ ★ WAIT FOR ALL-CLEAR], fill: green-light, stroke: 1pt + green-calm, corner-radius: 5pt, inset: 8pt, name: <a-veh>),
+    edge(<vehicle>, <a-veh>, "->"),
+
+    node((0, 4.2), text(fill: white, weight: "bold", size: 9pt)[⚠ Rocket alert during infiltration: STAY PUT — do NOT leave your room], fill: red-alert, stroke: 2pt + red-alert, corner-radius: 6pt, inset: 10pt, name: <critical>),
+  )
+]
+#set text(size: 10pt)
+
 #pagebreak()
 
-== 2.14 Hostile Aerial Vehicle (UAV/Drone) Infiltration
+== Hostile Aerial Vehicle (UAV/Drone) Infiltration
 #warning-box[UAV infiltration uses the *same siren* as rocket/missile attacks but has *different behavioural guidelines*. Shelter time is *10 minutes* unless updated.]
 
 #v(0.2cm)
@@ -1209,23 +1323,65 @@ The alert is received through:
 
 #tip-box[*Key difference from rockets:* UAV alerts require a *10-minute shelter time* and you must wait for an explicit "all clear" — do not self-release based on quiet.]#footnote[Based on Home Front Command guidance as of 20 March 2026. Always verify with current HFC guidance at oref.org.il.]
 
+#pagebreak()
+
+=== UAV/Drone Infiltration — Decision Flowchart
+
+#set text(size: 8pt)
+#align(center)[
+  #diagram(
+    spacing: (10pt, 12pt),
+    node-stroke: 1.2pt + blue-mid,
+    edge-stroke: 1.2pt + blue-mid,
+
+    node((0, 0), text(fill: white, weight: "bold", size: 10pt)[UAV / DRONE ALERT], fill: red-alert, stroke: 2pt + red-alert, corner-radius: 8pt, inset: 7pt, name: <start>),
+
+    node((0, 1.2), align(center)[Where are you?], fill: blue-light, corner-radius: 6pt, inset: 7pt, shape: fletcher.shapes.diamond, name: <where>),
+    edge(<start>, <where>, "->"),
+
+    node((-1.5, 2.4), align(center)[*INDOORS*], fill: blue-light, corner-radius: 6pt, inset: 7pt, name: <indoors>),
+    edge(<where>, <indoors>, "->"),
+
+    node((-1.5, 3.8), align(center)[Go to *most protected* \ space (Mamad, shelter, \ stairwell, inner room) \ Stay *10 minutes* \ ★ WAIT FOR ALL-CLEAR], fill: green-light, stroke: 1.5pt + green-calm, corner-radius: 6pt, inset: 7pt, name: <a-in>),
+    edge(<indoors>, <a-in>, "->"),
+
+    node((0, 2.4), align(center)[*OUTDOORS* \ (built-up)], fill: blue-light, corner-radius: 6pt, inset: 7pt, name: <built>),
+    edge(<where>, <built>, "->"),
+
+    node((0, 3.8), align(center)[Enter nearest \ *building* — go to \ protected space \ *Not the entrance hall* \ ★ WAIT FOR ALL-CLEAR], fill: green-light, stroke: 1.5pt + green-calm, corner-radius: 6pt, inset: 7pt, name: <a-built>),
+    edge(<built>, <a-built>, "->"),
+
+    node((1.5, 2.4), align(center)[*OUTDOORS* \ (open area)], fill: blue-light, corner-radius: 6pt, inset: 7pt, name: <open>),
+    edge(<where>, <open>, "->"),
+
+    node((1.5, 3.8), align(center)[*Lie flat on ground* \ Protect head with hands \ ★ WAIT FOR ALL-CLEAR], fill: rgb("#fff3cd"), stroke: 1.5pt + rgb("#856404"), corner-radius: 6pt, inset: 7pt, name: <a-open>),
+    edge(<open>, <a-open>, "->"),
+
+    node((3, 2.4), align(center)[*IN VEHICLE*], fill: blue-light, corner-radius: 6pt, inset: 7pt, name: <vehicle>),
+    edge(<where>, <vehicle>, "->"),
+
+    node((3, 3.8), align(center)[*Exit vehicle → enter* \ *nearest building* \ If no building: move \ away, lie flat \ ★ WAIT FOR ALL-CLEAR], fill: green-light, stroke: 1.5pt + green-calm, corner-radius: 6pt, inset: 7pt, name: <a-veh>),
+    edge(<vehicle>, <a-veh>, "->"),
+
+    node((0.75, 5.2), text(fill: white, weight: "bold", size: 8pt)[⚠ Shelter time: 10 MIN — wait for explicit all-clear], fill: red-alert, stroke: 2pt + red-alert, corner-radius: 8pt, inset: 7pt, name: <time>),
+  )
+]
+#set text(size: 10pt)
+
 // ══════════════════════════════════════════════
 // CHAPTER 3: SHABBAT / HAG
 // ══════════════════════════════════════════════
 #set-section("Ch. 3: Shabbat / Hag", colour: sec-col-ch3)
 
+#full-page-ill(ill-shabbat, "On Shabbat your phone is off — the emergency radio and TV become your lifeline. Set them up before candle-lighting.")
+
 = Chapter 3: Shabbat / Hag (Observant Jews)
 
-#grid(
-  columns: (1fr, auto),
-  column-gutter: 16pt,
-  align(horizon)[_When phones are off and sirens are the only alert. Prepare before candle-lighting._],
-  illustration(ill-shabbat, width: 6cm, caption: "Corn prepares for Shabbat — radio ready"),
-)
+_When phones are off and sirens are the only alert. Prepare before candle-lighting._
 
 #v(0.3cm)
 
-== 3.1 Before Shabbat / Hag
+== Before Shabbat / Hag
 
 #table(
   columns: (auto, 1fr, 2fr),
@@ -1254,7 +1410,8 @@ The alert is received through:
   *Pikuach nefesh* (preservation of life) overrides all Shabbat prohibitions. If a siren sounds, you may — and *must* — use your phone, carry items, and do whatever is needed to reach shelter safely. This is not a leniency; it is *halacha*.
 ]
 
-== 3.2 During Shabbat / Hag
+#pagebreak()
+== During Shabbat / Hag
 
 - *Sirens are your primary alert.* Keep windows slightly open so you can hear outdoor sirens
 - *TV or radio must stay on and audible* throughout Shabbat — this is your only real-time information source
@@ -1337,11 +1494,11 @@ The alert is received through:
 // ══════════════════════════════════════════════
 #set-section("Ch. 5: Master Checklist", colour: sec-col-ch5)
 
+#full-page-ill(ill-regular-checks, "The master checklist covers everything — technical systems, home environment, go bag, dependents, and situational awareness.")
+
 = Chapter 5: Master Checklist
 
-#align(center, illustration(ill-regular-checks, width: 50%, caption: "Herman runs the master checklist"))
-
-== 5.1 Technical Systems & Alerts
+== Technical Systems & Alerts
 
 #table(
   columns: (auto, 1fr, 2fr),
@@ -1381,8 +1538,7 @@ The alert is received through:
    #ci[TESTED AND VALIDATED WORKING]],
 )
 
-#pagebreak()
-== 5.2 Home Environment
+== Home Environment
 
 #table(
   columns: (auto, 1fr, 2fr),
@@ -1425,7 +1581,6 @@ The alert is received through:
   [#ci(d: "See Appendix C — Mamad Inspection")[PREPARED]],
 )
 
-#v(0.2cm)
 #block(
   width: 100%,
   inset: 8pt,
@@ -1437,14 +1592,11 @@ The alert is received through:
   ]
 ]
 
-#pagebreak()
-== 5.3 Go Bag
-#grid(
-  columns: (1fr, auto),
-  column-gutter: 16pt,
-  align(horizon)[_See Chapter 2 §2.1 and Appendix H for detailed go bag guidance._],
-  illustration(ill-n95, width: 5cm, caption: "N95 masks — always packed"),
-)
+#full-page-ill(ill-n95, "An N95 mask takes almost no space in your bag but could save your life — dust, smoke, and debris are real hazards after an impact.")
+
+== Go Bag
+
+_See Chapter 2 §2.1 and Appendix H for detailed go bag guidance._
 
 #table(
   columns: (1fr, 2.5fr),
@@ -1514,7 +1666,7 @@ The alert is received through:
 )
 
 #pagebreak()
-== 5.4 People & Dependents
+== People & Dependents
 #table(
   columns: (1fr, 2.5fr),
   inset: 9pt,
@@ -1530,8 +1682,7 @@ The alert is received through:
    #ci[PRESENT] #h(8pt) or #h(8pt) #ci[ACCOUNTED FOR AND CONTACTABLE]],
 )
 
-== 5.5 Babies & Young Children #h(6pt) #icon-baby
-
+== Babies & Young Children
 #table(
   columns: (1fr, 2.5fr),
   inset: 9pt,
@@ -1556,7 +1707,7 @@ The alert is received through:
    #ci(d: "If needed")[FED] #h(8pt) #ci(d: "If needed")[CLEANED]],
 )
 
-== 5.6 Person & Personal Effects
+== Person & Personal Effects
 
 #table(
   columns: (auto, 1fr, 1.3fr, 1.3fr),
@@ -1580,8 +1731,9 @@ The alert is received through:
 )
 
 #pagebreak()
-== 5.7 Situational Awareness
-#align(right, illustration(ill-situational, width: 5.5cm, caption: "Stay aware of your surroundings"))
+#full-page-ill(ill-situational, "Situational awareness means knowing your shelter options, scanning the news every few hours, and keeping your HFC app updated.")
+
+== Situational Awareness
 
 #table(
   columns: (auto, 0.8fr, 1.5fr, 1fr),
@@ -1614,15 +1766,14 @@ The alert is received through:
 // ══════════════════════════════════════════════
 #set-section("Ch. 6: Situational", colour: sec-col-ch6)
 
+#full-page-ill(ill-daytime-posture, "Working from home during wartime — stay dressed, keep shoes on, and make sure you can hear a siren over your headphones.")
+
+#skip-next-pagebreak.update(true)
 = Chapter 6: Situational Checklists
 
-== 6.1 Daytime At-Home Posture
-#grid(
-  columns: (1fr, auto),
-  column-gutter: 16pt,
-  align(horizon)[_Quick status check while at home during the day. Run after waking, and repeat after any disruption._],
-  illustration(ill-daytime-posture, width: 6cm, caption: "Corn at the desk — alert and ready"),
-)
+== Daytime At-Home Posture
+
+_Quick status check while at home during the day. Run after waking, and repeat after any disruption._
 
 #table(
   columns: (auto, 1fr, 2fr),
@@ -1654,14 +1805,11 @@ The alert is received through:
 ]
 
 #pagebreak()
-== 6.2 After Returning From Shelter (Reset)
+#full-page-ill(ill-returning-home, "After every shelter visit, reset everything — go bag back by the door, phone on charge, clothes back in position. The next alert could come any time.")
 
-#grid(
-  columns: (1fr, auto),
-  column-gutter: 16pt,
-  align(horizon)[_Run immediately after the all-clear. Restore full readiness before the next alert._],
-  illustration(ill-returning-home, width: 5.5cm, caption: "Returning home — reset everything"),
-)
+== After Returning From Shelter (Reset)
+
+_Run immediately after the all-clear. Restore full readiness before the next alert._
 
 #table(
   columns: (auto, 1fr, 2fr),
@@ -1708,8 +1856,9 @@ The alert is received through:
 ]
 
 #pagebreak()
-== 6.3 Before Showering
-#align(right, illustration(ill-before-shower, width: 5cm, caption: "Even shower time needs a checklist"))
+#two-ill-page(ill-before-shower, "Showering is when you're most vulnerable — keep it short, phone volume at max, clothes in the bathroom ready to throw on.", ill-before-bed, "Everything laid out before lights off: shoes by the bed, clothes ready, torch on the nightstand, go bag by the door.")
+
+== Before Showering
 
 #table(
   columns: (auto, 1fr, 2fr),
@@ -1730,8 +1879,7 @@ The alert is received through:
   icon-clock, [*Keep It Short* #critical], [#ci(d: "You are at your most vulnerable; be quick")[TIME MINIMISED]],
 )
 
-== 6.4 Before Bed
-#align(right, illustration(ill-before-bed, width: 5.5cm, caption: "Everything laid out before lights off"))
+== Before Bed
 
 #table(
   columns: (auto, 1fr, 2fr),
@@ -1758,9 +1906,9 @@ The alert is received through:
 )
 
 #pagebreak()
-== 6.5 Before Leaving Home #h(6pt) #icon-door
+#full-page-ill(ill-before-leaving, "Before you step outside: go bag, phone charged, HFC app running, shelters identified along your route. Know where you'd go if a siren sounds.")
 
-#align(right, illustration(ill-before-leaving, width: 5.5cm, caption: "Check before you head out"))
+== Before Leaving Home
 
 #table(
   columns: (auto, 1fr, 2fr),
@@ -1847,7 +1995,9 @@ The alert is received through:
   )
 ]
 
-#v(0.4cm)
+#pagebreak()
+
+== Support & Welfare Numbers
 
 #table(
   columns: (auto, 1fr),
@@ -1920,70 +2070,6 @@ _Based on Home Front Command guidelines for residential protected spaces._ #foot
   [*Ventilation*], [#ci[ROOM IS VENTILATED IF USED AS BEDROOM] #linebreak() _Must NOT be used as kitchen, bathroom, or washroom_],
 )
 
-#set-section("Appendix D: Decision Tree", colour: sec-col-app)
-
-= Appendix D: Protected Space Decision Tree
-
-_When a Red Alert sounds, choose the highest-priority option you can reach._ #footnote[Based on Home Front Command protocol as of 20 March 2026.]
-
-#warning-box[
-  *WHEN TO LEAVE:* Stay for *10 minutes OR until all-clear* — whichever comes later. \
-  *Siren duration = defense time.* Border areas may have 15 seconds or less.
-]
-
-#v(0.5cm)
-
-#align(center)[
-  #diagram(
-    spacing: (15pt, 20pt),
-    node-stroke: 1.2pt + blue-mid,
-    edge-stroke: 1.2pt + blue-mid,
-
-    node((0, 0), text(fill: white, weight: "bold", size: 11pt)[RED ALERT SOUNDS], fill: red-alert, stroke: 2pt + red-alert, corner-radius: 8pt, inset: 14pt, name: <start>),
-
-    node((0, 1.2), align(center)[Do you have a \ *MAMAD / MAMAK / MAMAM*?], fill: blue-light, corner-radius: 6pt, inset: 12pt, shape: fletcher.shapes.diamond, name: <q1>),
-    edge(<start>, <q1>, "->"),
-
-    node((2, 1.2), align(center)[*PRIORITY 1: MAMAD* \ Close blast door (handle 90°) \ Close steel + glass windows \ Sit against inner wall \ ★ WAIT FOR ALL-CLEAR], fill: green-light, stroke: 1.5pt + green-calm, corner-radius: 6pt, inset: 10pt, name: <a1>),
-    edge(<q1>, <a1>, "->", label: text(fill: green-calm, weight: "bold", size: 12pt)[Y]),
-
-    node((0, 2.6), align(center)[Can you reach a \ *SHELTER* in time?], fill: blue-light, corner-radius: 6pt, inset: 12pt, shape: fletcher.shapes.diamond, name: <q2>),
-    edge(<q1>, <q2>, "->", label: text(fill: red-alert, weight: "bold", size: 12pt)[N]),
-
-    node((2, 2.6), align(center)[*PRIORITY 2: SHELTER* \ Building or public shelter \ Enter and close the door \ ★ WAIT FOR ALL-CLEAR], fill: green-light, stroke: 1.5pt + green-calm, corner-radius: 6pt, inset: 10pt, name: <a2>),
-    edge(<q2>, <a2>, "->", label: text(fill: green-calm, weight: "bold", size: 12pt)[Y]),
-
-    node((0, 4.0), align(center)[*INNER STAIRWELL* \ (no windows)?], fill: blue-light, corner-radius: 6pt, inset: 12pt, shape: fletcher.shapes.diamond, name: <q3>),
-    edge(<q2>, <q3>, "->", label: text(fill: red-alert, weight: "bold", size: 12pt)[N]),
-
-    node((2, 4.0), align(center)[*PRIORITY 3: STAIRWELL* \ Centre floor — not top, not ground \ Stay on staircase, not hallway \ ★ WAIT FOR ALL-CLEAR], fill: green-light, stroke: 1.5pt + green-calm, corner-radius: 6pt, inset: 10pt, name: <a3>),
-    edge(<q3>, <a3>, "->", label: text(fill: green-calm, weight: "bold", size: 12pt)[Y]),
-
-    node((0, 5.4), align(center)[*INNER ROOM* \ (max walls, min windows)?], fill: blue-light, corner-radius: 6pt, inset: 12pt, shape: fletcher.shapes.diamond, name: <q4>),
-    edge(<q3>, <q4>, "->", label: text(fill: red-alert, weight: "bold", size: 12pt)[N]),
-
-    node((2, 5.4), align(center)[*PRIORITY 4: INNER ROOM* \ Inner wall, below window line \ Not facing door. Close all doors. \ ★ WAIT FOR ALL-CLEAR], fill: green-light, stroke: 1.5pt + green-calm, corner-radius: 6pt, inset: 10pt, name: <a4>),
-    edge(<q4>, <a4>, "->", label: text(fill: green-calm, weight: "bold", size: 12pt)[Y]),
-
-    node((0, 6.6), align(center)[*PRIORITY 5: LAST RESORT* \ Lie flat on the ground \ Protect head with hands \ ★ WAIT FOR ALL-CLEAR], fill: rgb("#fff3cd"), stroke: 1.5pt + rgb("#856404"), corner-radius: 6pt, inset: 12pt, name: <a5>),
-    edge(<q4>, <a5>, "->", label: text(fill: red-alert, weight: "bold", size: 12pt)[N]),
-  )
-]
-
-#v(0.5cm)
-
-#block(
-  width: 100%,
-  inset: 10pt,
-  fill: red-light,
-  radius: 4pt,
-  stroke: 1pt + red-alert,
-)[
-  *⛔ NOT valid:* Kitchen · Bathroom · Toilet · Building entrance lobby · Caravans / prefab · Areas with ceramics, porcelain, or glass
-]
-
-*Stairwell positioning:* 3+ floors: at least 2 floors above you. 3-storey building: middle floor only.
-
 #set-section("Appendix E: Hebrew Glossary", colour: sec-col-app)
 
 = Appendix E: Hebrew Glossary
@@ -2033,8 +2119,7 @@ _Key terms you will hear on the news, in alerts, and from neighbours._
 
 #set-section("Appendix F: Radio Frequencies", colour: sec-col-app)
 
-= Appendix F: Emergency Radio Frequencies #h(6pt) #icon-radio
-
+= Appendix F: Emergency Radio Frequencies
 _If phone and internet are down, a battery-powered or hand-crank AM/FM radio is your lifeline._
 
 #table(
@@ -2383,527 +2468,74 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
   ]
 ]
 
-// ══════════════════════════════════════════════
-// PRINTABLES — Single-page tear-out checklists
-// ══════════════════════════════════════════════
-#set-section("Printables", colour: rgb("#2c3e50"))
-
-// Printable intro page
-#page(header: none, footer: none)[
-  #v(2cm)
-  #align(center)[
-    #text(size: 24pt, weight: "bold", fill: blue-dark)[PRINTABLES]
-    #v(0.3cm)
-    #text(size: 12pt, fill: grey-text)[Single-page checklists — tear out, photocopy, or print individually.]
-    #v(0.5cm)
-    #block(width: 60%, height: 2pt, fill: blue-accent, radius: 1pt)
-    #v(1cm)
-  ]
-
-  #block(
-    width: 100%,
-    inset: 14pt,
-    fill: blue-light,
-    radius: 8pt,
-    stroke: 1pt + blue-accent,
-  )[
-    #text(size: 10pt)[
-      The following pages are *standalone single-page checklists* designed to be used independently of the full guide. Each fits on one sheet of A4.
-
-      #v(6pt)
-      *Suggested placement:*
-      #v(4pt)
-      - *BRACED* — on the fridge or front door (daily check)
-      - *Daytime Posture* — on the fridge or home office
-      - *Before Bed* — taped to bedroom door or nightstand
-      - *After Shelter Reset* — in the mamad
-      - *Before Showering* — on the bathroom mirror
-      - *Before Leaving Home* — by the front door
-      - *Night Alarm Drill* — taped to the wall by your bed
-      - *Emergency Numbers* — fridge, mamad, and go bag (3 copies)
-      - *Shabbat/Hag Prep* — in the kitchen
-
-      #v(6pt)
-      These printables are also available as individual PDFs in the `output/printables/` directory.
-    ]
-  ]
-]
-
-// --- Printable 1: BRACED ---
-#page(margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm), header: none, footer: none)[
-  #block(
-    width: 100%,
-    inset: (x: 14pt, y: 10pt),
-    fill: rgb("#0e7c47"),
-    radius: 4pt,
-  )[#text(size: 14pt, weight: "bold", fill: white)[BRACED — Quick Smoke Test]]
-  #v(0.2cm)
-  #text(size: 9pt, style: "italic")[Daily during wartime · Weekly during elevated tension · Under 2 minutes.]
-  #v(0.3cm)
-  #block(width: 100%, radius: 6pt, clip: true, stroke: 1.5pt + blue-accent)[
-    #table(
-      columns: (auto, auto, 1fr),
-      inset: 10pt,
-      stroke: 0.5pt + grey-border,
-      fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { blue-light } else { white },
-      align: (center, left, left),
-      text(fill: white, weight: "bold")[LETTER], text(fill: white, weight: "bold")[CHECK], text(fill: white, weight: "bold")[VERIFY],
-      text(size: 20pt, weight: "bold", fill: blue-dark)[B], [#icon-bag *Bag*], [#ci[BY DOOR · ZIPPED · CONTENTS VERIFIED]],
-      text(size: 20pt, weight: "bold", fill: blue-dark)[R], [#icon-door *Route*], [#ci[EXIT HALLWAY CLEAR · DOOR UNLOCKABLE QUICKLY]],
-      text(size: 20pt, weight: "bold", fill: blue-dark)[A], [#icon-phone *Alerts*], [#ci[PHONE ON · CHARGED · HFC APP RUNNING · CORRECT AREA] #linebreak() #ci[WIRELESS ALERTS ENABLED · DND OVERRIDE VERIFIED]],
-      text(size: 20pt, weight: "bold", fill: blue-dark)[C], [#icon-shield *Cover*], [#ci[NEAREST 3 SHELTERS KNOWN · ROUTES WALKABLE]],
-      text(size: 20pt, weight: "bold", fill: blue-dark)[E], [#icon-water *Essentials*], [#ci[72-HOUR WATER SUPPLY ACCESSIBLE · NOT EXPIRED]],
-      text(size: 20pt, weight: "bold", fill: blue-dark)[D], [#icon-people *Dependents*], [#ci[ALL HOUSEHOLD MEMBERS PRESENT OR ACCOUNTED FOR]],
-    )
-  ]
-  #v(0.4cm)
-  #block(width: 100%, inset: 14pt, fill: blue-light, radius: 8pt, stroke: 1.5pt + blue-accent)[
-    #align(center)[
-      #text(size: 18pt, weight: "bold", fill: blue-dark)[Mnemonic: BRACED]
-      #v(4pt)
-      #text(size: 13pt, fill: grey-text, style: "italic")["Stay BRACED"]
-    ]
-  ]
-  #v(0.3cm)
-  #block(width: 100%, inset: 10pt, fill: grey-light, radius: 4pt)[
-    #text(size: 9pt)[*Date:* #h(3cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[] #h(1cm) *Completed by:* #h(0.5cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[]]
-  ]
-  #v(1fr)
-  #line(length: 100%, stroke: 0.5pt + grey-border)
-  #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · Illustrated Edition · danielrosehill.com #h(1fr) Print and post visibly.]
-]
-
-// --- Printable 2: Daytime Posture ---
-#page(margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm), header: none, footer: none)[
-  #block(width: 100%, inset: (x: 14pt, y: 10pt), fill: rgb("#d35400"), radius: 4pt)[#text(size: 14pt, weight: "bold", fill: white)[#icon-sun Daytime At-Home Posture]]
-  #v(0.2cm)
-  #text(size: 9pt, style: "italic")[Run after waking and repeat after any disruption.]
-  #v(0.3cm)
-  #table(
-    columns: (auto, 1fr, 2fr), inset: 10pt, stroke: 0.5pt + grey-border,
-    fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
-    align: (center, left, left),
-    [], text(fill: white, weight: "bold", size: 9pt)[ITEM], text(fill: white, weight: "bold", size: 9pt)[CHECK],
-    icon-phone, [*Phone* #critical], [#ci(d: "Or within arm's reach")[ON PERSON] #linebreak() #ci[CHARGED OR CHARGING] #linebreak() #ci[HFC APP RUNNING]],
-    icon-shirt, [*Dressed* #critical], [#ci[FULLY CLOTHED] #linebreak() #ci(d: "Not slippers, not barefoot")[CLOSED-TOE SHOES ON]],
-    icon-key, [*Keys* #critical], [#ci[ON PERSON OR IN/BY DOOR]],
-    icon-bag, [*Go Bag* #critical], [#ci[BY DOOR] #h(6pt) #ci[ZIPPED]],
-    icon-door, [*Exit Route* #critical], [#ci[HALLWAY CLEAR] #linebreak() #ci[FRONT DOOR CAN BE OPENED QUICKLY]],
-    icon-laptop, [*Browser Alert*], [#ci(d: "If working at desk")[RED ALERT EXTENSION ACTIVE]],
-  )
-  #v(0.3cm)
-  #block(width: 100%, inset: 12pt, fill: blue-light, radius: 6pt, stroke: 1pt + blue-accent)[
-    #text(size: 10pt, weight: "bold", fill: blue-dark)[Working from home during wartime:]
-    #v(4pt)
-    #set text(size: 9pt)
-    - Stay dressed and shoed — do not slip into pyjamas
-    - Headphones: one ear only, or volume low enough to hear a siren
-    - Save work frequently — you may need to abandon your desk
-    - Start calls with: _"I'm in an active alert zone. I may need to leave abruptly."_
-  ]
-  #v(0.2cm)
-  #block(width: 100%, inset: 10pt, fill: grey-light, radius: 4pt)[
-    #text(size: 9pt)[*Date:* #h(3cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[] #h(1cm) *Completed by:* #h(0.5cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[]]
-  ]
-  #v(1fr)
-  #line(length: 100%, stroke: 0.5pt + grey-border)
-  #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · Illustrated Edition · danielrosehill.com #h(1fr) Print and post visibly.]
-]
-
-// --- Printable 3: Before Bed ---
-#page(margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm), header: none, footer: none)[
-  #block(width: 100%, inset: (x: 14pt, y: 10pt), fill: blue-dark, radius: 4pt)[#text(size: 14pt, weight: "bold", fill: white)[#icon-moon Before Bed Checklist]]
-  #v(0.2cm)
-  #text(size: 9pt, style: "italic")[Run every night. Everything here makes a 3am siren survivable on autopilot.]
-  #v(0.2cm)
-  #table(
-    columns: (auto, 1fr, 2fr), inset: 8pt, stroke: 0.5pt + grey-border,
-    fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
-    align: (center, left, left),
-    [], text(fill: white, weight: "bold", size: 9pt)[ITEM], text(fill: white, weight: "bold", size: 9pt)[CHECK],
-    icon-eye, [*News Check*], [#ci(d: "Safe to sleep at home?")[SITUATION SCANNED]],
-    icon-phone, [*Phone* #critical], [#ci[CHARGING] #ci[NOT AIRPLANE MODE] #linebreak() #ci[LOCATION ON] #ci[HFC APP — OVERRIDE PERMS]],
-    icon-shirt, [*Clothes* #critical], [#ci(d: "Full outfit in seconds")[LAID OUT BY BED]],
-    icon-shoe, [*Shoes* #critical], [#ci[CLOSED-TOE BY BED]],
-    [], [*Torch*], [#ci[ON NIGHTSTAND]],
-    [], [*Glasses*], [#ci[BY BED]],
-    [], [*Caffeine _(opt)_*], [#ci[BY BED WITH WATER]],
-    icon-key, [*Keys*], [#ci[BY BED OR BY DOOR]],
-    icon-bag, [*Go Bag* #critical], [#ci[BY DOOR] #ci[POWER BANK CHARGING]],
-    icon-door, [*Exit* #critical], [#ci[HALLWAY CLEAR] #ci[NOT DOUBLE-LOCKED]],
-    icon-alert, [*Hearing* #critical], [#ci[NO EARPLUGS]],
-    icon-baby, [*Dependents* #critical], [#ci[ALL ACCOUNTED FOR]],
-  )
-  #v(0.1cm)
-  #block(width: 100%, inset: 10pt, fill: grey-light, radius: 4pt)[
-    #text(size: 9pt)[*Date:* #h(3cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[] #h(1cm) *Completed by:* #h(0.5cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[]]
-  ]
-  #v(1fr)
-  #line(length: 100%, stroke: 0.5pt + grey-border)
-  #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · Illustrated Edition · danielrosehill.com #h(1fr) Print and post visibly.]
-]
-
-// --- Printable 4: After Shelter Reset ---
-#page(margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm), header: none, footer: none)[
-  #block(width: 100%, inset: (x: 14pt, y: 10pt), fill: rgb("#d35400"), radius: 4pt)[#text(size: 14pt, weight: "bold", fill: white)[After Returning From Shelter — Reset]]
-  #v(0.2cm)
-  #text(size: 9pt, style: "italic")[Run immediately after all-clear. Restore readiness before the next alert.]
-  #v(0.2cm)
-  #table(
-    columns: (auto, 1fr, 2fr), inset: 9pt, stroke: 0.5pt + grey-border,
-    fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
-    align: (center, left, left),
-    [], text(fill: white, weight: "bold", size: 9pt)[ITEM], text(fill: white, weight: "bold", size: 9pt)[CHECK],
-    icon-bag, [*Go Bag* #critical], [#ci[BACK BY DOOR] #linebreak() #ci(d: "Anything fall out?")[RE-ZIPPED]],
-    icon-phone, [*Phone* #critical], [#ci(d: "If battery dropped")[ON CHARGE] #linebreak() #ci[HFC APP STILL RUNNING]],
-    [], [*Power Bank*], [#ci(d: "May have been used")[ON CHARGE]],
-    icon-water, [*Water*], [#ci(d: "If you drank emergency stock")[RESUPPLIED]],
-    icon-shirt, [*Clothes & Shoes*], [#ci[BACK IN POSITION]],
-    [], [*Torch*], [#ci[BACK IN POSITION]],
-    icon-people, [*Dependents* #critical], [#ci[ALL ACCOUNTED FOR AND SAFE]],
-  )
-  #v(0.2cm)
-  #block(width: 100%, inset: 12pt, fill: green-light, radius: 6pt, stroke: 1pt + green-calm)[
-    #text(size: 10pt, weight: "bold", fill: green-calm)[Self-Care — Do these NOW, not later.]
-    #set text(size: 9.5pt)
-    #v(4pt)
-    #ci(d: "Stress suppresses appetite — eat anyway")[EATEN] #linebreak()
-    #ci[HYDRATED] #linebreak()
-    #ci[TOILET — DONE] #linebreak()
-    #ci(d: "If time allows")[SHOWERED] #h(6pt) #ci(d: "Morale matters")[GROOMED] #linebreak()
-    #ci(d: "When possible")[RESTED]
-    #v(4pt)
-    *Children:* #ci[FED] #h(4pt) #ci[HYDRATED] #h(4pt) #ci[TOILETED / CHANGED] #h(4pt) #ci[RESTED]
-  ]
-  #v(0.1cm)
-  #block(width: 100%, inset: 10pt, fill: grey-light, radius: 4pt)[
-    #text(size: 9pt)[*Date:* #h(3cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[] #h(1cm) *Completed by:* #h(0.5cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[]]
-  ]
-  #v(1fr)
-  #line(length: 100%, stroke: 0.5pt + grey-border)
-  #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · Illustrated Edition · danielrosehill.com #h(1fr) Print and post visibly.]
-]
-
-// --- Printable 5: Before Showering ---
-#page(margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm), header: none, footer: none)[
-  #block(width: 100%, inset: (x: 14pt, y: 10pt), fill: blue-accent, radius: 4pt)[#text(size: 14pt, weight: "bold", fill: white)[#icon-water Before Showering — Vulnerability Checklist]]
-  #v(0.2cm)
-  #text(size: 9pt, style: "italic")[You are at your most vulnerable in the shower. Minimise time, maximise readiness.]
-  #v(0.3cm)
-  #table(
-    columns: (auto, 1fr, 2fr), inset: 10pt, stroke: 0.5pt + grey-border,
-    fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
-    align: (center, left, left),
-    [], text(fill: white, weight: "bold", size: 9pt)[ITEM], text(fill: white, weight: "bold", size: 9pt)[CHECK],
-    icon-eye, [*News Check* #critical], [#ci(d: "No active alerts")[SITUATION SCANNED]],
-    icon-phone, [*Phone* #critical], [#ci(d: "Audible over water")[VOLUME AT MAXIMUM] #linebreak() #ci[IN BATHROOM OR JUST OUTSIDE]],
-    icon-shirt, [*Clothes* #critical], [#ci(d: "Not in another room")[FULL OUTFIT IN BATHROOM]],
-    icon-shoe, [*Shoes* #critical], [#ci[CLOSED-TOE BY BATHROOM DOOR]],
-    [], [*Towel*], [#ci[WITHIN REACH]],
-    icon-door, [*Door*], [#ci[UNLOCKED]],
-    icon-clock, [*Time* #critical], [#ci[TIME MINIMISED]],
-  )
-  #v(0.4cm)
-  #block(width: 100%, inset: 12pt, fill: red-light, radius: 6pt, stroke: 1.5pt + red-alert)[
-    #text(size: 10pt, weight: "bold", fill: red-alert)[⚠ If a siren sounds while showering:]
-    #v(4pt)
-    #set text(size: 10pt)
-    + *Turn off water* (1 second)
-    + *Grab towel* — wrap as you move
-    + *Step into shoes* by door
-    + *Move to protected space* — clothes can wait, shelter cannot
-  ]
-  #v(0.2cm)
-  #align(center, text(size: 8pt, style: "italic")[Post on bathroom door or mirror.])
-  #v(1fr)
-  #line(length: 100%, stroke: 0.5pt + grey-border)
-  #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · Illustrated Edition · danielrosehill.com #h(1fr) Print and post visibly.]
-]
-
-// --- Printable 6: Before Leaving Home ---
-#page(margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm), header: none, footer: none)[
-  #block(width: 100%, inset: (x: 14pt, y: 10pt), fill: rgb("#d35400"), radius: 4pt)[#text(size: 14pt, weight: "bold", fill: white)[#icon-door Before Leaving Home]]
-  #v(0.2cm)
-  #text(size: 9pt, style: "italic")[Run every time you leave the house during wartime.]
-  #v(0.3cm)
-  #table(
-    columns: (auto, 1fr, 2fr), inset: 10pt, stroke: 0.5pt + grey-border,
-    fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
-    align: (center, left, left),
-    [], text(fill: white, weight: "bold", size: 9pt)[ITEM], text(fill: white, weight: "bold", size: 9pt)[CHECK],
-    icon-bag, [*Go Bag* #critical], [#ci[TAKING WITH YOU]],
-    icon-eye, [*News* #critical], [#ci(d: "HFC app + news")[SITUATION SCANNED]],
-    icon-shield, [*Shelters* #critical], [#ci(d: "At destination + route")[NEAREST SHELTERS IDENTIFIED]],
-    icon-clock, [*Time To Shelter*], [#ci[KNOWN FOR DESTINATION]],
-    icon-phone, [*Phone* #critical], [#ci[CHARGED] #h(4pt) #ci[HFC APP] #h(4pt) #ci[LOCATION ON]],
-    icon-car, [*Car Fuel*], [#ci[AT LEAST HALF A TANK]],
-    icon-people, [*Household*], [#ci[DESTINATION + RETURN TIME COMMUNICATED]],
-  )
-  #v(0.3cm)
-  #block(width: 100%, inset: 12pt, fill: red-light, radius: 6pt, stroke: 1.5pt + red-alert)[
-    #text(size: 10pt, weight: "bold", fill: red-alert)[⚠ If a siren sounds while driving:]
-    #v(4pt)
-    #set text(size: 10pt)
-    + *Pull over* to the side of the road
-    + *Exit the vehicle* and move away
-    + *Enter nearest building* or lie flat, protect your head
-    + *Wait 10 minutes* before returning to vehicle
-  ]
-  #v(0.2cm)
-  #block(width: 100%, inset: 10pt, fill: grey-light, radius: 4pt)[
-    #text(size: 9pt)[*Date:* #h(3cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[] #h(1cm) *Completed by:* #h(0.5cm) #box(width: 4cm, stroke: (bottom: 0.5pt + grey-text))[]]
-  ]
-  #v(1fr)
-  #line(length: 100%, stroke: 0.5pt + grey-border)
-  #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · Illustrated Edition · danielrosehill.com #h(1fr) Print and post visibly.]
-]
-
-// --- Printable 7: Night Alarm ---
-#page(margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm), header: none, footer: none)[
-  #block(width: 100%, inset: (x: 14pt, y: 10pt), fill: red-alert, radius: 4pt)[#text(size: 14pt, weight: "bold", fill: white)[#icon-moon Night Alarm — The 30-Second Drill]]
-  #v(0.2cm)
-  #text(size: 9pt, style: "italic")[Post by your bed. Everything here so you don't have to think at 3am.]
-  #v(0.3cm)
-  #block(width: 100%, inset: 14pt, fill: red-light, radius: 8pt, stroke: 2pt + red-alert)[
-    #text(size: 14pt, weight: "bold", fill: red-alert)[The First 5 Seconds]
-    #v(6pt)
-    #set text(size: 12pt)
-    + *Siren / Alert* — Do not process. Just move. #h(1fr) #ci[AWAKE — MOVING]
-    + *Shoes* — Same spot every night. #h(1fr) #ci[ON FEET]
-    + *Glasses & Phone* — From nightstand. #h(1fr) #ci[IN HAND]
-    + *Caffeine pill _(optional)_* — Sip of water. #h(1fr) #ci[TAKEN]
-  ]
-  #v(0.3cm)
-  #block(width: 100%, inset: 14pt, fill: rgb("#fff8e1"), radius: 8pt, stroke: 2pt + orange-warm)[
-    #text(size: 14pt, weight: "bold", fill: orange-warm)[The Next 10–20 Seconds]
-    #v(6pt)
-    #set text(size: 12pt)
-    5. *Clothes* — Pull on whatever is laid out. Speed over appearance. #h(1fr) #ci[ON]
-    6. *Torch* — If power is out. #h(1fr) #ci[IN HAND]
-    7. *Protected space* — Move to shelter or front door. #h(1fr) #ci[IN POSITION]
-  ]
-  #v(0.3cm)
-  #block(width: 100%, inset: 14pt, fill: blue-light, radius: 8pt, stroke: 2pt + blue-accent)[
-    #text(size: 14pt, weight: "bold", fill: blue-dark)[For Parents]
-    #v(6pt)
-    #set text(size: 12pt)
-    8. *Children* — One parent → children. Other → go bag. #h(1fr) #ci[ROLES EXECUTING]
-    9. *Baby* — In babywear by door. Do not stop to dress them. #h(1fr) #ci[SECURED]
-  ]
-  #v(0.4cm)
-  #block(width: 100%, inset: 12pt, fill: grey-light, radius: 6pt, stroke: 1pt + grey-border)[
-    #set text(size: 11pt, weight: "bold", fill: blue-dark)
-    #align(center)[Do not think. Follow the procedure. \ Do not check your phone. The siren means go. \ It gets easier after 2–3 nights.]
-  ]
-  #v(1fr)
-  #line(length: 100%, stroke: 0.5pt + grey-border)
-  #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · Illustrated Edition · danielrosehill.com #h(1fr) Print and post visibly.]
-]
-
-// --- Printable 8: Emergency Numbers ---
-#page(margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm), header: none, footer: none)[
-  #block(width: 100%, inset: (x: 14pt, y: 10pt), fill: red-alert, radius: 4pt)[#text(size: 14pt, weight: "bold", fill: white)[#icon-alert Emergency Numbers — Israel]]
-  #v(0.3cm)
-  #block(width: 100%, radius: 6pt, clip: true, stroke: 2pt + red-alert)[
-    #table(
-      columns: (auto, 1fr, 1.5fr), inset: 9pt, stroke: 0.5pt + grey-border,
-      fill: (_, y) => if y == 0 { red-alert } else if calc.odd(y) { red-light } else { white },
-      align: (center, left, left),
-      text(fill: white, weight: "bold", size: 9pt)[NUMBER], text(fill: white, weight: "bold", size: 9pt)[SERVICE], text(fill: white, weight: "bold", size: 9pt)[NOTES],
-      text(weight: "bold", size: 16pt)[100], [*Israel Police*], [Security incidents, unexploded ordnance],
-      text(weight: "bold", size: 16pt)[101], [*Magen David Adom*], [Injuries, medical emergencies],
-      text(weight: "bold", size: 16pt)[102], [*Fire & Rescue*], [Fires, trapped persons, collapse],
-      text(weight: "bold", size: 16pt)[103], [*Electric Corp.*], [Power outages, electrical hazards],
-      text(weight: "bold", size: 16pt)[104], [*Home Front Command*], [Guidelines, alerts, emergency info],
-      text(weight: "bold", size: 16pt)[110], [*Police Info*], [Road blocks, police information],
-    )
-  ]
-  #v(0.2cm)
-  #table(
-    columns: (auto, 1fr), inset: 8pt, stroke: 0.5pt + grey-border,
-    fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { green-light } else { white },
-    align: (center, left),
-    text(fill: white, weight: "bold", size: 9pt)[NUMBER], text(fill: white, weight: "bold", size: 9pt)[SUPPORT & WELFARE],
-    text(weight: "bold")[118], [Welfare Ministry],
-    text(weight: "bold")[1201], [ERAN — Emotional first aid],
-    text(weight: "bold")[\*8840], [Senior Citizens],
-    text(weight: "bold")[105], [Missing persons],
-    text(weight: "bold")[1-800-363-363], [NATAL — Trauma support],
-  )
-  #v(0.3cm)
-  #block(width: 100%, inset: 10pt, fill: grey-light, radius: 6pt)[
-    #text(size: 9pt, weight: "bold")[Personal Emergency Contacts:]
-    #v(4pt)
-    #grid(columns: (1fr, 1fr), column-gutter: 12pt, row-gutter: 8pt,
-      [Name: #box(width: 5cm, stroke: (bottom: 0.5pt + grey-text))[]], [Phone: #box(width: 5cm, stroke: (bottom: 0.5pt + grey-text))[]],
-      [Name: #box(width: 5cm, stroke: (bottom: 0.5pt + grey-text))[]], [Phone: #box(width: 5cm, stroke: (bottom: 0.5pt + grey-text))[]],
-      [Name: #box(width: 5cm, stroke: (bottom: 0.5pt + grey-text))[]], [Phone: #box(width: 5cm, stroke: (bottom: 0.5pt + grey-text))[]],
-    )
-  ]
-  #v(0.2cm)
-  #align(center, text(size: 9pt, weight: "bold", fill: red-alert)[PRINT. Post on fridge, in mamad, and in go bag.])
-  #v(1fr)
-  #line(length: 100%, stroke: 0.5pt + grey-border)
-  #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · Illustrated Edition · danielrosehill.com #h(1fr) Print and post visibly.]
-]
-
-// --- Printable 9: Shabbat / Hag ---
-#page(margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm), header: none, footer: none)[
-  #block(width: 100%, inset: (x: 14pt, y: 10pt), fill: rgb("#8e44ad"), radius: 4pt)[#text(size: 14pt, weight: "bold", fill: white)[Shabbat / Hag — Pre-Candle-Lighting Checklist]]
-  #v(0.2cm)
-  #text(size: 9pt, style: "italic")[Complete before candle-lighting. Sirens are your only alert when phones are off.]
-  #v(0.3cm)
-  #table(
-    columns: (auto, 1fr, 2fr), inset: 9pt, stroke: 0.5pt + grey-border,
-    fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
-    align: (center, left, left),
-    [], text(fill: white, weight: "bold", size: 9pt)[ITEM], text(fill: white, weight: "bold", size: 9pt)[CHECK],
-    icon-alert, [*TV / Ch 14* #critical], [#ci[PLAYING] #linebreak() #ci(d: "Not muted")[AUDIBLE FROM BEDROOMS]],
-    icon-radio, [*Radio* #critical], [#ci[FREQUENCY VERIFIED] #linebreak() #ci[VOLUME MAXIMUM] #linebreak() #ci[POWER — AC OR BATTERIES]],
-    icon-bag, [*Go Bag*], [#ci[BY DOOR] #h(4pt) #ci[VERIFIED]],
-    icon-bag, [*Shabbat Supplies*], [#ci(d: "Siddur, kiddush cup, snacks")[PACKED]],
-    icon-shoe, [*Shoes* #critical], [#ci[CLOSED-TOE BY BED + DOOR]],
-    icon-shirt, [*Clothes*], [#ci[LAID OUT BY BED]],
-    icon-key, [*Keys*], [#ci[BY FRONT DOOR]],
-    [], [*Torch*], [#ci[ON NIGHTSTAND]],
-    [], [*Windows*], [#ci(d: "To hear outdoor sirens")[SLIGHTLY OPEN]],
-  )
-  #v(0.3cm)
-  #block(width: 100%, inset: 12pt, fill: rgb("#f3e5f5"), radius: 6pt, stroke: 1.5pt + rgb("#8e44ad"))[
-    #text(size: 10pt, weight: "bold", fill: rgb("#8e44ad"))[Pikuach Nefesh]
-    #v(4pt)
-    #text(size: 9.5pt)[Preservation of life overrides all Shabbat prohibitions. If a siren sounds, you *may and must* use your phone, carry items, and do whatever is needed to reach shelter. This is *halacha*.]
-  ]
-  #v(0.2cm)
-  #block(width: 100%, inset: 10pt, fill: red-light, radius: 6pt, stroke: 1pt + red-alert)[
-    #text(size: 9pt, weight: "bold", fill: red-alert)[During Shabbat:] #text(size: 9pt)[ Windows open for sirens · TV/radio audible · Know shelter route in dark · Stay 10 min or until all-clear]
-  ]
-  #v(1fr)
-  #line(length: 100%, stroke: 0.5pt + grey-border)
-  #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · Illustrated Edition · danielrosehill.com #h(1fr) Print and post visibly.]
-]
 
 // ══════════════════════════════════════════════
-// CREDITS PAGE
+// CREDITS & DISCLAIMER (final page)
 // ══════════════════════════════════════════════
 #set-section("Credits", colour: sec-col-app)
 
 #pagebreak()
 
-#block(
-  width: 100%,
-  inset: 20pt,
-  fill: cream,
-  radius: 14pt,
-  stroke: 2pt + amber,
-)[
-  #align(center, text(size: 22pt, weight: "bold", fill: blue-dark)[Credits & Acknowledgments])
-  #v(0.5cm)
+#v(0.5cm)
+#align(center, text(size: 20pt, weight: "bold", fill: blue-dark)[Credits & Disclaimer])
+#v(0.5cm)
 
-  #grid(
-    columns: (1fr, 1fr),
-    column-gutter: 30pt,
-    [
-      === Illustrations
-      #v(0.2cm)
-      All illustrations in this edition were created by *Nano Banana* and are used with permission. The illustrations feature Herman the Donkey and Corn the Sloth — two crocheted characters who guide readers through wartime preparedness with warmth, humour, and heart.
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 30pt,
+  [
+    === Author
 
-      #v(0.3cm)
-      === Characters
-      #v(0.2cm)
-      *Herman the Donkey* — Health & Safety Expert. Steadfast, prepared, always carrying the right gear. Herman represents the practical side of readiness.
+    *Daniel Rosehill* is a technology communications specialist based in Jerusalem, Israel. He lives in Rehavia with his wife Hannah and their two crocheted companions, Herman and Corn. Daniel creates open-source tools, technical documentation, and AI-assisted workflows. This guide was written with AI assistance from Claude Opus (Anthropic).
 
-      #v(0.2cm)
-      *Corn the Sloth* — Wellness Expert. Calm, mindful, and always reminding you to take care of yourself. Corn represents the human side of surviving conflict.
+    #link("https://danielrosehill.com")[danielrosehill.com]
 
-      #v(0.2cm)
-      Herman and Corn are the duo behind myweirdprompts.com. They live with Daniel and his wife Hannah in Rehavia, Jerusalem.
-
-      #v(0.3cm)
-      === Guide Author
-      #v(0.2cm)
-      *Daniel Rosehill* with AI assistance from *Claude Opus* (Anthropic). Based on publicly available guidance from the Israel Home Front Command (Pikud HaOref).
-    ],
-    [
-      === Illustration Index
-      #v(0.2cm)
-      #set text(size: 9pt)
-      #table(
-        columns: (1fr, 1fr),
-        inset: 6pt,
-        stroke: 0.5pt + grey-border,
-        fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
-        text(fill: white, weight: "bold")[Subject], text(fill: white, weight: "bold")[Section],
-        [Cover], [Front cover],
-        [What's On The Agenda], [Table of Contents],
-        [Using Checklists], [Ch. 1],
-        [Quick Checks], [Quick Reference],
-        [Making Way to Shelter], [§2.4],
-        [Leaving Shelter], [§2.2],
-        [Waking Up to Alert], [§2.5],
-        [Alert Fatigue], [§2.6],
-        [Wellness], [§2.7],
-        [Resupplying], [§2.8],
-        [OPSEC], [§2.11],
-        [Shabbat Prep], [Ch. 3],
-        [BRACED], [Ch. 4],
-        [Regular Checks], [Ch. 5],
-        [N95 in Backpack], [§5.3],
-        [Situational Awareness], [§5.7],
-        [Daytime Posture], [§6.1],
-        [Returning Home], [§6.2],
-        [Before Shower], [§6.3],
-        [Before Bed], [§6.4],
-        [Before Leaving], [§6.5],
-        [Bathing Children], [§2.3],
-        [Headlamp], [Part I divider],
-        [Water Stock-Up], [Part II divider],
-        [Emergency Water], [Part III divider],
-      )
-    ],
-  )
-]
-
-// ══════════════════════════════════════════════
-// DISCLAIMER (LAST PAGE)
-// ══════════════════════════════════════════════
-#set-section("Disclaimer", colour: sec-col-app)
-
-#pagebreak()
-
-#block(
-  width: 100%,
-  inset: 16pt,
-  fill: grey-light,
-  radius: 8pt,
-  stroke: 1pt + grey-border,
-)[
-  #align(center, text(size: 14pt, weight: "bold", fill: blue-dark)[Disclaimer])
-  #v(0.3cm)
-
-  This document is *not an official government resource*. It is a community-authored field guide compiled by Daniel Rosehill with AI assistance (Claude Opus), based on publicly available guidance from the Israel Home Front Command (Pikud HaOref / פיקוד העורף).
-
-  #v(0.2cm)
-  *Grounding source:* Cross-referenced against official HFC guidance from oref.org.il, archived *20 March 2026*. Source HTML files preserved in the `sources/hfc-official/` directory.
-
-  #v(0.2cm)
-  *Always defer to official instructions* from HFC, the IDF, Israel Police, and local authorities. This document is provided as-is, with no warranty.
-
-  #v(0.3cm)
-  #align(center)[
-    *Official source:* oref.org.il  |  *HFC Hotline:* 104
     #v(0.3cm)
-    #image(beyahad, width: 5cm)
+
+    === Illustrations
+
+    All illustrations by *Nano Banana*, featuring Herman the Donkey and Corn the Sloth — two crocheted characters who bring warmth and humour to wartime preparedness.
+
     #v(0.3cm)
-    _Share freely with attribution. Modify as needed for your household._
-  ]
-]
+
+    === Characters
+
+    *Herman the Donkey* — Health & Safety Expert. Steadfast, practical, always carrying the right gear.
+
+    *Corn the Sloth* — Wellness Expert. Calm, mindful, always reminding you to look after yourself.
+
+    Herman and Corn are the co-hosts of *My Weird Prompts*, an AI-generated podcast exploring the strange and wonderful corners of artificial intelligence. They live with Daniel and Hannah in Rehavia, Jerusalem.
+
+    #link("https://myweirdprompts.com")[myweirdprompts.com]
+  ],
+  [
+    === Disclaimer
+
+    This document is *not an official government resource*. It is a community-authored field guide based on publicly available guidance from the Israel Home Front Command (Pikud HaOref).
+
+    Cross-referenced against official HFC guidance from oref.org.il, archived 20 March 2026.
+
+    *Always defer to official instructions* from HFC, the IDF, Israel Police, and local authorities. This document is provided as-is, with no warranty.
+
+    #v(0.3cm)
+
+    #block(
+      width: 100%,
+      inset: 10pt,
+      fill: red-light,
+      radius: 6pt,
+      stroke: 1pt + red-alert,
+    )[
+      *Official source:* oref.org.il \
+      *HFC Hotline:* 104
+    ]
+
+    #v(0.3cm)
+
+    #align(center)[
+      #image(beyahad, width: 5cm)
+      #v(0.2cm)
+      _Share freely with attribution. Modify as needed for your household._
+    ]
+  ],
+)
