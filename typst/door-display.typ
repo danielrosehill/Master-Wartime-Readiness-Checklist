@@ -2,7 +2,7 @@
 // Designed for printing and posting on doors or walls.
 
 #import "printables/preamble.typ": *
-#import "printables/01-paws-bed.typ": quick-readiness-content
+#import "printables/01-braced.typ": quick-readiness-content
 #import "printables/02-daytime-posture.typ": daytime-posture-content
 #import "printables/03-before-bed.typ": before-bed-content
 #import "printables/05-before-shower.typ": before-shower-content

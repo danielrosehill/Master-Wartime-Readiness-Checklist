@@ -1,5 +1,5 @@
 // Israel Wartime Readiness Field Guide — Typst Source
-// V4: Expanded edition — Ch6 Shabbat, quick ref cards, new appendices (G/H/I)
+// V5: Restructured — narrative first, then checklists, then appendices. BRACED mnemonic.
 
 #import "@preview/fletcher:0.5.7" as fletcher: diagram, node, edge
 #import "@preview/fontawesome:0.5.0": *
@@ -43,11 +43,11 @@
 
 // Section colour palette (alternates by section for thumb-indexing)
 #let sec-col-ch1 = rgb("#2563a0")  // Blue — How To Use
-#let sec-col-ch2 = rgb("#0e7c47")  // Green — PAWS BED
-#let sec-col-ch3 = rgb("#c0392b")  // Red — Master Checklist
-#let sec-col-ch4 = rgb("#d35400")  // Orange — Situational
-#let sec-col-ch5 = rgb("#2980b9")  // Light Blue — Guidance
-#let sec-col-ch6 = rgb("#8e44ad")  // Purple — Shabbat/Hag
+#let sec-col-ch2 = rgb("#2980b9")  // Light Blue — Guidance Notes
+#let sec-col-ch3 = rgb("#8e44ad")  // Purple — Shabbat/Hag
+#let sec-col-ch4 = rgb("#0e7c47")  // Green — BRACED
+#let sec-col-ch5 = rgb("#c0392b")  // Red — Master Checklist
+#let sec-col-ch6 = rgb("#d35400")  // Orange — Situational
 #let sec-col-app = rgb("#7b4ea3")  // Plum — Appendices
 
 // ──────────────────────────────────────────────
@@ -93,7 +93,7 @@
         columns: (1fr, auto, 1fr),
         column-gutter: 8pt,
         align(left, text(size: 7pt, fill: grey-text)[
-          Israel Wartime Readiness Field Guide · V4 · 20 March 2026 \
+          Israel Wartime Readiness Field Guide · V5 · 22 March 2026 \
           Daniel Rosehill + Claude Opus
         ]),
         align(center + horizon, image(beyahad, height: 0.8cm)),
@@ -129,16 +129,16 @@
     inset: (x: 14pt, y: 12pt),
     fill: blue-dark,
     radius: 4pt,
-    text(size: 16pt, weight: "bold", fill: white)[#it.body]
+    text(size: 18pt, weight: "bold", fill: white)[#it.body]
   )
-  v(0.3cm)
+  v(0.4cm)
 }
 
 #show heading.where(level: 2): it => {
-  v(0.4cm)
+  v(0.5cm)
   block(
     width: 100%,
-    below: 8pt,
+    below: 10pt,
     {
       text(size: 13pt, weight: "bold", fill: blue-mid)[#it.body]
       v(-2pt)
@@ -261,6 +261,23 @@
   )
 }
 
+// Part divider page
+#let part-page(number, title, subtitle) = {
+  page(header: none, footer: none)[
+    #v(1fr)
+    #align(center)[
+      #text(size: 14pt, fill: grey-text, weight: "bold", tracking: 0.3em)[PART #number]
+      #v(0.4cm)
+      #block(width: 30%, height: 2.5pt, fill: blue-accent, radius: 1pt)
+      #v(0.4cm)
+      #text(size: 28pt, fill: blue-dark, weight: "bold")[#title]
+      #v(0.3cm)
+      #text(size: 11pt, fill: grey-text, style: "italic")[#subtitle]
+    ]
+    #v(1fr)
+  ]
+}
+
 // ══════════════════════════════════════════════
 // COVER PAGE
 // ══════════════════════════════════════════════
@@ -331,8 +348,8 @@
         columns: (auto, 1fr),
         column-gutter: 12pt,
         row-gutter: 5pt,
-        [*Version*], [4],
-        [*Date*], [20 March 2026],
+        [*Version*], [5],
+        [*Date*], [22 March 2026],
         [*Author*], [Daniel Rosehill + Claude Opus],
         [*Warranty*], [None — use/modify as desired],
       )
@@ -348,7 +365,7 @@
 ]
 
 // ══════════════════════════════════════════════
-// TABLE OF CONTENTS (with page numbers)
+// TABLE OF CONTENTS
 // ══════════════════════════════════════════════
 #page(header: none, footer: none)[
   #v(0.5cm)
@@ -358,7 +375,6 @@
   #set text(size: 10pt)
   #set par(leading: 0.5em)
 
-  // We use outline for automatic page numbers
   #outline(title: none, depth: 2)
 
   #v(1fr)
@@ -539,6 +555,14 @@
   ]
 ]
 
+// ══════════════════════════════════════════════════════════════════════════════
+//
+//  PART I — THE GUIDE
+//
+// ══════════════════════════════════════════════════════════════════════════════
+
+#part-page("I", "The Guide", "How to use this document, detailed guidance notes, and special-situation protocols.")
+
 // ══════════════════════════════════════════════
 // CHAPTER 1: HOW TO USE THIS DOCUMENT
 // ══════════════════════════════════════════════
@@ -579,20 +603,559 @@ During routine periods:
   align: left,
   text(fill: white, weight: "bold", size: 9pt)[CHECKLIST],
   text(fill: white, weight: "bold", size: 9pt)[WHEN TO RUN],
-  [*Full Master Checklist* (Ch. 3)], [Start of any escalation or war · After evacuation · Weekly during sustained conflict],
-  [*Quick Smoke Test — PAWS BED* (Ch. 2)], [Daily during wartime · Weekly during elevated tension · Monthly during routine],
-  [*Situational Checklists* (Ch. 4)], [Every time, during wartime or escalation],
+  [*Full Master Checklist* (Ch. 5)], [Start of any escalation or war · After evacuation · Weekly during sustained conflict],
+  [*Quick Smoke Test — BRACED* (Ch. 4)], [Daily during wartime · Weekly during elevated tension · Monthly during routine],
+  [*Situational Checklists* (Ch. 6)], [Every time, during wartime or escalation],
 )
 
 #v(0.3cm)
 #warning-box[Items marked with #critical are *critical* — do not skip these under any circumstances.]
 
 // ══════════════════════════════════════════════
-// CHAPTER 2: PAWS BED
+// CHAPTER 2: GUIDANCE NOTES
 // ══════════════════════════════════════════════
-#set-section("Ch. 2: PAWS BED", colour: sec-col-ch2)
+#set-section("Ch. 2: Guidance Notes", colour: sec-col-ch2)
 
-= Chapter 2: Quick Smoke Test — "PAWS BED"
+= Chapter 2: Guidance Notes
+
+== 2.1 Choosing a Go Bag #h(6pt) #icon-bag
+
+#tip-box()[
+  Your go bag is the single most important physical item in your readiness kit. *Use a backpack, not a tote bag.* See Appendix H for a full packing list.
+]
+
+#v(0.3cm)
+
+You need both hands free. You may be carrying a child, holding a torch, opening doors, or navigating stairs in the dark.
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 12pt,
+  block(
+    width: 100%,
+    inset: 10pt,
+    fill: green-light,
+    radius: 6pt,
+    stroke: 1pt + green-calm,
+  )[
+    #text(weight: "bold", fill: green-calm)[✓ What to look for]
+    #v(4pt)
+    - *Two shoulder straps* with padding
+    - *Chest strap and/or waist strap*
+    - *Water-resistant material*
+    - *30–40 litre capacity*
+    - *Multiple compartments* — find things in the dark by feel
+    - *Durable zips*
+    - *Dark or neutral colour*
+  ],
+  block(
+    width: 100%,
+    inset: 10pt,
+    fill: red-light,
+    radius: 6pt,
+    stroke: 1pt + red-alert,
+  )[
+    #text(weight: "bold", fill: red-alert)[✗ What to avoid]
+    #v(4pt)
+    - Tote bags, drawstring bags, single-strap slings
+    - Wheeled luggage — useless on stairs or rubble
+    - Very large bags (60L+) — too heavy
+    - Fashion bags with no structure
+  ],
+)
+
+#v(0.3cm)
+
+#block(
+  width: 100%,
+  inset: 10pt,
+  fill: blue-light,
+  radius: 6pt,
+  stroke: 1pt + blue-accent,
+)[
+  #text(weight: "bold", fill: blue-dark)[Once selected]
+  #v(4pt)
+  - Affix *reflective tape* to straps
+  - Assign each item a *fixed pocket*
+  - Keep it *by the front door*
+]
+
+#pagebreak()
+== 2.2 In Shelter — When To Leave
+
+#warning-box[
+  *Wait for the all-clear.* Do NOT leave your protected space until you receive an all-clear from HFC (via the app, official media, or the all-clear siren pattern).
+]
+
+#v(0.2cm)
+
+*If you have no connectivity* (phone dead, no signal, no internet):
+- *Stay in shelter.* The default when you have no information is to remain in place
+- Do NOT assume the situation is over because it has been quiet
+- If you have a radio, tune to a national station
+- *When in doubt, stay longer.* Leaving too early is far more dangerous than staying too long
+
+Many casualties occur because people leave shelter prematurely.
+
+== 2.3 In Shelter — Behaviour
+
+=== #icon-baby Children
+
+- #text(weight: "bold")[Use a calm, steady voice.] Children take their cues from adults
+- #text(weight: "bold")[Explain simply:] _"We're in our safe room. We wait here until we're told it's safe"_
+- #text(weight: "bold")[Have a comfort item ready] — one in the mamad, one in the go bag
+- #text(weight: "bold")[Hold young children close] — physical contact is reassuring
+- #text(weight: "bold")[Do not lie] — children hear sirens. Acknowledge and redirect to the plan
+
+=== #icon-shield General
+
+- #icon-shield *Sit against an inner wall,* below window line
+- #text(fill: red-alert, weight: "bold")[Do NOT use elevators] during or after an alert
+- #text(fill: red-alert, weight: "bold")[Do NOT go outside to photograph interceptions] — falling debris causes injuries
+- #icon-door *Keep the mamad/shelter door closed* until the all-clear
+- #icon-bolt If you smell gas or see structural damage, *move to alternative shelter* and call *102*
+- #icon-phone After the all-clear, *send a brief safety confirmation* to family
+- #text(fill: red-alert, weight: "bold")[Do not spread unverified information]
+
+== 2.4 Moving Safely to a Public Shelter
+
+The journey to shelter is one of the most dangerous moments.
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 12pt,
+  [
+    === Before you move
+    - Know where you're going
+    - Grab go bag only if on the route
+    - Secure children first, then move
+
+    === On the stairs
+    - *Hold the handrail*
+    - Do NOT run — fast, controlled walk
+    - Stay to one side
+  ],
+  [
+    === Outside
+    - *Watch the ground* — glass, uneven pavement
+    - Do NOT run across roads without looking
+    - Wear closed-toe shoes
+    - If shelter unreachable, enter nearest building or lie flat
+
+    === At the shelter door
+    - Let children, elderly, mobility-limited enter first
+    - Move away from entrance once inside
+  ],
+)
+
+#v(0.3cm)
+#warning-box[
+  *Common injuries:* Falls on stairs (wet, dark, socks) · Tripping on uneven ground · Cuts from bare feet on debris · Collisions in narrow hallways · Panic-related sprains
+]
+
+#pagebreak()
+== 2.5 Waking Up to a Night Alarm #h(6pt) #icon-moon
+
+This is one of the hardest scenarios. Everything in §6.4 exists to make this moment survivable on autopilot.
+
+#block(
+  width: 100%,
+  inset: 12pt,
+  fill: blue-light,
+  radius: 6pt,
+  stroke: 1pt + blue-accent,
+)[
+  === The first 5 seconds
+  + *Siren / Alert* — Do not process. Just move. #h(1fr) #ci[AWAKE — MOVING]
+  + *Shoes* — Same spot every night. #h(1fr) #ci[ON FEET]
+  + *Glasses & Phone* — From nightstand. #h(1fr) #ci[IN HAND]
+  + *Caffeine pill _(optional)_* — Sip of water. #h(1fr) #ci[TAKEN]
+
+  === The next 10–20 seconds
+  5. *Clothes* — Pull on whatever is laid out. Speed over appearance. #h(1fr) #ci[ON]
+  6. *Torch* — From nightstand if power is out. #h(1fr) #ci[IN HAND]
+  7. *Protected space* — Move to shelter or front door. #h(1fr) #ci[IN POSITION]
+
+  === For parents
+  8. *Children* — One parent → child/children. Other → go bag. #h(1fr) #ci[ROLES EXECUTING]
+  9. *Baby* — In babywear by door. Do not stop to dress them. #h(1fr) #ci[SECURED]
+]
+
+#v(0.3cm)
+#tip-box()[
+  #set text(size: 9pt)
+  *Do not think. Follow the procedure.* Every decision at 3am is one you should have made before bed. \
+  *Do not check your phone.* The siren means go. Read details in the shelter. \
+  *It gets easier.* After 2–3 night alarms, the routine becomes automatic.
+]
+
+== 2.6 Fighting Alert Fatigue
+
+#calm-box[
+  After days or weeks of alerts, the temptation to stop reacting is enormous. This is *alert fatigue* — a normal neurological process, not a character flaw. But it kills people.
+]
+
+#v(0.2cm)
+
+*Why it happens:*
+- Repeated exposure reduces your response — normal neurology
+- Most alerts end without personal impact, reinforcing false safety beliefs
+- Fatigue, stress, and disrupted sleep degrade motivation
+- Social pressure: if neighbours aren't sheltering, you feel permission to stop
+
+*How to fight it:*
+- *Reframe every alert as the first one.* The one you skip could be the one that matters
+- *Use the checklist mechanically.* They work when your judgment doesn't
+- *Keep your shoes on.* The single biggest predictor of whether someone will shelter
+- *Lower the effort, not the standard.* Sleep in clothes by the door — that's adapting
+- *Talk about it.* "I'm feeling alert fatigue. Let's keep going to shelter."
+- *Remember:* Civilian injuries spike in weeks 2–3, when alert fatigue peaks
+
+#pagebreak()
+== 2.7 Wellness During Protracted Conflict
+
+#calm-box[
+  Wars lasting weeks create cumulative strain different from acute stress. Readiness includes taking care of yourself.
+]
+
+#v(0.2cm)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 12pt,
+  [
+    === Physical
+    - *Sleep when you can.* Any sleep is better than none
+    - *Eat regular meals.* Stress suppresses appetite — eat anyway
+    - *Drink water.* Dehydration amplifies fatigue
+    - *Shower when you can.* Hygiene is a morale multiplier
+    - *Move your body.* Even 10 minutes of stretching
+    - *Manage medication.* Maintain a 72-hour buffer
+  ],
+  [
+    === Psychological
+    - *Limit news* to every 1–3 hours — don't doom-scroll
+    - *Maintain routines.* Even small ones stabilise
+    - *Stay connected.* Isolation amplifies stress
+    - *Acknowledge the difficulty.* "This is hard" is not weakness
+    - *Watch for warning signs* — insomnia, inability to eat, withdrawal, rage, numbness
+    - Call *ERAN (1201)* or *NATAL (1-800-363-363)*
+  ],
+)
+
+#v(0.2cm)
+
+*Children* need extra reassurance. Maintain bedtime routines. Don't dismiss fears — validate and redirect: _"Yes, it's scary. And we have a plan, and our safe room works, and we're together."_
+
+*Give yourself permission to function imperfectly.* Safety first, then wellbeing, then everything else.
+
+== 2.8 During Lulls — Resupply & Maintenance
+
+_When there's a pause in alerts — hours or days — use the window wisely. These lulls don't last._
+
+#v(0.2cm)
+
+#warning-box[*Stay alert even during quiet periods.* Keep your phone on, HFC app running, and shoes accessible. Lulls can end without warning.]
+
+#v(0.2cm)
+
+=== #icon-bag Resupply (with caution)
+
+#table(
+  columns: (auto, 1fr, 1.5fr),
+  inset: 9pt,
+  stroke: 0.5pt + grey-border,
+  fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
+  align: (center, left, left),
+  [],
+  text(fill: white, weight: "bold", size: 9pt)[TASK],
+  text(fill: white, weight: "bold", size: 9pt)[NOTES],
+
+  icon-water, [*Stock up on water*], [Top up to 72-hour supply per person (9L each)],
+  icon-food, [*Restock pantry*], [Canned goods, shelf-stable foods — see Appendix I],
+  icon-medkit, [*Fill prescriptions*], [If pharmacies are open — don't wait for the last pill],
+  icon-phone, [*Charge everything*], [All phones, power banks, laptops, torches, radios],
+  icon-bag, [*Repack go bag*], [Replace anything used; check expiry dates],
+  icon-car, [*Fill car fuel*], [At least half a tank; queues may be long],
+  [], [*Cash withdrawal*], [ATMs may go offline; keep small bills on hand],
+  [], [*Laundry*], [Clean clothes ready for the next round],
+)
+
+#v(0.2cm)
+
+=== #icon-house Home & Safety
+
+- *Check mamad/shelter* — anything displaced by shaking? Door still seals?
+- *Secure loose items* — objects may have shifted from impacts
+- *Test smoke detector and fire extinguisher* — infrastructure damage increases fire risk
+- *Check gas lines* — if you smell gas, shut off and call *102*
+
+=== #icon-people Personal & Family
+
+- *Contact family and friends* — confirm everyone is safe; update plans
+- *Fill prescriptions and medical supplies* — pharmacies may have limited hours
+- *Shave, shower, do laundry* — morale and normalcy matter
+- *Sleep* — real sleep, not a nap. Set an alarm if you're anxious about missing an alert
+- *Play with children* — normality is the best antidote to anxiety
+- *Walk outside briefly* — sunlight and fresh air if the area is safe
+
+#v(0.2cm)
+
+#tip-box()[
+  #set text(size: 9pt)
+  *Prioritise ruthlessly.* Water and medications first. Then power. Then food. Then everything else. Don't try to do it all — the lull may be short.
+]
+
+#pagebreak()
+== 2.9 Caring for Elderly Neighbours & Vulnerable People
+
+=== Before the escalation
+- *Know your neighbours* — especially those living alone or with limitations
+- *Exchange phone numbers*
+- *Establish a buddy system* — check on each other after every alert
+- *Know who holds a spare key*
+
+=== During alerts
+- Check on elderly/mobility-limited neighbours *on your way* (only if safe)
+- Help them to safest position: inner wall, away from windows
+- After the all-clear, *knock on their door* — 10 seconds
+
+=== Ongoing support
+- Check *food, water, medications*
+- Help with *technology* — phone charged, HFC app configured
+- *Offer to include them* in supply runs
+- If distressed: *118* (Welfare Ministry) or *\*8840* (Senior Citizens)
+
+#pagebreak()
+== 2.10 Using Communal / Public Shelters #h(6pt) #icon-shield
+
+#warning-box[
+  HFC maintains official shelter information. Check the HFC app or oref.org.il. This guidance supplements — does not replace — official instructions.
+]
+
+#v(0.2cm)
+
+*Finding shelters:* HFC app, building committee (vaad bayit), or physically walk to your nearest 3.
+
+*Access:* Many are locked — find the keyholder. Some have restricted hours. Report storage/access issues to municipality.
+
+*Etiquette:*
+- Make space — move to the back
+- *Priority:* children, elderly, pregnant women, people with disabilities
+- Keep noise down
+- Share resources with those who arrive without supplies
+- *Pets:* many shelters do not allow animals — check in advance
+- Bring something for children to do
+
+== 2.11 OPSEC & Information Discipline
+
+#warning-box[During wartime, what you share online can endanger lives — including your own.]
+
+#v(0.2cm)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 12pt,
+  [
+    === Do NOT share
+    - *Exact locations of impacts*
+    - *Military or emergency activity*
+    - *Photos/videos* revealing locations
+    - *Casualty info* before families notified
+  ],
+  [
+    === Do NOT believe
+    - Unverified reports on X, Telegram, WhatsApp
+    - "Breaking" news from unknown accounts
+    - Dramatic unconfirmed claims
+    - Screenshots from unverified sources
+  ],
+)
+
+#v(0.2cm)
+
+*Do:* Use *official sources* (HFC app, IDF Spokesperson, Israel Police, established media). Check before sharing. Tell others to delete sensitive location info.
+
+#block(
+  width: 100%,
+  inset: 10pt,
+  fill: grey-light,
+  radius: 4pt,
+)[
+  #align(center, text(style: "italic")[Even well-intentioned sharing can be lethal OPSEC. When in doubt, don't post.])
+]
+
+#pagebreak()
+== 2.12 Preliminary Guidelines (Advance Warning) #h(6pt) #icon-alert
+
+HFC provides *3–5 minute advance warning* for attacks from distant sources (e.g. Yemen).
+
+- Notification via HFC app *before* the siren
+- Does *NOT* require shelter entry
+- It means: *prepare.* Shoes on. Phone located. Know where you're going
+
+*What to do:*
+- *At home:* Ensure shoes, keys, phone, go bag in position
+- *Driving:* Look for a solid building to pull over near
+- *On public transport:* Follow crew instructions; bend below window line
+- *Outside with children:* Identify nearest shelter; gather children close
+
+*When the actual alert sounds:* follow standard shelter procedure (Appendix D).
+
+== 2.13 Terrorist Infiltration #h(6pt) #icon-shield
+
+#warning-box[*Different protocol* from rocket/missile response. Do NOT follow standard shelter procedure for rockets — stay *hidden*, not just sheltered.]
+
+#v(0.2cm)
+
+=== If Indoors
+
++ *Lock the house door*
++ *Leave lights on outside* the house (helps security forces navigate)
++ *Enter the Mamad* (protected room), close the door properly, sit *below the window line*
++ If no Mamad — enter a *hideaway* (internal room with lockable door, no windows)
++ *Do NOT exit* the protected space until official authorities announce the event has ended
+
+=== If Outdoors
+
++ *Immediately enter* the nearest protected place (building, shop, public structure)
++ Stay there until official authorities announce the event has ended
+
+=== If In a Vehicle
+
++ If you can keep driving — *get to a safe location nearby* as fast as possible
++ If you cannot drive — *stop on the side of the road*, seek nearby shelter offering maximum protection
++ Stay in shelter until official authorities announce the event has ended
+
+=== Critical Reminders
+
+#v(0.1cm)
+
+#block(
+  inset: 12pt,
+  fill: red-light,
+  radius: 4pt,
+  stroke: 0.5pt + red-alert,
+)[
+  - *Traffic in the area is prohibited* — entry banned until further notice
+  - If a *rocket/missile alert sounds during a terrorist infiltration* — do NOT go to a protected space outside the house, including the stairwell. Stay where you are
+  - *Do NOT dismantle the Mamad door handle.* Removing it damages the mechanism. To block entry from outside, barricade the handle with a heavy object
+  - *Do NOT share your location* on social networks or media channels
+  - *Stay updated* via Home Front Command messages on official platforms
+]
+
+*Licensed weapon holders:* Aim at front door. Fire only on positive ID.
+
+#pagebreak()
+
+== 2.14 Hostile Aerial Vehicle (UAV/Drone) Infiltration #h(6pt) #icon-alert
+
+#warning-box[UAV infiltration uses the *same siren* as rocket/missile attacks but has *different behavioural guidelines*. Shelter time is *10 minutes* unless updated.]
+
+#v(0.2cm)
+
+=== Means of Alert
+
+The alert is received through:
+- *Home Front Command App* — personal alert based on location (location services must be active) plus up to 10 areas of interest. The caption "Infiltration of a Hostile Aerial Vehicle" appears with guidelines
+- *National Emergency Portal* (oref.org.il) — targeted alert on your computer if you have defined alert areas
+- *Home Front Command Sirens* — rising and falling alarm (same sound as rocket/missile attack)
+- *Media* — radio stations, TV channels, and news websites broadcast the alert with area name and guidelines
+
+=== If Indoors
+
++ Go immediately to the *most protected space*: Mamad, Mamak, Mamam, shelter, inner stairwell, or inner room
++ *Stay in the protected space for 10 minutes*, unless another alert or additional guideline is received
+
+=== If Outdoors
+
++ *In a built-up area:* enter the optimal protected space in a nearby building. *Do not stay in the entrance hall*
++ *In an open area:* lie on the ground and protect your head with your hands. If you cannot lie down — crouch as much as possible and protect your head
++ *Wait* until an explicit guideline allows you to leave
+
+=== If In a Vehicle
+
++ *Stop at the side of the road*, exit the vehicle, and enter the optimal protected space in a nearby building
++ If no building is reachable — exit and move *away from the vehicle* beyond the shoulder or safety railing, lie down, and protect your head
++ Only if you *cannot exit* the vehicle — pull over, open the windows, and crouch below the window line
++ *Wait* until an explicit guideline allows you to leave
+
+=== If On Public Transport
+
++ *Inter-city / school buses:* driver stops at roadside and opens doors; passengers crouch below the window line and protect their heads
++ *Urban buses:* driver stops and opens doors for passengers to reach optimal protected space; if not reachable, crouch below window line
++ *Trains:* driver slows to 30 km/h; passengers crouch below window line in carriages and protect their heads
+
+#tip-box[*Key difference from rockets:* UAV alerts require a *10-minute shelter time* and you must wait for an explicit "all clear" — do not self-release based on quiet.]#footnote[Based on Home Front Command guidance as of 20 March 2026. Always verify with current HFC guidance at oref.org.il.]
+
+// ══════════════════════════════════════════════
+// CHAPTER 3: SHABBAT / HAG
+// ══════════════════════════════════════════════
+#set-section("Ch. 3: Shabbat / Hag", colour: sec-col-ch3)
+
+= Chapter 3: Shabbat / Hag (Observant Jews)
+
+_When phones are off and sirens are the only alert. Prepare before candle-lighting._
+
+#v(0.3cm)
+
+== 3.1 Before Shabbat / Hag
+
+#table(
+  columns: (auto, 1fr, 2fr),
+  inset: 9pt,
+  stroke: 0.5pt + grey-border,
+  fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
+  align: (center, left, left),
+  [],
+  text(fill: white, weight: "bold", size: 9pt)[ITEM],
+  text(fill: white, weight: "bold", size: 9pt)[CHECK],
+
+  icon-alert, [*Channel 14 / Gal Shaket* #critical], [#ci[PLAYING ON TV BEFORE SHABBAT] #linebreak() #ci(d: "Verify TV not muted")[VOLUME TESTED — AUDIBLE FROM BEDROOMS]],
+  icon-radio, [*Emergency Radio* #critical], [#ci[FREQUENCY AND OPERATION VERIFIED] #linebreak() #ci[VOLUME AT MAXIMUM] #linebreak() #ci[POWER SUPPLY — AC OR BATTERIES]],
+  icon-bag, [*Go Bag*], [#ci[BY DOOR] #h(4pt) #ci[CONTENTS VERIFIED]],
+  icon-bag, [*Shabbat Supplies*], [#ci(d: "Siddur, kiddush cup, snacks for shelter")[PACKED]],
+  icon-shoe, [*Shoes* #critical], [#ci(d: "Do not rely on slippers")[CLOSED-TOE BY BED AND BY DOOR]],
+  icon-shirt, [*Clothes*], [#ci(d: "Full outfit, not just pyjamas")[LAID OUT BY BED]],
+  icon-key, [*Keys*], [#ci[BY FRONT DOOR]],
+  [], [*Torch*], [#ci(d: "Pre-set on nightstand")[WITHIN ARM'S REACH]],
+)
+
+#v(0.3cm)
+
+#tip-box()[
+  #set text(size: 9pt)
+  *Pikuach nefesh* (preservation of life) overrides all Shabbat prohibitions. If a siren sounds, you may — and *must* — use your phone, carry items, and do whatever is needed to reach shelter safely. This is not a leniency; it is *halacha*.
+]
+
+== 3.2 During Shabbat / Hag
+
+- *Sirens are your primary alert.* Keep windows slightly open so you can hear outdoor sirens
+- *TV or radio must stay on and audible* throughout Shabbat — this is your only real-time information source
+- *Know your shelter route in the dark* — no phone torch available (unless siren sounds)
+- After an alert, *stay in shelter for 10 minutes or until all-clear on TV/radio*
+
+#v(0.2cm)
+
+#warning-box[
+  *If you hear a siren on Shabbat:* Move to shelter immediately. Carry children, phone, go bag — whatever you need. There is no halachic question here. #footnote[Based on Home Front Command protocol as of 20 March 2026. Consult your rabbi for specific halachic guidance.]
+]
+
+
+// ══════════════════════════════════════════════════════════════════════════════
+//
+//  PART II — CHECKLISTS
+//
+// ══════════════════════════════════════════════════════════════════════════════
+
+#part-page("II", "Checklists", "Rapid readiness checks, the full master checklist, and situational checklists for daily use.")
+
+// ══════════════════════════════════════════════
+// CHAPTER 4: BRACED
+// ══════════════════════════════════════════════
+#set-section("Ch. 4: BRACED", colour: sec-col-ch4)
+
+= Chapter 4: Quick Smoke Test — "BRACED"
 
 _Periodic rapid readiness check. Can be completed in under 2 minutes._
 
@@ -613,12 +1176,11 @@ _Periodic rapid readiness check. Can be completed in under 2 minutes._
     text(fill: white, weight: "bold")[\#],
     text(fill: white, weight: "bold")[CHECK],
     text(fill: white, weight: "bold")[VERIFY],
-    text(size: 18pt, weight: "bold", fill: blue-dark)[P], [#icon-phone *Phone*], [#ci[ON · CHARGED · HFC APP RUNNING · CORRECT AREA]],
-    text(size: 18pt, weight: "bold", fill: blue-dark)[A], [#icon-alert *Alerts*], [#ci[WIRELESS ALERTS ENABLED · DND OVERRIDE VERIFIED]],
-    text(size: 18pt, weight: "bold", fill: blue-dark)[W], [#icon-water *Water*], [#ci[72-HOUR SUPPLY ACCESSIBLE · NOT EXPIRED]],
-    text(size: 18pt, weight: "bold", fill: blue-dark)[S], [#icon-shield *Shelter*], [#ci[NEAREST 3 SHELTERS KNOWN · ROUTES WALKABLE]],
     text(size: 18pt, weight: "bold", fill: blue-dark)[B], [#icon-bag *Bag*], [#ci[BY DOOR · ZIPPED · CONTENTS VERIFIED]],
-    text(size: 18pt, weight: "bold", fill: blue-dark)[E], [#icon-door *Exit*], [#ci[HALLWAY CLEAR · DOOR UNLOCKABLE QUICKLY]],
+    text(size: 18pt, weight: "bold", fill: blue-dark)[R], [#icon-door *Route*], [#ci[EXIT HALLWAY CLEAR · DOOR UNLOCKABLE QUICKLY]],
+    text(size: 18pt, weight: "bold", fill: blue-dark)[A], [#icon-phone *Alerts*], [#ci[PHONE ON · CHARGED · HFC APP RUNNING · CORRECT AREA] #linebreak() #ci[WIRELESS ALERTS ENABLED · DND OVERRIDE VERIFIED]],
+    text(size: 18pt, weight: "bold", fill: blue-dark)[C], [#icon-shield *Cover*], [#ci[NEAREST 3 SHELTERS KNOWN · ROUTES WALKABLE]],
+    text(size: 18pt, weight: "bold", fill: blue-dark)[E], [#icon-water *Essentials*], [#ci[72-HOUR WATER SUPPLY ACCESSIBLE · NOT EXPIRED]],
     text(size: 18pt, weight: "bold", fill: blue-dark)[D], [#icon-people *Dependents*], [#ci[ALL HOUSEHOLD MEMBERS PRESENT OR ACCOUNTED FOR]],
   )
 ]
@@ -633,20 +1195,20 @@ _Periodic rapid readiness check. Can be completed in under 2 minutes._
   stroke: 1.5pt + blue-accent,
 )[
   #align(center)[
-    #text(size: 16pt, weight: "bold", fill: blue-dark)[Mnemonic: PAWS BED]
+    #text(size: 16pt, weight: "bold", fill: blue-dark)[Mnemonic: BRACED]
     #v(4pt)
-    #text(size: 12pt, fill: grey-text, style: "italic")["Check your PAWS before BED"]
+    #text(size: 12pt, fill: grey-text, style: "italic")["Stay BRACED"]
   ]
 ]
 
 // ══════════════════════════════════════════════
-// CHAPTER 3: MASTER CHECKLIST
+// CHAPTER 5: MASTER CHECKLIST
 // ══════════════════════════════════════════════
-#set-section("Ch. 3: Master Checklist", colour: sec-col-ch3)
+#set-section("Ch. 5: Master Checklist", colour: sec-col-ch5)
 
-= Chapter 3: Master Checklist
+= Chapter 5: Master Checklist
 
-== 3.1 Technical Systems & Alerts
+== 5.1 Technical Systems & Alerts
 
 #table(
   columns: (auto, 1fr, 2fr),
@@ -687,7 +1249,7 @@ _Periodic rapid readiness check. Can be completed in under 2 minutes._
 )
 
 #pagebreak()
-== 3.2 Home Environment
+== 5.2 Home Environment
 
 #table(
   columns: (auto, 1fr, 2fr),
@@ -703,7 +1265,7 @@ _Periodic rapid readiness check. Can be completed in under 2 minutes._
   [#ci(d: "Calc 3L/Person/Day. Resupply when necessary")[72 HOURS SUPPLY — READY]],
 
   icon-food, [*Food* #critical],
-  [#ci(d: "See Appendix H for Israeli pantry staples")[PANTRY GOODS — STOCKED]],
+  [#ci(d: "See Appendix I for Israeli pantry staples")[PANTRY GOODS — STOCKED]],
 
   [], [*Torch*],
   [#ci(d: "Hand crank or battery with reserve")[ACCESSIBLE]],
@@ -743,9 +1305,9 @@ _Periodic rapid readiness check. Can be completed in under 2 minutes._
 ]
 
 #pagebreak()
-== 3.3 Go Bag #h(6pt) #icon-bag
+== 5.3 Go Bag #h(6pt) #icon-bag
 
-_See Chapter 5 §5.1 and Appendix G for detailed go bag guidance._
+_See Chapter 2 §2.1 and Appendix H for detailed go bag guidance._
 
 #table(
   columns: (1fr, 2.5fr),
@@ -815,7 +1377,7 @@ _See Chapter 5 §5.1 and Appendix G for detailed go bag guidance._
 )
 
 #pagebreak()
-== 3.4 People & Dependents #h(6pt) #icon-people
+== 5.4 People & Dependents #h(6pt) #icon-people
 
 #table(
   columns: (1fr, 2.5fr),
@@ -832,7 +1394,7 @@ _See Chapter 5 §5.1 and Appendix G for detailed go bag guidance._
    #ci[PRESENT] #h(8pt) or #h(8pt) #ci[ACCOUNTED FOR AND CONTACTABLE]],
 )
 
-== 3.5 Babies & Young Children #h(6pt) #icon-baby
+== 5.5 Babies & Young Children #h(6pt) #icon-baby
 
 #table(
   columns: (1fr, 2.5fr),
@@ -858,7 +1420,7 @@ _See Chapter 5 §5.1 and Appendix G for detailed go bag guidance._
    #ci(d: "If needed")[FED] #h(8pt) #ci(d: "If needed")[CLEANED]],
 )
 
-== 3.6 Person & Personal Effects
+== 5.6 Person & Personal Effects
 
 #table(
   columns: (auto, 1fr, 1.3fr, 1.3fr),
@@ -882,7 +1444,7 @@ _See Chapter 5 §5.1 and Appendix G for detailed go bag guidance._
 )
 
 #pagebreak()
-== 3.7 Situational Awareness #h(6pt) #icon-eye
+== 5.7 Situational Awareness #h(6pt) #icon-eye
 
 #table(
   columns: (auto, 0.8fr, 1.5fr, 1fr),
@@ -911,13 +1473,13 @@ _See Chapter 5 §5.1 and Appendix G for detailed go bag guidance._
 )
 
 // ══════════════════════════════════════════════
-// CHAPTER 4: SITUATIONAL CHECKLISTS
+// CHAPTER 6: SITUATIONAL CHECKLISTS
 // ══════════════════════════════════════════════
-#set-section("Ch. 4: Situational", colour: sec-col-ch4)
+#set-section("Ch. 6: Situational", colour: sec-col-ch6)
 
-= Chapter 4: Situational Checklists
+= Chapter 6: Situational Checklists
 
-== 4.1 Daytime At-Home Posture #h(6pt) #icon-sun
+== 6.1 Daytime At-Home Posture #h(6pt) #icon-sun
 
 _Quick status check while at home during the day. Run after waking, and repeat after any disruption._
 
@@ -951,7 +1513,7 @@ _Quick status check while at home during the day. Run after waking, and repeat a
 ]
 
 #pagebreak()
-== 4.2 After Returning From Shelter (Reset)
+== 6.2 After Returning From Shelter (Reset)
 
 _Run immediately after the all-clear. Restore full readiness before the next alert._
 
@@ -1000,7 +1562,7 @@ _Run immediately after the all-clear. Restore full readiness before the next ale
 ]
 
 #pagebreak()
-== 4.3 Before Showering #h(6pt) #icon-water
+== 6.3 Before Showering #h(6pt) #icon-water
 
 #table(
   columns: (auto, 1fr, 2fr),
@@ -1021,7 +1583,7 @@ _Run immediately after the all-clear. Restore full readiness before the next ale
   icon-clock, [*Keep It Short* #critical], [#ci(d: "You are at your most vulnerable; be quick")[TIME MINIMISED]],
 )
 
-== 4.4 Before Bed #h(6pt) #icon-moon
+== 6.4 Before Bed #h(6pt) #icon-moon
 
 #table(
   columns: (auto, 1fr, 2fr),
@@ -1048,7 +1610,7 @@ _Run immediately after the all-clear. Restore full readiness before the next ale
 )
 
 #pagebreak()
-== 4.5 Before Leaving Home #h(6pt) #icon-door
+== 6.5 Before Leaving Home #h(6pt) #icon-door
 
 #table(
   columns: (auto, 1fr, 2fr),
@@ -1069,535 +1631,14 @@ _Run immediately after the all-clear. Restore full readiness before the next ale
   icon-people, [*Household Notified*], [#ci[DESTINATION AND RETURN TIME COMMUNICATED]],
 )
 
-// ══════════════════════════════════════════════
-// CHAPTER 5: GUIDANCE NOTES
-// ══════════════════════════════════════════════
-#set-section("Ch. 5: Guidance Notes", colour: sec-col-ch5)
 
-= Chapter 5: Guidance Notes
+// ══════════════════════════════════════════════════════════════════════════════
+//
+//  PART III — APPENDICES
+//
+// ══════════════════════════════════════════════════════════════════════════════
 
-== 5.1 Choosing a Go Bag #h(6pt) #icon-bag
-
-#tip-box()[
-  Your go bag is the single most important physical item in your readiness kit. *Use a backpack, not a tote bag.* See Appendix G for a full packing list.
-]
-
-#v(0.3cm)
-
-You need both hands free. You may be carrying a child, holding a torch, opening doors, or navigating stairs in the dark.
-
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 12pt,
-  block(
-    width: 100%,
-    inset: 10pt,
-    fill: green-light,
-    radius: 6pt,
-    stroke: 1pt + green-calm,
-  )[
-    #text(weight: "bold", fill: green-calm)[✓ What to look for]
-    #v(4pt)
-    - *Two shoulder straps* with padding
-    - *Chest strap and/or waist strap*
-    - *Water-resistant material*
-    - *30–40 litre capacity*
-    - *Multiple compartments* — find things in the dark by feel
-    - *Durable zips*
-    - *Dark or neutral colour*
-  ],
-  block(
-    width: 100%,
-    inset: 10pt,
-    fill: red-light,
-    radius: 6pt,
-    stroke: 1pt + red-alert,
-  )[
-    #text(weight: "bold", fill: red-alert)[✗ What to avoid]
-    #v(4pt)
-    - Tote bags, drawstring bags, single-strap slings
-    - Wheeled luggage — useless on stairs or rubble
-    - Very large bags (60L+) — too heavy
-    - Fashion bags with no structure
-  ],
-)
-
-#v(0.3cm)
-
-#block(
-  width: 100%,
-  inset: 10pt,
-  fill: blue-light,
-  radius: 6pt,
-  stroke: 1pt + blue-accent,
-)[
-  #text(weight: "bold", fill: blue-dark)[Once selected]
-  #v(4pt)
-  - Affix *reflective tape* to straps
-  - Assign each item a *fixed pocket*
-  - Keep it *by the front door*
-]
-
-#pagebreak()
-== 5.2 In Shelter — When To Leave
-
-#warning-box[
-  *Wait for the all-clear.* Do NOT leave your protected space until you receive an all-clear from HFC (via the app, official media, or the all-clear siren pattern).
-]
-
-#v(0.2cm)
-
-*If you have no connectivity* (phone dead, no signal, no internet):
-- *Stay in shelter.* The default when you have no information is to remain in place
-- Do NOT assume the situation is over because it has been quiet
-- If you have a radio, tune to a national station
-- *When in doubt, stay longer.* Leaving too early is far more dangerous than staying too long
-
-Many casualties occur because people leave shelter prematurely.
-
-== 5.3 In Shelter — Behaviour
-
-=== #icon-baby Children
-
-- #text(weight: "bold")[Use a calm, steady voice.] Children take their cues from adults
-- #text(weight: "bold")[Explain simply:] _"We're in our safe room. We wait here until we're told it's safe"_
-- #text(weight: "bold")[Have a comfort item ready] — one in the mamad, one in the go bag
-- #text(weight: "bold")[Hold young children close] — physical contact is reassuring
-- #text(weight: "bold")[Do not lie] — children hear sirens. Acknowledge and redirect to the plan
-
-=== #icon-shield General
-
-- #icon-shield *Sit against an inner wall,* below window line
-- #text(fill: red-alert, weight: "bold")[Do NOT use elevators] during or after an alert
-- #text(fill: red-alert, weight: "bold")[Do NOT go outside to photograph interceptions] — falling debris causes injuries
-- #icon-door *Keep the mamad/shelter door closed* until the all-clear
-- #icon-bolt If you smell gas or see structural damage, *move to alternative shelter* and call *102*
-- #icon-phone After the all-clear, *send a brief safety confirmation* to family
-- #text(fill: red-alert, weight: "bold")[Do not spread unverified information]
-
-== 5.4 Moving Safely to a Public Shelter
-
-The journey to shelter is one of the most dangerous moments.
-
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 12pt,
-  [
-    === Before you move
-    - Know where you're going
-    - Grab go bag only if on the route
-    - Secure children first, then move
-
-    === On the stairs
-    - *Hold the handrail*
-    - Do NOT run — fast, controlled walk
-    - Stay to one side
-  ],
-  [
-    === Outside
-    - *Watch the ground* — glass, uneven pavement
-    - Do NOT run across roads without looking
-    - Wear closed-toe shoes
-    - If shelter unreachable, enter nearest building or lie flat
-
-    === At the shelter door
-    - Let children, elderly, mobility-limited enter first
-    - Move away from entrance once inside
-  ],
-)
-
-#v(0.3cm)
-#warning-box[
-  *Common injuries:* Falls on stairs (wet, dark, socks) · Tripping on uneven ground · Cuts from bare feet on debris · Collisions in narrow hallways · Panic-related sprains
-]
-
-#pagebreak()
-== 5.5 Waking Up to a Night Alarm #h(6pt) #icon-moon
-
-This is one of the hardest scenarios. Everything in §4.4 exists to make this moment survivable on autopilot.
-
-#block(
-  width: 100%,
-  inset: 12pt,
-  fill: blue-light,
-  radius: 6pt,
-  stroke: 1pt + blue-accent,
-)[
-  === The first 5 seconds
-  + *Siren / Alert* — Do not process. Just move. #h(1fr) #ci[AWAKE — MOVING]
-  + *Shoes* — Same spot every night. #h(1fr) #ci[ON FEET]
-  + *Glasses & Phone* — From nightstand. #h(1fr) #ci[IN HAND]
-  + *Caffeine pill _(optional)_* — Sip of water. #h(1fr) #ci[TAKEN]
-
-  === The next 10–20 seconds
-  5. *Clothes* — Pull on whatever is laid out. Speed over appearance. #h(1fr) #ci[ON]
-  6. *Torch* — From nightstand if power is out. #h(1fr) #ci[IN HAND]
-  7. *Protected space* — Move to shelter or front door. #h(1fr) #ci[IN POSITION]
-
-  === For parents
-  8. *Children* — One parent → child/children. Other → go bag. #h(1fr) #ci[ROLES EXECUTING]
-  9. *Baby* — In babywear by door. Do not stop to dress them. #h(1fr) #ci[SECURED]
-]
-
-#v(0.3cm)
-#tip-box()[
-  #set text(size: 9pt)
-  *Do not think. Follow the procedure.* Every decision at 3am is one you should have made before bed. \
-  *Do not check your phone.* The siren means go. Read details in the shelter. \
-  *It gets easier.* After 2–3 night alarms, the routine becomes automatic.
-]
-
-== 5.6 Fighting Alert Fatigue
-
-#calm-box[
-  After days or weeks of alerts, the temptation to stop reacting is enormous. This is *alert fatigue* — a normal neurological process, not a character flaw. But it kills people.
-]
-
-#v(0.2cm)
-
-*Why it happens:*
-- Repeated exposure reduces your response — normal neurology
-- Most alerts end without personal impact, reinforcing false safety beliefs
-- Fatigue, stress, and disrupted sleep degrade motivation
-- Social pressure: if neighbours aren't sheltering, you feel permission to stop
-
-*How to fight it:*
-- *Reframe every alert as the first one.* The one you skip could be the one that matters
-- *Use the checklist mechanically.* They work when your judgment doesn't
-- *Keep your shoes on.* The single biggest predictor of whether someone will shelter
-- *Lower the effort, not the standard.* Sleep in clothes by the door — that's adapting
-- *Talk about it.* "I'm feeling alert fatigue. Let's keep going to shelter."
-- *Remember:* Civilian injuries spike in weeks 2–3, when alert fatigue peaks
-
-#pagebreak()
-== 5.7 Wellness During Protracted Conflict
-
-#calm-box[
-  Wars lasting weeks create cumulative strain different from acute stress. Readiness includes taking care of yourself.
-]
-
-#v(0.2cm)
-
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 12pt,
-  [
-    === Physical
-    - *Sleep when you can.* Any sleep is better than none
-    - *Eat regular meals.* Stress suppresses appetite — eat anyway
-    - *Drink water.* Dehydration amplifies fatigue
-    - *Shower when you can.* Hygiene is a morale multiplier
-    - *Move your body.* Even 10 minutes of stretching
-    - *Manage medication.* Maintain a 72-hour buffer
-  ],
-  [
-    === Psychological
-    - *Limit news* to every 1–3 hours — don't doom-scroll
-    - *Maintain routines.* Even small ones stabilise
-    - *Stay connected.* Isolation amplifies stress
-    - *Acknowledge the difficulty.* "This is hard" is not weakness
-    - *Watch for warning signs* — insomnia, inability to eat, withdrawal, rage, numbness
-    - Call *ERAN (1201)* or *NATAL (1-800-363-363)*
-  ],
-)
-
-#v(0.2cm)
-
-*Children* need extra reassurance. Maintain bedtime routines. Don't dismiss fears — validate and redirect: _"Yes, it's scary. And we have a plan, and our safe room works, and we're together."_
-
-*Give yourself permission to function imperfectly.* Safety first, then wellbeing, then everything else.
-
-== 5.8 During Lulls — Resupply & Maintenance
-
-_When there's a pause in alerts — hours or days — use the window wisely. These lulls don't last._
-
-#v(0.2cm)
-
-#warning-box[*Stay alert even during quiet periods.* Keep your phone on, HFC app running, and shoes accessible. Lulls can end without warning.]
-
-#v(0.2cm)
-
-=== #icon-bag Resupply (with caution)
-
-#table(
-  columns: (auto, 1fr, 1.5fr),
-  inset: 9pt,
-  stroke: 0.5pt + grey-border,
-  fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
-  align: (center, left, left),
-  [],
-  text(fill: white, weight: "bold", size: 9pt)[TASK],
-  text(fill: white, weight: "bold", size: 9pt)[NOTES],
-
-  icon-water, [*Stock up on water*], [Top up to 72-hour supply per person (9L each)],
-  icon-food, [*Restock pantry*], [Canned goods, shelf-stable foods — see Appendix I],
-  icon-medkit, [*Fill prescriptions*], [If pharmacies are open — don't wait for the last pill],
-  icon-phone, [*Charge everything*], [All phones, power banks, laptops, torches, radios],
-  icon-bag, [*Repack go bag*], [Replace anything used; check expiry dates],
-  icon-car, [*Fill car fuel*], [At least half a tank; queues may be long],
-  [], [*Cash withdrawal*], [ATMs may go offline; keep small bills on hand],
-  [], [*Laundry*], [Clean clothes ready for the next round],
-)
-
-#v(0.2cm)
-
-=== #icon-house Home & Safety
-
-- *Check mamad/shelter* — anything displaced by shaking? Door still seals?
-- *Secure loose items* — objects may have shifted from impacts
-- *Test smoke detector and fire extinguisher* — infrastructure damage increases fire risk
-- *Check gas lines* — if you smell gas, shut off and call *102*
-
-=== #icon-people Personal & Family
-
-- *Contact family and friends* — confirm everyone is safe; update plans
-- *Fill prescriptions and medical supplies* — pharmacies may have limited hours
-- *Shave, shower, do laundry* — morale and normalcy matter
-- *Sleep* — real sleep, not a nap. Set an alarm if you're anxious about missing an alert
-- *Play with children* — normality is the best antidote to anxiety
-- *Walk outside briefly* — sunlight and fresh air if the area is safe
-
-#v(0.2cm)
-
-#tip-box()[
-  #set text(size: 9pt)
-  *Prioritise ruthlessly.* Water and medications first. Then power. Then food. Then everything else. Don't try to do it all — the lull may be short.
-]
-
-#pagebreak()
-== 5.9 Caring for Elderly Neighbours & Vulnerable People
-
-=== Before the escalation
-- *Know your neighbours* — especially those living alone or with limitations
-- *Exchange phone numbers*
-- *Establish a buddy system* — check on each other after every alert
-- *Know who holds a spare key*
-
-=== During alerts
-- Check on elderly/mobility-limited neighbours *on your way* (only if safe)
-- Help them to safest position: inner wall, away from windows
-- After the all-clear, *knock on their door* — 10 seconds
-
-=== Ongoing support
-- Check *food, water, medications*
-- Help with *technology* — phone charged, HFC app configured
-- *Offer to include them* in supply runs
-- If distressed: *118* (Welfare Ministry) or *\*8840* (Senior Citizens)
-
-#pagebreak()
-== 5.10 Using Communal / Public Shelters #h(6pt) #icon-shield
-
-#warning-box[
-  HFC maintains official shelter information. Check the HFC app or oref.org.il. This guidance supplements — does not replace — official instructions.
-]
-
-#v(0.2cm)
-
-*Finding shelters:* HFC app, building committee (vaad bayit), or physically walk to your nearest 3.
-
-*Access:* Many are locked — find the keyholder. Some have restricted hours. Report storage/access issues to municipality.
-
-*Etiquette:*
-- Make space — move to the back
-- *Priority:* children, elderly, pregnant women, people with disabilities
-- Keep noise down
-- Share resources with those who arrive without supplies
-- *Pets:* many shelters do not allow animals — check in advance
-- Bring something for children to do
-
-== 5.11 OPSEC & Information Discipline
-
-#warning-box[During wartime, what you share online can endanger lives — including your own.]
-
-#v(0.2cm)
-
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 12pt,
-  [
-    === Do NOT share
-    - *Exact locations of impacts*
-    - *Military or emergency activity*
-    - *Photos/videos* revealing locations
-    - *Casualty info* before families notified
-  ],
-  [
-    === Do NOT believe
-    - Unverified reports on X, Telegram, WhatsApp
-    - "Breaking" news from unknown accounts
-    - Dramatic unconfirmed claims
-    - Screenshots from unverified sources
-  ],
-)
-
-#v(0.2cm)
-
-*Do:* Use *official sources* (HFC app, IDF Spokesperson, Israel Police, established media). Check before sharing. Tell others to delete sensitive location info.
-
-#block(
-  width: 100%,
-  inset: 10pt,
-  fill: grey-light,
-  radius: 4pt,
-)[
-  #align(center, text(style: "italic")[Even well-intentioned sharing can be lethal OPSEC. When in doubt, don't post.])
-]
-
-#pagebreak()
-== 5.12 Preliminary Guidelines (Advance Warning) #h(6pt) #icon-alert
-
-HFC provides *3–5 minute advance warning* for attacks from distant sources (e.g. Yemen).
-
-- Notification via HFC app *before* the siren
-- Does *NOT* require shelter entry
-- It means: *prepare.* Shoes on. Phone located. Know where you're going
-
-*What to do:*
-- *At home:* Ensure shoes, keys, phone, go bag in position
-- *Driving:* Look for a solid building to pull over near
-- *On public transport:* Follow crew instructions; bend below window line
-- *Outside with children:* Identify nearest shelter; gather children close
-
-*When the actual alert sounds:* follow standard shelter procedure (Appendix D).
-
-== 5.13 Terrorist Infiltration #h(6pt) #icon-shield
-
-#warning-box[*Different protocol* from rocket/missile response. Do NOT follow standard shelter procedure for rockets — stay *hidden*, not just sheltered.]
-
-#v(0.2cm)
-
-=== If Indoors
-
-+ *Lock the house door*
-+ *Leave lights on outside* the house (helps security forces navigate)
-+ *Enter the Mamad* (protected room), close the door properly, sit *below the window line*
-+ If no Mamad — enter a *hideaway* (internal room with lockable door, no windows)
-+ *Do NOT exit* the protected space until official authorities announce the event has ended
-
-=== If Outdoors
-
-+ *Immediately enter* the nearest protected place (building, shop, public structure)
-+ Stay there until official authorities announce the event has ended
-
-=== If In a Vehicle
-
-+ If you can keep driving — *get to a safe location nearby* as fast as possible
-+ If you cannot drive — *stop on the side of the road*, seek nearby shelter offering maximum protection
-+ Stay in shelter until official authorities announce the event has ended
-
-=== Critical Reminders
-
-#v(0.1cm)
-
-#block(
-  inset: 12pt,
-  fill: red-light,
-  radius: 4pt,
-  stroke: 0.5pt + red-alert,
-)[
-  - *Traffic in the area is prohibited* — entry banned until further notice
-  - If a *rocket/missile alert sounds during a terrorist infiltration* — do NOT go to a protected space outside the house, including the stairwell. Stay where you are
-  - *Do NOT dismantle the Mamad door handle.* Removing it damages the mechanism. To block entry from outside, barricade the handle with a heavy object
-  - *Do NOT share your location* on social networks or media channels
-  - *Stay updated* via Home Front Command messages on official platforms
-]
-
-*Licensed weapon holders:* Aim at front door. Fire only on positive ID.
-
-#pagebreak()
-
-== 5.14 Hostile Aerial Vehicle (UAV/Drone) Infiltration #h(6pt) #icon-alert
-
-#warning-box[UAV infiltration uses the *same siren* as rocket/missile attacks but has *different behavioural guidelines*. Shelter time is *10 minutes* unless updated.]
-
-#v(0.2cm)
-
-=== Means of Alert
-
-The alert is received through:
-- *Home Front Command App* — personal alert based on location (location services must be active) plus up to 10 areas of interest. The caption "Infiltration of a Hostile Aerial Vehicle" appears with guidelines
-- *National Emergency Portal* (oref.org.il) — targeted alert on your computer if you have defined alert areas
-- *Home Front Command Sirens* — rising and falling alarm (same sound as rocket/missile attack)
-- *Media* — radio stations, TV channels, and news websites broadcast the alert with area name and guidelines
-
-=== If Indoors
-
-+ Go immediately to the *most protected space*: Mamad, Mamak, Mamam, shelter, inner stairwell, or inner room
-+ *Stay in the protected space for 10 minutes*, unless another alert or additional guideline is received
-
-=== If Outdoors
-
-+ *In a built-up area:* enter the optimal protected space in a nearby building. *Do not stay in the entrance hall*
-+ *In an open area:* lie on the ground and protect your head with your hands. If you cannot lie down — crouch as much as possible and protect your head
-+ *Wait* until an explicit guideline allows you to leave
-
-=== If In a Vehicle
-
-+ *Stop at the side of the road*, exit the vehicle, and enter the optimal protected space in a nearby building
-+ If no building is reachable — exit and move *away from the vehicle* beyond the shoulder or safety railing, lie down, and protect your head
-+ Only if you *cannot exit* the vehicle — pull over, open the windows, and crouch below the window line
-+ *Wait* until an explicit guideline allows you to leave
-
-=== If On Public Transport
-
-+ *Inter-city / school buses:* driver stops at roadside and opens doors; passengers crouch below the window line and protect their heads
-+ *Urban buses:* driver stops and opens doors for passengers to reach optimal protected space; if not reachable, crouch below window line
-+ *Trains:* driver slows to 30 km/h; passengers crouch below window line in carriages and protect their heads
-
-#tip-box[*Key difference from rockets:* UAV alerts require a *10-minute shelter time* and you must wait for an explicit "all clear" — do not self-release based on quiet.]#footnote[Based on Home Front Command guidance as of 20 March 2026. Always verify with current HFC guidance at oref.org.il.]
-
-// ══════════════════════════════════════════════
-// CHAPTER 6: SHABBAT / HAG
-// ══════════════════════════════════════════════
-#set-section("Ch. 6: Shabbat / Hag", colour: sec-col-ch6)
-
-= Chapter 6: Shabbat / Hag (Observant Jews)
-
-_When phones are off and sirens are the only alert. Prepare before candle-lighting._
-
-#v(0.3cm)
-
-== 6.1 Before Shabbat / Hag
-
-#table(
-  columns: (auto, 1fr, 2fr),
-  inset: 9pt,
-  stroke: 0.5pt + grey-border,
-  fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
-  align: (center, left, left),
-  [],
-  text(fill: white, weight: "bold", size: 9pt)[ITEM],
-  text(fill: white, weight: "bold", size: 9pt)[CHECK],
-
-  icon-alert, [*Channel 14 / Gal Shaket* #critical], [#ci[PLAYING ON TV BEFORE SHABBAT] #linebreak() #ci(d: "Verify TV not muted")[VOLUME TESTED — AUDIBLE FROM BEDROOMS]],
-  icon-radio, [*Emergency Radio* #critical], [#ci[FREQUENCY AND OPERATION VERIFIED] #linebreak() #ci[VOLUME AT MAXIMUM] #linebreak() #ci[POWER SUPPLY — AC OR BATTERIES]],
-  icon-bag, [*Go Bag*], [#ci[BY DOOR] #h(4pt) #ci[CONTENTS VERIFIED]],
-  icon-bag, [*Shabbat Supplies*], [#ci(d: "Siddur, kiddush cup, snacks for shelter")[PACKED]],
-  icon-shoe, [*Shoes* #critical], [#ci(d: "Do not rely on slippers")[CLOSED-TOE BY BED AND BY DOOR]],
-  icon-shirt, [*Clothes*], [#ci(d: "Full outfit, not just pyjamas")[LAID OUT BY BED]],
-  icon-key, [*Keys*], [#ci[BY FRONT DOOR]],
-  [], [*Torch*], [#ci(d: "Pre-set on nightstand")[WITHIN ARM'S REACH]],
-)
-
-#v(0.3cm)
-
-#tip-box()[
-  #set text(size: 9pt)
-  *Pikuach nefesh* (preservation of life) overrides all Shabbat prohibitions. If a siren sounds, you may — and *must* — use your phone, carry items, and do whatever is needed to reach shelter safely. This is not a leniency; it is *halacha*.
-]
-
-== 6.2 During Shabbat / Hag
-
-- *Sirens are your primary alert.* Keep windows slightly open so you can hear outdoor sirens
-- *TV or radio must stay on and audible* throughout Shabbat — this is your only real-time information source
-- *Know your shelter route in the dark* — no phone torch available (unless siren sounds)
-- After an alert, *stay in shelter for 10 minutes or until all-clear on TV/radio*
-
-#v(0.2cm)
-
-#warning-box[
-  *If you hear a siren on Shabbat:* Move to shelter immediately. Carry children, phone, go bag — whatever you need. There is no halachic question here. #footnote[Based on Home Front Command protocol as of 20 March 2026. Consult your rabbi for specific halachic guidance.]
-]
+#part-page("III", "Appendices", "Reference material, emergency numbers, inspection checklists, and supplementary guidance.")
 
 // ══════════════════════════════════════════════
 // APPENDICES
@@ -2007,7 +2048,7 @@ _A detailed packing list. Adapt to your household size and needs._
   columns: (auto, 1fr, 1.5fr),
   inset: 8pt,
   stroke: 0.5pt + grey-border,
-  fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
+  fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { blue-light } else { white },
   align: (center, left, left),
   text(fill: white, weight: "bold", size: 9pt)[],
   text(fill: white, weight: "bold", size: 9pt)[ITEM],
@@ -2223,7 +2264,7 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
       #v(6pt)
       *Suggested placement:*
       #v(4pt)
-      - *PAWS BED* — on the fridge or front door (daily check)
+      - *BRACED* — on the fridge or front door (daily check)
       - *Daytime Posture* — on the fridge or home office
       - *Before Bed* — taped to bedroom door or nightstand
       - *After Shelter Reset* — in the mamad
@@ -2239,14 +2280,14 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
   ]
 ]
 
-// --- Printable 1: PAWS BED ---
+// --- Printable 1: BRACED ---
 #page(margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm), header: none, footer: none)[
   #block(
     width: 100%,
     inset: (x: 14pt, y: 10pt),
     fill: rgb("#0e7c47"),
     radius: 4pt,
-  )[#text(size: 14pt, weight: "bold", fill: white)[PAWS BED — Quick Smoke Test]]
+  )[#text(size: 14pt, weight: "bold", fill: white)[BRACED — Quick Smoke Test]]
   #v(0.2cm)
   #text(size: 9pt, style: "italic")[Daily during wartime · Weekly during elevated tension · Under 2 minutes.]
   #v(0.3cm)
@@ -2258,21 +2299,20 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
       fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { blue-light } else { white },
       align: (center, left, left),
       text(fill: white, weight: "bold")[LETTER], text(fill: white, weight: "bold")[CHECK], text(fill: white, weight: "bold")[VERIFY],
-      text(size: 20pt, weight: "bold", fill: blue-dark)[P], [#icon-phone *Phone*], [#ci[ON · CHARGED · HFC APP RUNNING · CORRECT AREA]],
-      text(size: 20pt, weight: "bold", fill: blue-dark)[A], [#icon-alert *Alerts*], [#ci[WIRELESS ALERTS ENABLED · DND OVERRIDE VERIFIED]],
-      text(size: 20pt, weight: "bold", fill: blue-dark)[W], [#icon-water *Water*], [#ci[72-HOUR SUPPLY ACCESSIBLE · NOT EXPIRED]],
-      text(size: 20pt, weight: "bold", fill: blue-dark)[S], [#icon-shield *Shelter*], [#ci[NEAREST 3 SHELTERS KNOWN · ROUTES WALKABLE]],
       text(size: 20pt, weight: "bold", fill: blue-dark)[B], [#icon-bag *Bag*], [#ci[BY DOOR · ZIPPED · CONTENTS VERIFIED]],
-      text(size: 20pt, weight: "bold", fill: blue-dark)[E], [#icon-door *Exit*], [#ci[HALLWAY CLEAR · DOOR UNLOCKABLE QUICKLY]],
+      text(size: 20pt, weight: "bold", fill: blue-dark)[R], [#icon-door *Route*], [#ci[EXIT HALLWAY CLEAR · DOOR UNLOCKABLE QUICKLY]],
+      text(size: 20pt, weight: "bold", fill: blue-dark)[A], [#icon-phone *Alerts*], [#ci[PHONE ON · CHARGED · HFC APP RUNNING · CORRECT AREA] #linebreak() #ci[WIRELESS ALERTS ENABLED · DND OVERRIDE VERIFIED]],
+      text(size: 20pt, weight: "bold", fill: blue-dark)[C], [#icon-shield *Cover*], [#ci[NEAREST 3 SHELTERS KNOWN · ROUTES WALKABLE]],
+      text(size: 20pt, weight: "bold", fill: blue-dark)[E], [#icon-water *Essentials*], [#ci[72-HOUR WATER SUPPLY ACCESSIBLE · NOT EXPIRED]],
       text(size: 20pt, weight: "bold", fill: blue-dark)[D], [#icon-people *Dependents*], [#ci[ALL HOUSEHOLD MEMBERS PRESENT OR ACCOUNTED FOR]],
     )
   ]
   #v(0.4cm)
   #block(width: 100%, inset: 14pt, fill: blue-light, radius: 8pt, stroke: 1.5pt + blue-accent)[
     #align(center)[
-      #text(size: 18pt, weight: "bold", fill: blue-dark)[Mnemonic: PAWS BED]
+      #text(size: 18pt, weight: "bold", fill: blue-dark)[Mnemonic: BRACED]
       #v(4pt)
-      #text(size: 13pt, fill: grey-text, style: "italic")["Check your PAWS before BED"]
+      #text(size: 13pt, fill: grey-text, style: "italic")["Stay BRACED"]
     ]
   ]
   #v(0.3cm)
@@ -2282,7 +2322,7 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
   #v(1fr)
   #line(length: 100%, stroke: 0.5pt + grey-border)
   #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V4 · danielrosehill.com #h(1fr) Print and post visibly.]
+  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V5 · danielrosehill.com #h(1fr) Print and post visibly.]
 ]
 
 // --- Printable 2: Daytime Posture ---
@@ -2320,7 +2360,7 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
   #v(1fr)
   #line(length: 100%, stroke: 0.5pt + grey-border)
   #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V4 · danielrosehill.com #h(1fr) Print and post visibly.]
+  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V5 · danielrosehill.com #h(1fr) Print and post visibly.]
 ]
 
 // --- Printable 3: Before Bed ---
@@ -2354,7 +2394,7 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
   #v(1fr)
   #line(length: 100%, stroke: 0.5pt + grey-border)
   #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V4 · danielrosehill.com #h(1fr) Print and post visibly.]
+  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V5 · danielrosehill.com #h(1fr) Print and post visibly.]
 ]
 
 // --- Printable 4: After Shelter Reset ---
@@ -2396,7 +2436,7 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
   #v(1fr)
   #line(length: 100%, stroke: 0.5pt + grey-border)
   #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V4 · danielrosehill.com #h(1fr) Print and post visibly.]
+  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V5 · danielrosehill.com #h(1fr) Print and post visibly.]
 ]
 
 // --- Printable 5: Before Showering ---
@@ -2433,7 +2473,7 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
   #v(1fr)
   #line(length: 100%, stroke: 0.5pt + grey-border)
   #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V4 · danielrosehill.com #h(1fr) Print and post visibly.]
+  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V5 · danielrosehill.com #h(1fr) Print and post visibly.]
 ]
 
 // --- Printable 6: Before Leaving Home ---
@@ -2472,7 +2512,7 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
   #v(1fr)
   #line(length: 100%, stroke: 0.5pt + grey-border)
   #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V4 · danielrosehill.com #h(1fr) Print and post visibly.]
+  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V5 · danielrosehill.com #h(1fr) Print and post visibly.]
 ]
 
 // --- Printable 7: Night Alarm ---
@@ -2515,7 +2555,7 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
   #v(1fr)
   #line(length: 100%, stroke: 0.5pt + grey-border)
   #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V4 · danielrosehill.com #h(1fr) Print and post visibly.]
+  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V5 · danielrosehill.com #h(1fr) Print and post visibly.]
 ]
 
 // --- Printable 8: Emergency Numbers ---
@@ -2563,7 +2603,7 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
   #v(1fr)
   #line(length: 100%, stroke: 0.5pt + grey-border)
   #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V4 · danielrosehill.com #h(1fr) Print and post visibly.]
+  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V5 · danielrosehill.com #h(1fr) Print and post visibly.]
 ]
 
 // --- Printable 9: Shabbat / Hag ---
@@ -2600,7 +2640,7 @@ _All sources from the Israel Home Front Command (Pikud HaOref) English-language 
   #v(1fr)
   #line(length: 100%, stroke: 0.5pt + grey-border)
   #v(3pt)
-  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V4 · danielrosehill.com #h(1fr) Print and post visibly.]
+  #text(size: 7pt, fill: grey-text)[Israel Wartime Readiness Field Guide · V5 · danielrosehill.com #h(1fr) Print and post visibly.]
 ]
 
 // ══════════════════════════════════════════════

@@ -6,7 +6,7 @@
 #import "printables/title-page.typ": title-page-content
 #import "printables/how-to-use.typ": how-to-use-content
 #import "printables/index-page.typ": index-page-content
-#import "printables/01-paws-bed.typ": quick-readiness-content
+#import "printables/01-braced.typ": quick-readiness-content
 #import "printables/02-daytime-posture.typ": daytime-posture-content
 #import "printables/03-before-bed.typ": before-bed-content
 #import "printables/04-after-shelter.typ": after-shelter-content
