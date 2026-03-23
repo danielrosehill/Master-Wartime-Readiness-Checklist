@@ -17,20 +17,15 @@
     align: (center, left, left),
     ..checklist-table-headers(),
     icon-eye, [*News Check* #critical],
-    [#cr-line("Active Alerts?", [*NONE*], d: "no active alerts in your area")],
+    [#cr-line("Active Alerts?", [*NONE*], d: "No active alerts in your area")],
     icon-phone, [*Phone* #critical],
-    [#cr-line("Volume?", [at *MAXIMUM*], d: "must be audible over water")
+    [#cr-line("Volume?", [at *MAXIMUM*], d: "Must be audible over water")
      #linebreak() #cr-line("Phone Location?", [*IN BATHROOM* or just outside door])],
-    icon-shirt, [*Clothes* #critical],
-    [#cr-line("Outfit?", [*FULL OUTFIT* in bathroom], d: "not in another room")],
-    icon-shoe, [*Footwear* #critical],
-    [#cr-line("Shoes?", [*CLOSED-TOE* by bathroom door])],
-    [], [*Towel*],
-    [#cr-line("Towel?", [*WITHIN REACH*], d: "for rapid dry-off")],
-    icon-door, [*Door*],
-    [#cr-line("Bathroom Door?", [*UNLOCKED*])],
-    icon-clock, [*Keep It Short* #critical],
-    [#cr-line("Time?", [*MINIMISED*], d: "be quick — get in, get out")],
+    icon-shirt, table.cell(colspan: 2)[#simple-line("Clothes", [FULL OUTFIT in bathroom], d: "Not in another room") #critical],
+    icon-shoe, table.cell(colspan: 2)[#simple-line("Footwear", [CLOSED-TOE by bathroom door]) #critical],
+    [], table.cell(colspan: 2)[#simple-line("Towel", [WITHIN REACH], d: "For rapid dry-off")],
+    icon-door, table.cell(colspan: 2)[#simple-line("Bathroom Door", [UNLOCKED])],
+    icon-clock, table.cell(colspan: 2)[#simple-line("Keep It Short", [GET IN, GET OUT], d: "Minimise shower time") #critical],
   )
 
   #v(0.4cm)

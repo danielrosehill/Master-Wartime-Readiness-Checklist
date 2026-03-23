@@ -18,20 +18,15 @@
     ..checklist-table-headers(),
     icon-bag, [*Go Bag* #critical],
     [#cr-line("Bag Position?", [*BACK BY DOOR*])
-     #linebreak() #cr-line("Bag Sealed?", [*RE-ZIPPED*], d: "did anything fall out?")],
+     #linebreak() #cr-line("Bag Sealed?", [*RE-ZIPPED*], d: "Did anything fall out?")],
     icon-phone, [*Phone* #critical],
-    [#cr-line("Charge Status?", [*ON CHARGE*], d: "if battery dropped")
+    [#cr-line("Charge Status?", [*ON CHARGE*], d: "If battery dropped")
      #linebreak() #cr-line("HFC App?", [still *RUNNING*])],
-    [], [*Power Bank*],
-    [#cr-line("Power Bank?", [*ON CHARGE*], d: "may have been used in shelter")],
-    icon-water, [*Water*],
-    [#cr-line("Emergency Supply?", [*RESUPPLIED*], d: "if you drank from emergency stock")],
-    icon-shirt, [*Clothes & Shoes*],
-    [#cr-line("Position?", [*BACK IN POSITION*], d: "by bed at night, on person during day")],
-    [], [*Torch*],
-    [#cr-line("Torch?", [*BACK IN POSITION*], d: "nightstand or go bag")],
-    icon-people, [*Dependents* #critical],
-    [#cr-line("Headcount?", [all *ACCOUNTED* for and *SAFE*])],
+    [], table.cell(colspan: 2)[#simple-line("Power Bank", [ON CHARGE], d: "May have been used in shelter")],
+    icon-water, table.cell(colspan: 2)[#simple-line("Water", [RESUPPLIED], d: "If you drank from emergency stock")],
+    icon-shirt, table.cell(colspan: 2)[#simple-line("Clothes & Shoes", [BACK IN POSITION], d: "By bed at night, on person during day")],
+    [], table.cell(colspan: 2)[#simple-line("Torch", [BACK IN POSITION], d: "Nightstand or go bag")],
+    icon-people, table.cell(colspan: 2)[#simple-line("Dependents", [all ACCOUNTED for and SAFE]) #critical],
   )
 
   #v(0.2cm)

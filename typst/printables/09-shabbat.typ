@@ -18,7 +18,7 @@
     ..checklist-table-headers(),
     icon-alert, [*TV / Channel 14* #critical],
     [#cr-line("TV On?", [*PLAYING* before Shabbat])
-     #linebreak() #cr-line("TV Volume?", [*AUDIBLE* from bedrooms], d: "verify not muted")],
+     #linebreak() #cr-line("TV Volume?", [*AUDIBLE* from bedrooms], d: "Verify not muted")],
     icon-radio, [*Emergency Radio* #critical],
     [#cr-line("Radio Frequency?", [*VERIFIED*])
      #linebreak() #cr-line("Radio Volume?", [at *MAXIMUM*])
@@ -26,18 +26,12 @@
     icon-bag, [*Go Bag*],
     [#cr-line("Bag Position?", [*BY DOOR*])
      #linebreak() #cr-line("Bag Contents?", [*VERIFIED*])],
-    icon-bag, [*Shabbat Supplies*],
-    [#cr-line("Shabbat Kit?", [*PACKED*], d: "siddur, kiddush cup, snacks for shelter")],
-    icon-shoe, [*Shoes* #critical],
-    [#cr-line("Footwear?", [*CLOSED-TOE* by bed and by door], d: "not slippers")],
-    icon-shirt, [*Clothes*],
-    [#cr-line("Outfit?", [*LAID OUT* by bed], d: "full outfit, not just pyjamas")],
-    icon-key, [*Keys*],
-    [#cr-line("Keys?", [*BY FRONT DOOR*])],
-    [], [*Torch*],
-    [#cr-line("Torch?", [*ARM'S REACH*], d: "pre-set on nightstand")],
-    [], [*Windows*],
-    [#cr-line("Windows?", [*SLIGHTLY OPEN*], d: "to hear outdoor sirens")],
+    icon-bag, table.cell(colspan: 2)[#simple-line("Shabbat Supplies", [PACKED], d: "Siddur, kiddush cup, snacks for shelter")],
+    icon-shoe, table.cell(colspan: 2)[#simple-line("Shoes", [CLOSED-TOE by bed and by door], d: "Not slippers") #critical],
+    icon-shirt, table.cell(colspan: 2)[#simple-line("Clothes", [LAID OUT by bed], d: "Full outfit, not just pyjamas")],
+    icon-key, table.cell(colspan: 2)[#simple-line("Keys", [BY FRONT DOOR])],
+    [], table.cell(colspan: 2)[#simple-line("Torch", [ARM'S REACH], d: "Pre-set on nightstand")],
+    [], table.cell(colspan: 2)[#simple-line("Windows", [SLIGHTLY OPEN], d: "To hear outdoor sirens")],
   )
   #v(0.25cm)
   #block(width: 100%, inset: 12pt, fill: rgb("#f3e5f5"), radius: 6pt, stroke: 1.5pt + purple-shab)[

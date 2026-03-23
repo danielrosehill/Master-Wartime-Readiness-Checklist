@@ -17,21 +17,18 @@
     align: (center, left, left),
     ..checklist-table-headers(),
     icon-phone, [*Phone* #critical],
-    [#cr-line("Phone Location?", [*ON PERSON*], d: "or within arm's reach")
+    [#cr-line("Phone Location?", [*ON PERSON*], d: "Or within arm's reach")
      #linebreak() #cr-line("Charge Status?", [*CHARGED* or *CHARGING*])
      #linebreak() #cr-line("HFC App?", [*RUNNING*])],
     icon-shirt, [*Dressed* #critical],
     [#cr-line("Clothing?", [*FULLY CLOTHED*])
-     #linebreak() #cr-line("Footwear?", [*CLOSED-TOE* shoes *ON*], d: "not slippers, not barefoot")],
-    icon-key, [*Keys* #critical],
-    [#cr-line("Keys?", [*ON PERSON* or *BY DOOR*])],
-    icon-bag, [*Go Bag* #critical],
-    [#cr-line("Bag Position?", [*BY DOOR*, *ZIPPED*])],
+     #linebreak() #cr-line("Footwear?", [*CLOSED-TOE* shoes *ON*], d: "Not slippers, not barefoot")],
+    icon-key, table.cell(colspan: 2)[#simple-line("Keys", [ON PERSON or BY DOOR]) #critical],
+    icon-bag, table.cell(colspan: 2)[#simple-line("Go Bag", [BY DOOR, ZIPPED]) #critical],
     icon-door, [*Exit Route* #critical],
     [#cr-line("Hallway?", [*CLEAR*])
      #linebreak() #cr-line("Front Door?", [*OPENS QUICKLY*])],
-    icon-laptop, [*Browser Alert*],
-    [#cr-line("Desktop Alert?", [Red Alert extension *ACTIVE*], d: "If working at desk")],
+    icon-laptop, table.cell(colspan: 2)[#simple-line("Browser Alert", [Red Alert extension ACTIVE], d: "If working at desk")],
     icon-eye, [*Situational Awareness*],
     [#cr-line("News Scan?", [*DONE* within last 1–3 hours], d: "HFC app + one gov source. Do not doom-scroll")],
   )

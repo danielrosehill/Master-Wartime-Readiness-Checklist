@@ -17,23 +17,23 @@
     align: (center, left, left),
     ..checklist-table-headers(),
     icon-eye, [*News Check* #critical],
-    [#cr-line("Active Alerts?", [*NONE*], d: "no active alerts in your area")],
+    [#cr-line("Active Alerts?", [*NONE*], d: "No active alerts in your area")],
     icon-phone, [*Phone* #critical],
-    [#cr-line("Volume?", [at *MAXIMUM*], d: "audible over splashing")
+    [#cr-line("Volume?", [at *MAXIMUM*], d: "Audible over splashing")
      #linebreak() #cr-line("Phone Location?", [*IN BATHROOM* or just outside])],
     icon-baby, [*Baby Prep* #critical],
-    [#cr-line("Towel?", [*ARM'S REACH*], d: "large enough to wrap quickly")
-     #linebreak() #cr-line("Nappy & Clothes?", [*IN BATHROOM*, ready to go], d: "not in another room")
-     #linebreak() #cr-line("Babywear / Carrier?", [*BY BATHROOM DOOR*], d: "for emergency evacuation")],
+    [#cr-line("Towel?", [*ARM'S REACH*], d: "Large enough to wrap quickly")
+     #linebreak() #cr-line("Nappy & Clothes?", [*IN BATHROOM*, ready to go], d: "Not in another room")
+     #linebreak() #cr-line("Babywear / Carrier?", [*BY BATHROOM DOOR*], d: "For emergency evacuation")],
     icon-shirt, [*Your Clothes* #critical],
-    [#cr-line("Your Outfit?", [*ON* — fully dressed], d: "you may need to move fast while holding baby")
+    [#cr-line("Your Outfit?", [*ON* — fully dressed], d: "You may need to move fast while holding baby")
      #linebreak() #cr-line("Your Shoes?", [*CLOSED-TOE*, *ON FEET*])],
     icon-door, [*Door*],
     [#cr-line("Bathroom Door?", [*UNLOCKED*])],
     icon-shield, [*Shelter Route*],
-    [#cr-line("Route Clear?", [*YES*], d: "can you get from bathroom to shelter holding a wet baby?")],
+    [#cr-line("Route Clear?", [*YES*], d: "Can you get from bathroom to shelter holding a wet baby?")],
     icon-clock, [*Keep It Short* #critical],
-    [#cr-line("Time?", [*MINIMISED*], d: "quick wash, not a play session")],
+    [#cr-line("Time?", [*MINIMISED*], d: "Quick wash, not a play session")],
   )
   #v(0.15cm)
   #block(width: 100%, inset: 8pt, fill: red-light, radius: 6pt, stroke: 1.5pt + red-alert)[

@@ -2,7 +2,7 @@
 #import "preamble.typ": *
 
 #let night-alarm-content() = [
-  #printable-header("Night Alarm — The 30-Second Drill", colour: red-alert, icon-content: icon-moon)
+  #printable-header("Night Alarm — From Drowsy to Go", colour: red-alert, icon-content: icon-moon)
   #v(0.2cm)
   #text(size: 9pt, style: "italic")[Post this by your bed. Everything here exists so you don't have to think at 3am.]
   #v(0.15cm)
@@ -21,7 +21,7 @@
     + #text(weight: "bold", fill: blue-dark)[SIREN?] #h(6pt) — Do not process. Just move. #h(1fr) #ci[AWAKE — MOVING]
     + #text(weight: "bold", fill: blue-dark)[SHOES?] #h(6pt) — Same spot every night. #h(1fr) #ci[ON FEET]
     + #text(weight: "bold", fill: blue-dark)[GLASSES & PHONE?] #h(6pt) — From nightstand. #h(1fr) #ci[IN HAND]
-    + #text(weight: "bold", fill: blue-dark)[CAFFEINE PILL?] #h(6pt) — _(optional)_ Sip of water. #h(1fr) #ci[TAKEN]
+    // caffeine pill removed — not essential, distracting
   ]
   #v(0.3cm)
   #block(width: 100%, inset: 14pt, fill: rgb("#fff8e1"), radius: 8pt, stroke: 2pt + orange-warm)[

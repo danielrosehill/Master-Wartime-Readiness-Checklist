@@ -52,8 +52,8 @@
   inset: 0pt,
 )
 
-// Critical marker — right-aligned in ITEM column
-#let critical = h(1fr) + text(fill: red-alert, weight: "bold", size: 12pt)[⚠]
+// Critical marker — on new line below item name
+#let critical = linebreak() + text(fill: red-alert, weight: "bold", size: 10pt)[⚠]
 
 // Call-respond line: checkbox left, BOLD call name, response RIGHT-ALIGNED
 // Description on new line, left-aligned, italics, capitalised
@@ -64,6 +64,22 @@
   text(size: 9pt, fill: blue-dark, weight: "bold")[#name]
   h(1fr)
   response
+  if d != none {
+    linebreak()
+    h(15pt)
+    text(style: "italic", size: 8.5pt, fill: grey-text)[#d]
+  }
+}
+
+// Simple checklist item — checkbox + bold item + status, all in one cell (no CHECK column needed)
+// Used for rows with a single obvious state, e.g. "Door — UNLOCKED"
+#let simple-line(name, status, d: none) = {
+  checkbox
+  h(3pt)
+  text(size: 9pt, fill: blue-dark, weight: "bold")[#name]
+  h(4pt)
+  text(size: 9pt)[— ]
+  text(size: 9pt, weight: "bold")[#status]
   if d != none {
     linebreak()
     h(15pt)
@@ -83,36 +99,43 @@
   }
 }
 
+// Booklet mode state — when true, printable-header and cr-instructions are suppressed
+#let booklet-mode = state("booklet-mode", false)
+
 // Call-respond instructions block
-#let cr-instructions() = {
-  block(
-    width: 100%,
-    inset: 8pt,
-    fill: grey-light,
-    radius: 4pt,
-  )[
-    #text(size: 8.5pt, style: "italic")[
-      *Two-person drill:* one person reads the CALL column aloud, the other responds. Alternate roles each time. \
-      *Solo:* read each call aloud, then answer it yourself.
+#let cr-instructions() = context {
+  if not booklet-mode.get() {
+    block(
+      width: 100%,
+      inset: 8pt,
+      fill: grey-light,
+      radius: 4pt,
+    )[
+      #text(size: 8.5pt, style: "italic")[
+        *Two-person drill:* one person reads the CALL column aloud, the other responds. Alternate roles each time. \
+        *Solo:* read each call aloud, then answer it yourself.
+      ]
     ]
-  ]
+  }
 }
 
 // Printable header bar
-#let printable-header(title, colour: blue-dark, icon-content: none) = {
-  block(
-    width: 100%,
-    inset: (x: 14pt, y: 10pt),
-    fill: colour,
-    radius: 6pt,
-  )[
-    #align(center)[
-      #text(size: 14pt, weight: "bold", fill: white)[
-        #if icon-content != none { icon-content; h(6pt) }
-        #title
+#let printable-header(title, colour: blue-dark, icon-content: none) = context {
+  if not booklet-mode.get() {
+    block(
+      width: 100%,
+      inset: (x: 14pt, y: 10pt),
+      fill: colour,
+      radius: 6pt,
+    )[
+      #align(center)[
+        #text(size: 14pt, weight: "bold", fill: white)[
+          #if icon-content != none { icon-content; h(6pt) }
+          #title
+        ]
       ]
     ]
-  ]
+  }
 }
 
 // Printable footer (standalone only — combined PDF uses its own)

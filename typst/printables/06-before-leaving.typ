@@ -16,22 +16,17 @@
     fill: checklist-table-fill,
     align: (center, left, left),
     ..checklist-table-headers(),
-    icon-bag, [*Go Bag* #critical],
-    [#cr-line("Bag?", [*TAKING* with me])],
-    icon-eye, [*News Check* #critical],
-    [#cr-line("Situation?", [*SCANNED* before departure], d: "check HFC app and news for active alerts")],
+    icon-bag, table.cell(colspan: 2)[#simple-line("Go Bag", [TAKING WITH ME]) #critical],
+    icon-eye, table.cell(colspan: 2)[#simple-line("News Check", [SCANNED before departure], d: "Check HFC app and news for active alerts") #critical],
     icon-shield, [*Shelters* #critical],
-    [#cr-line("Route Shelters?", [*IDENTIFIED*], d: "at destination and along route")],
-    icon-clock, [*Time To Shelter*],
-    [#cr-line("Shelter Time?", [*KNOWN* for destination area])],
+    [#cr-line("Route Shelters?", [*IDENTIFIED*], d: "At destination and along route")],
+    icon-clock, table.cell(colspan: 2)[#simple-line("Time To Shelter", [KNOWN for destination area])],
     icon-phone, [*Phone* #critical],
     [#cr-line("Charge Status?", [*CHARGED*])
      #linebreak() #cr-line("HFC App?", [*RUNNING*])
      #linebreak() #cr-line("Location?", [*ON*])],
-    icon-car, [*Car Fuel*],
-    [#cr-line("Fuel Level?", [at least *HALF* a tank])],
-    icon-people, [*Household Notified*],
-    [#cr-line("Household?", [destination and return time *COMMUNICATED*])],
+    icon-car, table.cell(colspan: 2)[#simple-line("Car Fuel", [at least HALF a tank])],
+    icon-people, table.cell(colspan: 2)[#simple-line("Household Notified", [destination and return time COMMUNICATED])],
   )
 
   #v(0.4cm)
