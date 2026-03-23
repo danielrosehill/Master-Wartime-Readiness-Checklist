@@ -218,7 +218,7 @@
 #pagebreak()
 #page(header: none)[
   #v(0.5cm)
-  #text(size: 18pt, weight: "bold", fill: blue-dark)[Why This Exists]
+  #text(size: 18pt, weight: "bold", fill: blue-dark)[About This Guide]
   #v(0.6cm)
 
   #text(size: 10.5pt)[
@@ -250,12 +250,36 @@
       #text(size: 11pt, weight: "bold", fill: blue-dark)[#link("https://danielrosehill.com")[Daniel Rosehill]]
       #v(4pt)
       #text(size: 9.5pt)[
-        Technology communications specialist based in Jerusalem. Lives in Rehavia with his wife Hannah and two crocheted companions. This guide was written with AI assistance from Claude (Anthropic). All illustrations by Nano Banana.
+        Technology communications specialist based in Jerusalem. Lives in Rehavia with his wife Hannah and two crocheted companions. All illustrations by Nano Banana.
       ]
     ],
   )
 
   #v(0.4cm)
+
+  // Claude (AI co-author)
+  #grid(
+    columns: (auto, 1fr),
+    gutter: 12pt,
+    block()[
+      #align(center)[
+        #circle(radius: 20pt, fill: blue-dark, stroke: none)[
+          #align(center + horizon)[
+            #text(size: 22pt, fill: white)[#fa-icon("robot")]
+          ]
+        ]
+      ]
+    ],
+    block()[
+      #text(size: 11pt, weight: "bold", fill: blue-dark)[Claude (Anthropic Opus 4.6)]
+      #v(4pt)
+      #text(size: 9.5pt)[
+        AI co-author. Drafted, structured, and typeset this guide based on official HFC guidance and Daniel's lived experience. All content was human-reviewed.
+      ]
+    ],
+  )
+
+  #v(0.3cm)
 
   // Co-hosts
   #grid(
@@ -280,7 +304,7 @@
     ],
   )
 
-  #v(0.5cm)
+  #v(0.4cm)
 
   // Disclaimer
   #block(
@@ -554,9 +578,9 @@
 //
 // ═══════════════════════════════════════════════════════
 
-#context booklet-section("Pre-Emergency Home Safety", pre-emergency-home-content())
-#context booklet-section("Mamad Inspection", mamad-inspection-content())
-#context booklet-section("Go Bag Preparation", go-bag-content())
+#context booklet-section([#fa-icon("house") Pre-Emergency Home Safety], pre-emergency-home-content())
+#context booklet-section([#fa-icon("shield-halved") Mamad Inspection], mamad-inspection-content())
+#context booklet-section([#fa-icon("bag-shopping") Go Bag Preparation], go-bag-content())
 
 // ═══════════════════════════════════════════════════════
 //
@@ -564,16 +588,16 @@
 //
 // ═══════════════════════════════════════════════════════
 
-#context booklet-section("Smoke Test — Are You Braced?", quick-readiness-content())
-#context booklet-section("Daytime At-Home Posture", daytime-posture-content())
-#context booklet-section("Before Bed", before-bed-content())
-#context booklet-section("Before Showering", before-shower-content())
-#context booklet-section("Before Leaving Home", before-leaving-content())
-#context booklet-section("Shabbat / Hag", shabbat-content())
-#context booklet-section("Bathing a Baby", bathing-baby-content())
-#context booklet-section("Situational Awareness — Standard", news-standard-content())
-#context booklet-section("Situational Awareness — Vigilant", news-vigilant-content())
-#context booklet-section("INFOSEC & Info Discipline", infosec-content())
+#context booklet-section([#fa-icon("circle-check") Smoke Test — Are You Braced?], quick-readiness-content())
+#context booklet-section([#fa-icon("sun") Daytime At-Home Posture], daytime-posture-content())
+#context booklet-section([#fa-icon("moon") Before Bed], before-bed-content())
+#context booklet-section([#fa-icon("shower") Before Showering], before-shower-content())
+#context booklet-section([#fa-icon("door-open") Before Leaving Home], before-leaving-content())
+#context booklet-section([#fa-icon("star-of-david") Shabbat / Hag], shabbat-content())
+#context booklet-section([#fa-icon("baby") Bathing a Baby], bathing-baby-content())
+#context booklet-section([#fa-icon("newspaper") Situational Awareness — Standard], news-standard-content())
+#context booklet-section([#fa-icon("newspaper") Situational Awareness — Vigilant], news-vigilant-content())
+#context booklet-section([#fa-icon("laptop") INFOSEC & Info Discipline], infosec-content())
 
 // ═══════════════════════════════════════════════════════
 //
@@ -599,7 +623,7 @@
   radius: 6pt,
   stroke: 1.5pt + rgb("#e67e22"),
 )[
-  #text(size: 14pt, weight: "bold", fill: rgb("#e67e22"))[1 #h(6pt) Preliminary Warning (_Hatra'a Makdima_)]
+  #text(size: 14pt, weight: "bold", fill: rgb("#e67e22"))[1 #h(6pt) Preliminary Warning (_Hatra'a Makdima_)] #h(4pt) #text(size: 12pt, fill: rgb("#856404"))[התרעה מוקדמת]
   #v(6pt)
   #text(size: 10pt)[
     An advance notification sent via the HFC app before the siren, typically for distant threats (e.g. Yemen, Iraq). Intended to give you time to prepare.
@@ -624,7 +648,7 @@
   radius: 6pt,
   stroke: 1.5pt + red-alert,
 )[
-  #text(size: 14pt, weight: "bold", fill: red-alert)[2 #h(6pt) Red Alert / Siren (_Azakat Tzeva Adom_)]
+  #text(size: 14pt, weight: "bold", fill: red-alert)[2 #h(6pt) Red Alert / Siren (_Azakat Tzeva Adom_)] #h(4pt) #text(size: 12pt, fill: rgb("#8b0000"))[אזעקת צבע אדום]
   #v(6pt)
   #text(size: 10pt)[
     The siren means *shelter now*. Enter your protected space immediately and close the door. Do not stop to collect belongings. Do not check your phone until you are inside.
@@ -645,7 +669,7 @@
   radius: 6pt,
   stroke: 1.5pt + green-calm,
 )[
-  #text(size: 14pt, weight: "bold", fill: green-calm)[3 #h(6pt) All-Clear (_HaEru'a Hastayem_)]
+  #text(size: 14pt, weight: "bold", fill: green-calm)[3 #h(6pt) All-Clear (_HaEru'a Hastayem_)] #h(4pt) #text(size: 12pt, fill: rgb("#1a5c2e"))[האירוע הסתיים]
   #v(6pt)
   #text(size: 10pt)[
     A message — typically in Hebrew, often written as "האירוע הסתיים" ("the event has ended") — delivered via the HFC app, official media, or a steady all-clear siren tone.
@@ -766,12 +790,12 @@
 #faq([Can I shelter in a stairwell?], [Yes, if it is an *internal* stairwell with no windows. Position yourself at least 2 floors above ground level. In a 3-storey building, use the middle floor only. Never shelter on the top floor or ground floor of a stairwell.])
 
 // --- Remaining active emergency checklists ---
-#context booklet-section("Night Alarm — From Drowsy to Go", night-alarm-content())
-#context booklet-section("In Shelter — Behaviour", in-shelter-content())
-#context booklet-section("After Shelter — Reset", after-shelter-content())
-#context booklet-section("Respiratory Protection", respiratory-content())
-#context booklet-section("Lull / Resupply", lull-resupply-content())
-#context booklet-section("Emergency Numbers", emergency-numbers-content())
+#context booklet-section([#fa-icon("bolt") Night Alarm — From Drowsy to Go], night-alarm-content())
+#context booklet-section([#fa-icon("shield-halved") In Shelter — Behaviour], in-shelter-content())
+#context booklet-section([#fa-icon("rotate-left") After Shelter — Reset], after-shelter-content())
+#context booklet-section([#fa-icon("head-side-mask") Respiratory Protection], respiratory-content())
+#context booklet-section([#fa-icon("bag-shopping") Lull / Resupply], lull-resupply-content())
+#context booklet-section([#fa-icon("phone") Emergency Numbers], emergency-numbers-content())
 
 // ═══════════════════════════════════════════════════════
 //
@@ -835,7 +859,7 @@
 ]
 
 // Terrorist infiltration SOP checklist
-#context booklet-section("Terrorist Infiltration SOP", terrorist-infiltration-content())
+#context booklet-section([#fa-icon("skull-crossbones") Terrorist Infiltration SOP], terrorist-infiltration-content())
 
 // --- UAV / Drone ---
 #pagebreak()
@@ -852,7 +876,7 @@
   radius: 4pt,
   stroke: 1pt + rgb("#856404"),
 )[
-  #text(size: 9pt, weight: "bold")[Key difference from rockets:] #text(size: 9pt)[UAV alerts use the *same siren* but require *10-minute shelter time* and an explicit all-clear. Do not self-release.]
+  #text(size: 9pt, weight: "bold")[Same procedure as rockets:] #text(size: 9pt)[UAV alerts use the *same siren* and follow the *same shelter procedure*. Stay for 10 minutes or until the all-clear — whichever comes later.]
 ]
 
 #v(0.4cm)
@@ -901,7 +925,7 @@
 #text(size: 9pt, style: "italic")[Means of alert: HFC App · National Emergency Portal (oref.org.il) · Sirens · Media broadcasts]
 
 // UAV SOP checklist
-#context booklet-section("UAV / Drone Alert SOP", uav-drone-content())
+#context booklet-section([#fa-icon("plane") UAV / Drone Alert SOP], uav-drone-content())
 
 // ═══════════════════════════════════════════════════════
 //
@@ -921,31 +945,31 @@
 #v(0.3cm)
 
 #table(
-  columns: (1.2fr, 2.8fr),
-  inset: 8pt,
+  columns: (1.2fr, 1fr, 2fr),
+  inset: 7pt,
   stroke: 0.5pt + grey-border,
   fill: (_, y) => if y == 0 { blue-dark } else if calc.odd(y) { grey-light } else { white },
-  align: (left, left),
-  text(fill: white, weight: "bold", size: 9pt)[Term], text(fill: white, weight: "bold", size: 9pt)[Meaning],
+  align: (left, right, left),
+  text(fill: white, weight: "bold", size: 9pt)[Term], text(fill: white, weight: "bold", size: 9pt)[Hebrew], text(fill: white, weight: "bold", size: 9pt)[Meaning],
 
-  [*Azaka*], [Alert / warning (general term for any HFC alert)],
-  [*Azakat Tzeva Adom*], [Red Alert — rocket / missile warning],
-  [*Mamad*], [Residential protected space (_Merchav Mugan Dirati_) — the reinforced room in your apartment],
-  [*Mamak*], [Floor-level protected space (_Merchav Mugan Komati_) — shared between apartments on a floor],
-  [*Mamam*], [Building-level protected space (_Merchav Mugan Mossadi_) — communal shelter in a building],
-  [*Miklat*], [Public bomb shelter — usually underground, shared by the neighbourhood],
-  [*Pikud HaOref*], [Home Front Command (HFC) — the IDF branch responsible for civilian protection],
-  [*Hatra'a Makdima*], [Preliminary / advance warning — HFC app notification before a siren],
-  [*Kol Shaon*], [All-clear siren — a steady tone (distinct from the wailing alert siren)],
-  [*Delet Plada*], [Blast door — the heavy steel mamad door],
-  [*Chalon Plada*], [Steel outer window of the mamad],
-  [*Hathanat Agaf*], [Handle rotation — turning the mamad door handle 90° upward to seal],
-  [*Magen David Adom*], [MDA — Israel's national emergency medical service (101)],
-  [*Tzir*], [Axis / corridor — used in news for military fronts (e.g. _tzir tzafon_ = northern front)],
-  [*Arutz*], [Channel (TV/radio) — e.g. _Arutz 14_ = Channel 14],
-  [*HaGal HaShaket*], [The Quiet Wave — emergency broadcast channel activated during wartime for official instructions],
-  [*Galei Tzahal*], [IDF Radio (Galatz) — military news source (FM 102.3 / AM 657)],
-  [*Kol Yisrael*], [Voice of Israel / Kan Reshet Bet — public radio (FM 95.5 / AM 711)],
+  [*Azaka*], [אזעקה], [Alert / warning (general term for any HFC alert)],
+  [*Azakat Tzeva Adom*], [אזעקת צבע אדום], [Red Alert — rocket / missile warning],
+  [*Mamad*], [ממ״ד], [Residential protected space — the reinforced room in your apartment],
+  [*Mamak*], [ממ״ק], [Floor-level protected space — shared between apartments on a floor],
+  [*Mamam*], [ממ״מ], [Building-level protected space — communal shelter in a building],
+  [*Miklat*], [מקלט], [Public bomb shelter — usually underground, shared by the neighbourhood],
+  [*Pikud HaOref*], [פיקוד העורף], [Home Front Command (HFC) — the IDF branch for civilian protection],
+  [*Hatra'a Makdima*], [התרעה מוקדמת], [Preliminary / advance warning — HFC app notification before a siren],
+  [*Kol Shaon*], [כל שעון], [All-clear siren — a steady tone (distinct from the wailing alert siren)],
+  [*Delet Plada*], [דלת פלדה], [Blast door — the heavy steel mamad door],
+  [*Chalon Plada*], [חלון פלדה], [Steel outer window of the mamad],
+  [*Hathanat Agaf*], [הטיית אגף], [Handle rotation — turning the mamad door handle 90° to seal],
+  [*Magen David Adom*], [מגן דוד אדום], [MDA — Israel's national emergency medical service (101)],
+  [*Tzir*], [ציר], [Axis / corridor — used in news for military fronts],
+  [*Arutz*], [ערוץ], [Channel (TV/radio) — e.g. _Arutz 14_ = Channel 14],
+  [*HaGal HaShaket*], [הגל השקט], [The Quiet Wave — emergency broadcast channel for wartime],
+  [*Galei Tzahal*], [גלי צה״ל], [IDF Radio (Galatz) — FM 102.3 / AM 657],
+  [*Kol Yisrael*], [קול ישראל], [Voice of Israel / Kan Reshet Bet — FM 95.5 / AM 711],
 )
 
 // ═══════════════════════════════════════

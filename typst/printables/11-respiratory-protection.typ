@@ -33,7 +33,30 @@
     )
   ]
 
-  #v(0.4cm)
+  #v(0.3cm)
+
+  #block(width: 100%, inset: (x: 14pt, y: 10pt), fill: rgb("#e8f0fe"), radius: (top: 4pt))[
+    #text(size: 11pt, weight: "bold", fill: blue-dark)[#fa-icon("arrow-up") Step Up — Half-Face Respirator]
+  ]
+  #block(width: 100%, stroke: 1.5pt + blue-mid, radius: (bottom: 4pt), inset: 12pt)[
+    #block(width: 100%, inset: 8pt, fill: rgb("#fff3cd"), radius: 4pt, stroke: 1pt + rgb("#856404"))[
+      #text(size: 8pt, weight: "bold", fill: rgb("#856404"))[Note:] #text(size: 8pt)[This is a personal recommendation beyond official HFC guidance. Not required — for those who want enhanced protection.]
+    ]
+    #v(4pt)
+    #table(
+      columns: (1fr, 2.5fr),
+      inset: 7pt,
+      stroke: 0.5pt + grey-border,
+      fill: (_, y) => if calc.odd(y) { grey-light } else { white },
+      align: (left, left),
+      [*What*], [Reusable half-face respirator with P100 cartridges],
+      [*Why*], [Better seal and filtration than disposable N95. Reusable across events. Protects against fine dust, smoke, and chemical irritants.],
+      [*Brands*], [3M 6200/7502 series, GVS Elipse P100, or equivalent NIOSH P100],
+      [*Fit*], [Must be fit-tested. No facial hair under the seal. Comes in S/M/L.],
+    )
+  ]
+
+  #v(0.3cm)
 
   #block(width: 100%, inset: 12pt, fill: blue-light, radius: 6pt, stroke: 1pt + blue-accent)[
     #text(size: 10pt, weight: "bold", fill: blue-dark)[Checklist — Respiratory Readiness]

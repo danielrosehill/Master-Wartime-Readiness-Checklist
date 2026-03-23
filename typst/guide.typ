@@ -1050,7 +1050,7 @@ HFC provides *3–5 minute advance warning* for attacks from distant sources (e.
 
 == 2.14 Hostile Aerial Vehicle (UAV/Drone) Infiltration #h(6pt) #icon-alert
 
-#warning-box[UAV infiltration uses the *same siren* as rocket/missile attacks but has *different behavioural guidelines*. Shelter time is *10 minutes* unless updated.]
+#warning-box[UAV infiltration uses the *same siren* and follows the *same shelter procedure* as rocket/missile attacks. Enter shelter immediately. Stay for 10 minutes or until the all-clear — whichever comes later.]
 
 #v(0.2cm)
 
@@ -1086,7 +1086,7 @@ The alert is received through:
 + *Urban buses:* driver stops and opens doors for passengers to reach optimal protected space; if not reachable, crouch below window line
 + *Trains:* driver slows to 30 km/h; passengers crouch below window line in carriages and protect their heads
 
-#tip-box[*Key difference from rockets:* UAV alerts require a *10-minute shelter time* and you must wait for an explicit "all clear" — do not self-release based on quiet.]#footnote[Based on Home Front Command guidance as of 20 March 2026. Always verify with current HFC guidance at oref.org.il.]
+#tip-box[UAV alerts follow the *same shelter procedure* as rocket/missile alerts. Stay for 10 minutes or until the all-clear — whichever comes later.]#footnote[Based on Home Front Command guidance as of 20 March 2026. Always verify with current HFC guidance at oref.org.il.]
 
 // ══════════════════════════════════════════════
 // CHAPTER 3: SHABBAT / HAG

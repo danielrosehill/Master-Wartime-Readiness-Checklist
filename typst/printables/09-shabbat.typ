@@ -34,12 +34,6 @@
     [], table.cell(colspan: 2)[#simple-line("Windows", [SLIGHTLY OPEN], d: "To hear outdoor sirens")],
   )
   #v(0.25cm)
-  #block(width: 100%, inset: 12pt, fill: rgb("#f3e5f5"), radius: 6pt, stroke: 1.5pt + purple-shab)[
-    #text(size: 10pt, weight: "bold", fill: purple-shab)[Pikuach Nefesh]
-    #v(4pt)
-    #text(size: 9.5pt)[Preservation of life overrides all Shabbat prohibitions. If a siren sounds, you *may and must* use your phone, carry items, and do whatever is needed to reach shelter safely. This is not a leniency — it is *halacha*.]
-  ]
-  #v(0.2cm)
   #block(width: 100%, inset: 10pt, fill: red-light, radius: 6pt, stroke: 1pt + red-alert)[
     #text(size: 9.5pt, weight: "bold", fill: red-alert)[During Shabbat:]
     #text(size: 9pt)[ Keep windows open for sirens · TV/radio must stay audible · Know your shelter route in the dark · Stay in shelter 10 min or until all-clear on TV/radio]

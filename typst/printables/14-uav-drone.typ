@@ -5,9 +5,9 @@
   #printable-header("Hostile Aerial Vehicle (UAV / Drone) Alert", colour: red-alert, icon-content: icon-alert)
   #v(0.2cm)
   #block(width: 100%, inset: 12pt, fill: red-light, radius: 6pt, stroke: 2pt + red-alert)[
-    #text(size: 11pt, weight: "bold", fill: red-alert)[⚠ Same siren as rockets — DIFFERENT procedure.]
+    #text(size: 11pt, weight: "bold", fill: red-alert)[⚠ Same siren, same shelter procedure as rockets.]
     #v(4pt)
-    #text(size: 10pt)[Shelter time is *10 minutes*. You must wait for an *explicit all-clear* — do not self-release based on quiet.]
+    #text(size: 10pt)[Enter shelter immediately. Stay for *10 minutes OR until the all-clear* — whichever comes later.]
   ]
   #v(0.15cm)
   #text(size: 9pt, style: "italic")[Alert via: HFC App · Sirens · Media · oref.org.il]
@@ -53,7 +53,7 @@
   ]
   #v(0.2cm)
   #block(width: 100%, inset: 10pt, fill: blue-light, radius: 4pt, stroke: 1pt + blue-accent)[
-    #text(size: 9.5pt, weight: "bold", fill: blue-dark)[Key difference from rockets:] #text(size: 9pt)[ UAV alerts require a 10-minute shelter time and you must wait for an explicit "all clear" — do not self-release based on quiet.]
+    #text(size: 9.5pt, weight: "bold", fill: blue-dark)[Reminder:] #text(size: 9pt)[ Stay for 10 minutes or until the all-clear — whichever comes later. Same procedure as rocket/missile alerts.]
   ]
 ]
 
