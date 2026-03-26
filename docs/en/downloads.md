@@ -10,6 +10,15 @@ All files are available from the [GitHub Releases page](https://github.com/danie
 | **EPUB** | [Israel-Wartime-Readiness-Field-Guide-v4.epub](https://github.com/danielrosehill/Israel-Civilian-Readiness-Guide/releases/download/v4.1/Israel-Wartime-Readiness-Field-Guide-v4.epub) |
 | **Audiobook (M4A)** | [Israel-Wartime-Readiness-Field-Guide-Audiobook.m4a](https://episodes.myweirdprompts.com/audio/israel-wartime-readiness-field-guide-audiobook.m4a) |
 
+## Visual Flip Book
+
+A 30-page illustrated landscape flip book walkthrough of HFC protocols — featuring Herman & Corn. Covers shelter priority, phone setup, outside scenarios, go bags, and more.
+
+| Format | Size | Link |
+|--------|------|------|
+| Print PDF | 36 MB | [Download](https://github.com/danielrosehill/HFC-Guidance-Flip-Book/releases/download/v1.1/flip-book.pdf) |
+| Web PDF | 2 MB | [Download](https://github.com/danielrosehill/HFC-Guidance-Flip-Book/releases/download/v1.1/flip-book-web.pdf) |
+
 ## Printable Checklists
 
 | Printable | Link |
